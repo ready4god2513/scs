@@ -1,3 +1,4 @@
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `blogs`;
@@ -135,6 +136,7 @@ CREATE TABLE `page_categories` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+insert into `page_categories` values('1','information','2010-10-11 14:34:56','2010-10-11 14:34:56');
 
 DROP TABLE IF EXISTS `pages`;
 
@@ -142,11 +144,14 @@ CREATE TABLE `pages` (
   `id` int(11) NOT NULL auto_increment,
   `page_category_id` int(11) NOT NULL,
   `name` varchar(150) default NULL,
+  `content` text NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+insert into `pages` values('1','1','about','This is a bunch of stuff','2010-10-11 14:43:42','2010-10-11 14:44:54'),
+ ('2','1','contact','This is going to be a contact form','2010-10-11 14:49:39','2010-10-11 14:49:39');
 
 DROP TABLE IF EXISTS `product_attributes`;
 

@@ -7,3 +7,4 @@ FROM (`pages`)
 WHERE `title` = 'contact'
 ORDER BY `pages`.`id` ASC
 LIMIT 0, 1 in file system/libraries/drivers/Database/Mysql.php on line 371
+2010-10-11 14:29:52 -07:00 --- error: Uncaught PHP Error: Illegal offset type in file system/libraries/ORM.php on line 100

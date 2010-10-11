@@ -57,7 +57,7 @@ abstract class Crud_Controller extends Template_Controller
 	 */
 	public function show($id = NULL)
 	{
-		$item = ORM::factory($this->model_name, $id);
+		$item = ORM::factory($this->model_name, (string) $id);
 		
 		if(!$item->loaded)
 		{
@@ -153,7 +153,7 @@ abstract class Crud_Controller extends Template_Controller
 	public function edit($id = NULL)
 	{
 		
-		$item = ORM::factory($this->model_name, $id);
+		$item = ORM::factory($this->model_name, (string) $id);
 		$form = Formo::factory()
 			->plugin('orm')
 			->orm($this->model_name, $id)
@@ -181,7 +181,7 @@ abstract class Crud_Controller extends Template_Controller
 	 */
 	public function update($id = NULL)
 	{
-		if($object = ORM::factory($this->model_name, $id)->update($this->input->post()))
+		if($object = ORM::factory($this->model_name, (string) $id)->update($this->input->post()))
 		{
 			if(request::is_ajax())
 			{
