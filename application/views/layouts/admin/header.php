@@ -35,7 +35,7 @@
 				<h2>Hand Crafted Roasts</h2>
 				<ul>
 					<?php foreach(ORM::factory('product')->find_all() as $product): ?>
-						<li><?=html::anchor($product->show_path(), $product->title)?></li>
+						<li><?=html::anchor($product->show_path(), $product->name)?></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>

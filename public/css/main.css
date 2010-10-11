@@ -105,6 +105,12 @@ div#logo h1
 	padding:12px;
 }
 
+div#logo h1 a
+{
+	color:#fff;
+	font-family: "calluna-1","calluna-2", sans-serif;
+}
+
 div#wrapper
 {
 	width:980px;
@@ -124,7 +130,7 @@ div#banner img
 
 div#content
 {
-	background:#fff url(/public/images/bag.jpg) right center no-repeat;
+	/* background:#fff url(/public/images/bag.jpg) right center no-repeat; */
 	margin:10px 5px;
 }
 

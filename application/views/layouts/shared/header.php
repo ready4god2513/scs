@@ -17,7 +17,7 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id="logo" class="left">
-				<h1>Stu's Coffee Shoppe</h1>
+				<h1><?=html::anchor(url::site(), 'Stu\'s Coffee Shoppe')?></h1>
 			</div>
 			<div id="navigation" class="right">
 				<ul>
@@ -35,7 +35,7 @@
 				<h2>Hand Crafted Roasts</h2>
 				<ul>
 					<?php foreach(ORM::factory('product')->find_all() as $product): ?>
-						<li><?=html::anchor($product->show_path(), $product->title)?></li>
+						<li><?=html::anchor($product->show_path(), $product->name)?></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
