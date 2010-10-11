@@ -132,6 +132,7 @@ div#content
 {
 	/* background:#fff url(/public/images/bag.jpg) right center no-repeat; */
 	margin:10px 5px;
+	padding:10px;
 }
 
 div#content h2
@@ -160,6 +161,12 @@ h3.coffee-type span.price
 {
 	color:green;
 	font-size:0.6em;
+}
+
+div.blog-list
+{
+	font: normal normal normal 14px/normal Georgia, Times, serif;
+	line-height: 1.5;
 }
 
 div#main
