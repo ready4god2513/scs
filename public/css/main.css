@@ -90,6 +90,15 @@ div.roasts-shopping-cart-list p
 	text-transform:lowercase;
 }
 
+div.roasts-shopping-cart-description p
+{
+	color:#4A5229;
+	font-size:0.8em;
+	margin:5px 10px 5px 15px;
+	padding:2px;
+	text-transform:lowercase;
+}
+
 div.roasts-shopping-cart-list p.notes
 {
 	color:#7CA644;
