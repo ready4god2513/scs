@@ -23,14 +23,16 @@ class Blogs_Controller extends Application_Controller
 	  */
 	public function show($name = NULL)
 	{
-		$name = format::dash_to_space($name);
-		$id = ORM::factory('blog')->where('name', $name)->find();
+		$blog = ORM::factory('blog')->where('name', format::dash_to_space($name))->find();
 		
 		// Set the title
-		meta::set_title(ucwords($name));
+		meta::set_title(ucwords($blog->name));
+		
+		// Set the description
+		meta::set_description($blog->synopsis);
 		
 		// Show the page
-		parent::show($id);
+		parent::show($blog);
 	}
 
 }

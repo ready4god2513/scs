@@ -3,6 +3,8 @@
 class Product_Model extends ORM
 {
 	
+	protected $sorting = array('sort_order' => 'ASC');
+	
 	
 	/**
 	  * Show path route

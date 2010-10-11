@@ -24,14 +24,17 @@ class Products_Controller extends Application_Controller
 	  */
 	public function show($name = NULL)
 	{
-		$name = format::dash_to_space($name);
-		$id = ORM::factory('product')->where('name', $name)->find();
+		// Find the product that we are trying to access
+		$product = ORM::factory('product')->where('name', format::dash_to_space($name))->find();
 		
 		// Set the title
-		meta::set_title(ucwords($name));
+		meta::set_title(ucwords($product->name));
+		
+		// Set the description
+		meta::set_description($product->marketing_description);
 		
 		// Show the page
-		parent::show($id);
+		parent::show($product);
 	}
 	
 

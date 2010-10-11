@@ -3,6 +3,8 @@
 class Blog_Model extends ORM
 {
 	
+	protected $sorting = array('created_at' => 'DESC');
+	
 	
 	/**
 	  * Show path route

@@ -11,14 +11,16 @@ class Pages_Controller extends Application_Controller
 	  */
 	public function show($name = NULL)
 	{
-		$name = format::dash_to_space($name);
-		$id = ORM::factory('page')->where('name', $name)->find();
+		$page = ORM::factory('page')->where('name', format::dash_to_space($name))->find();
 		
 		// Set the title
-		meta::set_title(ucwords($name));
+		meta::set_title(ucwords($page->name));
+		
+		// Set the description
+		meta::set_description($page->synopsis);
 		
 		// Show the page
-		parent::show($id);
+		parent::show($page);
 	}
 
 }
