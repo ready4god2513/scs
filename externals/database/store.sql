@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS `blogs`;
 CREATE TABLE `blogs` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(150) default NULL,
+  `content` text NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
