@@ -13,6 +13,7 @@ $config['_default'] = 'static/home';
   * @Date May 17, 2010
   */
 $config['(.*)/new'] = '$1/new_one';
+$config['admin/(.*)/new'] = 'admin/$1/new_one';
 
 
 /**

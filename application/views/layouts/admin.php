@@ -1,4 +1,3 @@
-<?=View::factory('layouts/shared/header')?>
-<h1><?=format::friendly_model_name(Router::$controller)?></h1>
+<?=View::factory('layouts/admin/header')?>
 <?=$content?>
-<?=View::factory('layouts/shared/footer')?>
+<?=View::factory('layouts/admin/footer')?>

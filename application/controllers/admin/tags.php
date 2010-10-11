@@ -1,6 +1,6 @@
 <?php
 
-class Tags_Controller extends Application_Controller
+class Tags_Controller extends Admin_Controller
 {
 
 }

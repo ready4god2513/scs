@@ -11,6 +11,7 @@ class Static_Controller extends Application_Controller
 	  */
 	public function home()
 	{
+		meta::set_title('Stu\'s Coffee Shoppe');
 		$this->template
 			->set('content', View::factory('static/home'));
 	}

@@ -119,5 +119,16 @@ class format
 		$result = preg_replace('/[^a-zA-Z0-9\s]/','',$string);
 		return str_replace(' ', '-', $result);
 	}
+	
+	
+	/**
+	  * Replace dash with a space
+	  * @Developer brandon
+	  * @Date Oct 4, 2010
+	  */
+	public static function dash_to_space($string)
+	{
+		return str_replace('-', ' ', $string);
+	}
 
 }

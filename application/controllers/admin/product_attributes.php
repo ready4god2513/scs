@@ -1,6 +1,6 @@
 <?php
 
-class Product_attributes_Controller extends Application_Controller
+class Product_attributes_Controller extends Admin_Controller
 {
 
 }

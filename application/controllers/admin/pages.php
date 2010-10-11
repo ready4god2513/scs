@@ -1,6 +1,6 @@
 <?php
 
-class Pages_Controller extends Application_Controller
+class Pages_Controller extends Admin_Controller
 {
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Orders_Controller extends Application_Controller
+class Orders_Controller extends Admin_Controller
 {
 
 }

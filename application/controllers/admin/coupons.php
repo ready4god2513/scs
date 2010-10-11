@@ -1,6 +1,6 @@
 <?php
 
-class Coupons_Controller extends Application_Controller
+class Coupons_Controller extends Admin_Controller
 {
 
 }
