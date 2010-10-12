@@ -68,6 +68,11 @@ div.box ul li
 	padding:5px 0;
 }
 
+div.padd-me
+{
+	padding:10px;	
+}
+
 div.roasts-shopping-cart-list
 {
 	height:120px;

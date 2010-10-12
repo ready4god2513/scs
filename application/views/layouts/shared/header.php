@@ -41,9 +41,17 @@
 				</ul>
 			</div>
 			
-			<div id="shopping-cart-side-bar" class="box">
-				<h2>Shopping Cart</h2>
-				<h4 class="cart-empty">Your cart is empty.  <br />Time for a fresh cup.</h4>
+			<div id="latest-blog-entry-synopsis" class="box">
+				<h2>Stu's Latest</h2>
+				<div class="padd-me">
+					<?=ORM::factory('blog')->get_latest_entry_synopsis()?><br />
+					<?=html::anchor('blog', 'Read More')?>
+				</div>
 			</div>
+			
+			<div id="shopping-cart-side-bar" class="box">
+				<?=View::factory('carts/index')?>
+			</div>
+			
 		</div>
 		<div id="main" class="right">
