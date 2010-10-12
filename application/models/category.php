@@ -4,7 +4,7 @@ class Category_Model extends ORM
 {
 	
 	protected $sorting = array('sort_order' => 'ASC');
-	protected $has_many = array('products');
+	protected $has_and_belongs_to_many = array('products');
 	
 	
 	/**

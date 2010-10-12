@@ -7,7 +7,7 @@
 
 body
 {
-	background: url(/public/images/bg3.jpg) repeat;
+	background: url(/public/images/bg5-5.jpg) repeat;
 	font-family: "calluna-1","calluna-2", sans-serif;
 	color:#28160B;
 }
@@ -28,9 +28,9 @@ a:hover
 div.box
 {
 	background:#fff;
-	-moz-box-shadow: 0 0 8px 1px #666;
-	-webkit-box-shadow: 0 0 8px 1px #666;
-	box-shadow: 0 0 8px 1px #666;
+	-moz-box-shadow: 0 0 4px 1px #ccc;
+	-webkit-box-shadow: 0 0 4px 1px #ccc;
+	box-shadow: 0 0 4px 1px #ccc;
 	padding:0 0 5px 0;
 	margin-bottom:50px;
 }
@@ -202,7 +202,7 @@ div#navigation ul li
 
 div#navigation ul li a
 {
-	background:#fff;
+	background:#8BB9C0;
 	color:#28160B;
 	font-size:1.1em;
 	padding:5px;
@@ -210,7 +210,7 @@ div#navigation ul li a
 
 div#navigation ul li a:hover
 {
-	color:#7CA644;
+	color:#fff;
 }
 
 div#sidebar
@@ -231,7 +231,7 @@ div#logo img
 
 div#footer
 {
-	background:#28160B;
+	background:#8BB9C0;
 	margin:50px 5px;
 	padding:10px;
 }
@@ -245,8 +245,8 @@ div#footer ul
 
 div#footer ul li
 {
-	border-bottom:1px dotted #5F3524;
-	color:#7CA644;
+	border-bottom:1px dotted #ccc;
+	color:#28160B;
 	font-size:0.9em;
 	font-weight:bold;
 	line-height:1.3em;
