@@ -4,7 +4,8 @@ class Product_Model extends ORM
 {
 	
 	protected $sorting = array('sort_order' => 'ASC');
-	
+	protected $belongs_to = array('category');
+	protected $has_many = array('cart_items', 'product_attributes', 'product_files', 'product_images', 'order_details');
 	
 	/**
 	  * Show path route
