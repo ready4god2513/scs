@@ -1,5 +1,3 @@
 <?=View::factory('layouts/front/header')?>
-<div id="content" class="box">
-	<?=$content?>
-</div>
+<?=$content?>
 <?=View::factory('layouts/front/footer')?>

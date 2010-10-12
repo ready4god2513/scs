@@ -5,6 +5,7 @@ class Cart_Model extends ORM
 	
 	protected $belongs_to = array('user');
 	protected $has_many = array('cart_items');
+	protected $load_with = array('cart_items');
 	
 	
 	/*

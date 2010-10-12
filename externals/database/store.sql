@@ -109,6 +109,28 @@ LOCK TABLES `categories` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `categories_products`
+--
+
+DROP TABLE IF EXISTS `categories_products`;
+CREATE TABLE `categories_products` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories_products`
+--
+
+LOCK TABLES `categories_products` WRITE;
+/*!40000 ALTER TABLE `categories_products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categories_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `coupons`
 --
 
@@ -419,6 +441,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'login','Login privileges, granted after account confirmation'),(2,'admin','Administrative user, has access to everything.');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,6 +465,7 @@ CREATE TABLE `roles_users` (
 
 LOCK TABLES `roles_users` WRITE;
 /*!40000 ALTER TABLE `roles_users` DISABLE KEYS */;
+INSERT INTO `roles_users` VALUES (1,1);
 /*!40000 ALTER TABLE `roles_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -560,6 +584,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'','brandon','69fa80f78079395a7dc1db858f373899354762e9b143eb302e',0,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -572,4 +597,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-12 15:11:00
+-- Dump completed on 2010-10-12 23:24:21

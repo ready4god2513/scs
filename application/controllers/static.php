@@ -3,6 +3,8 @@
 class Static_Controller extends Application_Controller
 {
 	
+	public $template = 'layouts/home';
+	
 	
 	/**
 	  * Set the home page

@@ -3,8 +3,6 @@
 class user_Core 
 {
 	
-	public static $user;
-	
 	
 	/**
 	 * Get the current user
@@ -14,12 +12,14 @@ class user_Core
 	 */
 	public static function current()
 	{
-		if(!self::$user)
+		if(self::logged_in())
 		{
-			self::$user = ORM::factory('user', Session::instance()->get('id'));
+			return Auth::instance()->get_user();
 		}
-		
-		return self::$user;
+		else
+		{
+			return ORM::factory('user');
+		}
 	}
 	
 	
@@ -31,20 +31,7 @@ class user_Core
 	 */
 	public static function logged_in()
 	{
-		return self::current()->loaded;
-	}
-	
-	
-	/**
-	 * Start the user session
-	 * @Developer Brandon Hansen
-	 * @Date April 07, 2010
-	 * @Param User_Model $user
-	 */
-	public static function set_current(User_Model $user)
-	{
-		Session::instance()->set('id', $user->id);
-		self::$user = $user;
+		return Auth::instance()->logged_in();
 	}
 	
 	

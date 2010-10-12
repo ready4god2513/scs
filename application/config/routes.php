@@ -17,6 +17,14 @@ $config['admin/(.*)/new'] = 'admin/$1/new_one';
 
 
 /**
+  * Login and register
+  * @Developer brandon
+  * @Date Oct 12, 2010
+  */
+$config['(login|register)'] = 'sessions/new_one';
+
+
+/**
   * Missing Pages and Error Handling
   * @Developer brandon
   * @Date May 17, 2010

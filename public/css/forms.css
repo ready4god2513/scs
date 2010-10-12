@@ -1,0 +1,32 @@
+fieldset
+{
+	background:#f8f8f8;	
+}
+
+input[type=text], input[type=password]
+{
+	padding:5px;
+	width:150px;	
+}
+
+label
+{
+	float:left;
+	font-size:0.9em;
+	font-weight:bold;
+	margin-right:10px;
+	text-align:right;
+	width:130px;
+}
+
+legend
+{
+	margin:0;
+	text-align:left;
+}
+
+div.form-fields
+{
+	clear:both;
+	padding:10px 5px;
+}
