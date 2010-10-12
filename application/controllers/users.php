@@ -15,7 +15,7 @@ class Users_Controller extends Application_Controller
 	{
 		$user = ORM::factory('user');
 		
-		if($user->register($this->input->post('username'), $this->input->post('password')))
+		if($user->register($this->input->post('username'), $this->input->post('username'), $this->input->post('password')))
 		{
 			Auth::instance()->login($this->input->post('username'), $this->input->post('password'));
 			url::redirect($this->input->post('redirect_override', request::referrer()));

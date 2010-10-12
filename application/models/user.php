@@ -25,11 +25,11 @@ class User_Model extends Auth_User_Model
 	
 	
 	/**
-	  * Set passwords as hashed
+	  * Hash passwords
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
-	public function __set($key, $value = NULL)
+	public function __set($key = NULL, $value = NULL)
 	{
 		if($key == 'password')
 		{
@@ -45,8 +45,9 @@ class User_Model extends Auth_User_Model
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
-	public function register($username = NULL, $password = NULL)
+	public function register($email = NULL, $username = NULL, $password = NULL)
 	{
+		$this->email = $email;
 		$this->username = $username;
 		$this->password = $password;
 		

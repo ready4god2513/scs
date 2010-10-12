@@ -9,17 +9,6 @@ class Auth_User_Model extends ORM {
 	// Columns to ignore
 	protected $ignored_columns = array('password_confirm');
 
-	public function __set($key, $value)
-	{
-		if ($key === 'password')
-		{
-			// Use Auth to hash the password
-			$value = Auth::instance()->hash_password($value);
-		}
-
-		parent::__set($key, $value);
-	}
-
 	/**
 	 * Validates and optionally saves a new user record from an array.
 	 *
