@@ -47,7 +47,8 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `cart_items`;
 CREATE TABLE `cart_items` (
   `id` int(11) NOT NULL auto_increment,
-  `name` varchar(150) default NULL,
+  `cart_id` int(150) default NULL,
+  `product_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
@@ -69,7 +70,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `carts`;
 CREATE TABLE `carts` (
   `id` int(11) NOT NULL auto_increment,
-  `name` varchar(150) default NULL,
+  `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
@@ -571,4 +572,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-11 23:53:28
+-- Dump completed on 2010-10-12 15:11:00
