@@ -33,3 +33,10 @@
 		
 	</table>
 <?php endif; ?>
+
+<div class="right padd-me">
+	<?=form::open('cart/checkout', array('method' => 'GET'))?>
+		<?=form::submit('submit', 'Checkout')?>
+	<?=form::close()?>
+</div>
+<div class="clear"></div>

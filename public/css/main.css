@@ -184,6 +184,11 @@ h3.coffee-type span.price
 	font-size:0.6em;
 }
 
+span.price
+{
+	color:green;
+}
+
 div.blog-list
 {
 	font: normal normal normal 14px/normal Georgia, Times, serif;
