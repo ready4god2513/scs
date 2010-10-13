@@ -39,7 +39,7 @@ input.cart-item-quantity-input
 }
 
 
-input[type=submit],input[type=button]
+input[type=submit],input[type=button], div#navigation ul
 {
 	color:#fff !important;
 	text-decoration: none;

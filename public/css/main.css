@@ -202,12 +202,13 @@ div#main
 
 div#navigation
 {
-	margin:0;
+	margin:50px 0 0 0;
+	text-align:right;
 }
 
 div#navigation ul
 {
-	
+	padding:5px 10px;
 }
 
 div#navigation ul li
@@ -219,9 +220,8 @@ div#navigation ul li
 
 div#navigation ul li a
 {
-	background:#8BB9C0;
-	color:#28160B;
-	font-size:1.1em;
+	color:#fff;
+	font-size:1.5em;
 	padding:5px;
 }
 
