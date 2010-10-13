@@ -1,3 +1,4 @@
+			<?=Event::run('layout.main.bottom.output')?>
 		</div>
 		<div class="clear"></div>	
 		<div id="footer" class="box">
@@ -24,5 +25,6 @@
 			<div class="clear"></div>
 		</div>
 	</div>
+	<?=Event::run('layout.footer.output')?>
 </body>
 </html>

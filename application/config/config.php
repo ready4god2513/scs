@@ -126,8 +126,9 @@ $config['modules'] = array
 	// MODPATH.'kodoc',     // Self-generating documentation
 	// MODPATH.'gmaps',     // Google Maps integration
 	// MODPATH.'archive',   // Archive utility
-	 MODPATH.'payment',   // Online payments
 	 MODPATH.'formo', 		// Form Generation
-	 MODPATH.'markdown', 		// Markdown Editor
+	 MODPATH.'markdown', 	// Markdown Editor
+	 MODPATH.'postmark', 	// Send Email
+	 MODPATH.'stats', 	// Send Email
 	// MODPATH.'unit_test', // Unit testing
 );

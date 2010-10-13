@@ -12,6 +12,7 @@
 <?=html::script('public/js/jquery')?>
 <?=html::script('public/js/cycle')?>
 <?=html::script('public/js/application')?>
+<?=Event::run('layout.header.output')?>
 </head>
 <body id="<?=Router::$controller?>" class="<?=Router::$method?>">
 	<div id="wrapper">
@@ -25,6 +26,7 @@
 					<li><?=html::anchor('page/about', 'About')?></li>
 					<li><?=html::anchor('blog', 'Blog')?></li>
 					<li><?=html::anchor('page/contact', 'Contact')?></li>
+					<?=Event::run('layout.navigation.output')?>
 					<li><?=html::anchor('cart', '(' . user::current()->cart->cart_contents_count() . ') ' . inflector::singular('Items', user::current()->cart->cart_contents_count()))?></li>
 				</ul>
 			</div>
@@ -53,5 +55,7 @@
 				<?=View::factory('carts/index')?>
 			</div>
 			
+			<?=Event::run('layout.sidebar.output')?>
 		</div>
 		<div id="main" class="right">
+			<?=Event::run('layout.main.top.output')?>
