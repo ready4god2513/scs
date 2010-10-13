@@ -23,7 +23,41 @@ class Carts_Controller extends Application_Controller
 	  */
 	public function add()
 	{
+		$product = ORM::factory('product', $this->input->post('product_id'));
+		$quantity = $this->input->post('quantity');
+		user::current()->cart->add_product($product, $quantity);
 		
+		url::redirect('cart');
+	}
+	
+	
+	/**
+	  * Update a product quantity
+	  * @Developer brandon
+	  * @Date Oct 12, 2010
+	  */
+	public function update_quantity()
+	{
+		$product = ORM::factory('product', $this->input->post('product_id'));
+		$quantity = $this->input->post('quantity');
+		user::current()->cart->update_quantity($product, $quantity);
+		
+		url::redirect('cart');
+	}
+	
+	
+	/**
+	  * Remove a product from the cart
+	  * @Developer brandon
+	  * @Date Oct 12, 2010
+	  */
+	public function remove()
+	{
+		$product = ORM::factory('product', $this->input->post('product_id'));
+		$quantity = $this->input->post('quantity');
+		user::current()->cart->remove_product($product);
+		
+		url::redirect('cart');
 	}
 
 }

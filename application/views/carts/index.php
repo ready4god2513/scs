@@ -7,25 +7,29 @@
 			<tr>
 				<th>Product</th>
 				<th>Quantity</th>
-				<th>Price Each</th>
-				<th>Subtotal</th>
+				<th>Price</th>
 			</tr>
 		</thead>
+		<tfoot>
+			<tr>
+				<td colspan="2">Order Subtotal</td>
+				<td><?=format::dollar_format(user::current()->cart->subtotal())?></td>
+			</tr>
+		</tfoot>
 		<tbody>
 			<?php foreach(user::current()->cart->cart_items as $cart_item): ?>
 				<tr id="cart-item-<?=$cart_item?>">
-					<td><?=$cart_item->product->name?></td>
-					<td><?=$cart_item->quantity?></td>
-					<td><?=$cart_item->product->price?></td>
-					<td><?=$cart_item->product_subtotal()?></td>
+					<td><?=html::anchor($cart_item->product->show_path(), $cart_item->product->name)?></td>
+					<td>
+						<?=form::open('cart/update_quantity')?>
+							<?=form::hidden('product_id', $cart_item->product)?>
+							<?=form::input(array('name' => 'quantity', 'value' => $cart_item->quantity, 'class' => 'cart-item-quantity-input', 'id' => 'quantity-' . $cart_item))?>
+						<?=form::close()?>
+					</td>
+					<td><?=format::dollar_format($cart_item->product_subtotal())?></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="3">subtotal</td>
-				<td><?=user::current()->cart->subtotal()?></td>
-			</tr>
-		</tfoot>
+		
 	</table>
 <?php endif; ?>

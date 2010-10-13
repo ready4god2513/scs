@@ -64,3 +64,4 @@ $config['blog/(.*)'] = 'blogs/show/$1';
   * @Date Oct 11, 2010
   */
 $config['cart'] = 'carts/index';
+$config['cart/(add|update_quantity|remove)'] = 'carts/$1';

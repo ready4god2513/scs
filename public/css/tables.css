@@ -1,0 +1,33 @@
+table
+{
+	font-size:0.8em;
+	width:100%;
+}
+
+table a
+{
+	font-size:1.2em;
+}
+
+table td, table th
+{
+	font-weight:normal;
+	padding:10px;
+	text-align:left;
+}
+
+table tbody tr:nth-child(odd) td
+{
+	background:#f8f8f8;
+}
+
+table thead th
+{
+	background:#F8F0D5;
+}
+
+table tfoot td
+{
+	border-top:1px solid #e8e8e8;
+	padding-top:20px;
+}
