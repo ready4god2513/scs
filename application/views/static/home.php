@@ -7,7 +7,7 @@
 <div id="content" class="box">
 	<h2><span>Featured Roasts</span></h2>
 	<?php foreach(ORM::factory('product')->find_all() as $product): ?>
-		<div class="roasts-shopping-cart-list">
+		<div class="shopping-cart-list">
 			<h3 class="coffee-type">
 				<?=html::anchor($product->show_path(), $product->name)?> <span class="price"><?=$product->price?>lb</span>
 			</h3>
