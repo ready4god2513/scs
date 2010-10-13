@@ -1,5 +1,5 @@
 <h2 id="product-name"><?=$product->name?></h2>
-<div class="roasts-shopping-cart-description">
+<div class="shopping-cart-description left">
 	<h3 class="coffee-type">
 		<span class="price"><?=$product->price?>lb</span>
 	</h3>
@@ -8,7 +8,7 @@
 	</p>
 </div>
 
-<div class="product-add-to-cart-form">
+<div class="product-add-to-cart-form right">
 	<?=form::open('cart/add')?>
 		<?=form::hidden('product_id', $product)?>
 		<div class="choose-quantity">
@@ -20,3 +20,4 @@
 		</div>
 	<?=form::close()?>
 </div>
+<div class="clear"></div>

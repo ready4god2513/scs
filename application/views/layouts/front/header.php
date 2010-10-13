@@ -25,7 +25,7 @@
 					<li><?=html::anchor('page/about', 'About')?></li>
 					<li><?=html::anchor('blog', 'Blog')?></li>
 					<li><?=html::anchor('page/contact', 'Contact')?></li>
-					<li><?=html::anchor('cart', '(' . user::current()->cart->cart_contents_count() . ') Items')?></li>
+					<li><?=html::anchor('cart', '(' . user::current()->cart->cart_contents_count() . ') ' . inflector::singular('Items', user::current()->cart->cart_contents_count()))?></li>
 				</ul>
 			</div>
 			<div class="clear"></div>

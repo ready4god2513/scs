@@ -76,20 +76,25 @@ div.padd-me
 	padding:10px;	
 }
 
-div.roasts-shopping-cart-list
+div.product-add-to-cart-form
 {
-	height:120px;
+	background:#f8f8f8;
+	padding:20px;
+}
+
+div.shopping-cart-list
+{
 	margin:10px;
 	overflow:auto;
 }
 
-div.roasts-shopping-cart-list h3.coffee-type a:hover
+div.shopping-cart-list h3.coffee-type a:hover
 {
 	color:#000;
 	border-bottom:2px dotted green;
 }
 
-div.roasts-shopping-cart-list p
+div.shopping-cart-list p
 {
 	color:#4A5229;
 	font-size:0.8em;
@@ -98,7 +103,7 @@ div.roasts-shopping-cart-list p
 	text-transform:lowercase;
 }
 
-div.roasts-shopping-cart-description p
+div.shopping-cart-description p
 {
 	color:#4A5229;
 	font-size:0.8em;
@@ -107,10 +112,9 @@ div.roasts-shopping-cart-description p
 	text-transform:lowercase;
 }
 
-div.roasts-shopping-cart-list p.notes
+div.shopping-cart-list p.notes
 {
 	color:#7CA644;
-	width:250px;
 }
 
 div#logo h1
