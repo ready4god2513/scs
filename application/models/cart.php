@@ -17,5 +17,22 @@ class Cart_Model extends ORM
 	{
 		return count($this->cart_items);
 	}
+	
+	
+	/**
+	  * Get the cart subtotal
+	  * @Developer brandon
+	  * @Date Oct 12, 2010
+	  */
+	public function subtotal()
+	{
+		$subtotal = 0;
+		foreach($this->cart_items as $cart_item)
+		{
+			$subtotal += $cart_item->product_subtotal();
+		}
+		
+		return number_format($subtotal, 2);
+	}
 
 }

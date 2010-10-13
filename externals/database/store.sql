@@ -49,6 +49,7 @@ CREATE TABLE `cart_items` (
   `id` int(11) NOT NULL auto_increment,
   `cart_id` int(150) default NULL,
   `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
@@ -60,7 +61,7 @@ CREATE TABLE `cart_items` (
 
 LOCK TABLES `cart_items` WRITE;
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-INSERT INTO `cart_items` VALUES (1,1,1,'2010-10-12 23:41:44','2010-10-12 23:41:44');
+INSERT INTO `cart_items` VALUES (1,1,1,10,'2010-10-12 23:41:44','2010-10-12 23:41:44');
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -599,4 +600,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-12 23:42:34
+-- Dump completed on 2010-10-13  0:00:45

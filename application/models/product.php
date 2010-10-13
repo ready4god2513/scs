@@ -16,5 +16,21 @@ class Product_Model extends ORM
 	{
 		return url::site(Kohana::config('routes.base_crud_route') . inflector::singular($this->object_name) . '/' . format::pretty_url($this->name));
 	}
+	
+	
+	/**
+	  * Make sure that the price gets formatted correctly
+	  * @Developer brandon
+	  * @Date Oct 12, 2010
+	  */
+	public function __get($key = NULL)
+	{
+		if($key == 'price')
+		{
+			return number_format(parent::__get($key), 2);
+		}
+		
+		return parent::__get($key);
+	}
 
 }
