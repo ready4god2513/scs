@@ -441,6 +441,7 @@ class Formo_Element_Core {
 	{
 		if ($value)
 		{
+			$value = str_replace('_', ' ', $value);
 			$this->label = $value;
 			return $this;
 		}

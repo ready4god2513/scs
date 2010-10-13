@@ -10,7 +10,7 @@
 
 body
 {
-	background: url(/public/images/bg3.jpg) repeat;
+	background: url(/public/images/bg6.jpg) repeat;
 	font-family: "calluna-1","calluna-2", sans-serif;
 	color:#28160B;
 }
@@ -80,6 +80,12 @@ div.product-add-to-cart-form
 {
 	background:#f8f8f8;
 	padding:20px;
+}
+
+div.add-to-cart-button
+{
+	padding-top:20px;
+	text-align:right;
 }
 
 div.shopping-cart-list
@@ -191,8 +197,18 @@ span.price
 
 div.blog-list
 {
-	font: normal normal normal 14px/normal Georgia, Times, serif;
 	line-height: 1.5;
+}
+
+div#content div.blog-list h2
+{
+	font-size:1.5em;
+}
+
+div.blog-list p, div.blog-entry p
+{
+	font-size:0.85em;
+	margin:10px 0;	
 }
 
 div#main

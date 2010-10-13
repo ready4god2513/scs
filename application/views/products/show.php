@@ -1,7 +1,7 @@
 <h2 id="product-name"><?=$product->name?></h2>
 <div class="shopping-cart-description left">
 	<p>
-		<?=$product->description?>
+		<?=$product->description_formatted()?>
 	</p>
 </div>
 

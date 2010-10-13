@@ -17,4 +17,16 @@ class Page_Model extends ORM
 		return url::site(Kohana::config('routes.base_crud_route') . inflector::singular($this->object_name) . '/' . format::pretty_url($this->name));
 	}
 	
+	
+	/**
+	  * Get the description as markdown
+	  * @Developer brandon
+	  * @Date Oct 13, 2010
+	  */
+	public function content_formatted()
+	{
+		$markdown = new Markdown();
+		return $markdown->transform($this->content);
+	}
+	
 }

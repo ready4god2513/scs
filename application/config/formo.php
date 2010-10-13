@@ -28,7 +28,18 @@ $config['defaults']['fax']		= array('required'=>FALSE, 'rule'=>'phone');
 $config['defaults']['zip']		= array('rule'=>'numeric', 'size'=>5, 'maxlength'=>5);
 $config['defaults']['state']	= array('type'=>'select', 'values'=>$states);
 
-$config['label_filters'][] = 'ucwords';
+$config['label_filters'] = array('ucwords');
+
+// Set up all of the textareas
+foreach(array('synopsis', 'description', 'short_description', 'content') as $key)
+{
+	$config['defaults'][$key] = array(
+		'type' => 'textarea',
+		'rows' => 20
+	);
+}
+
+unset($key);
 
 $config['auto_rules']['email'] = array('email', 'Invalid email');
 $config['auto_rules']['phone'] = array('phone', 'Invalid phone');
@@ -37,9 +48,9 @@ $config['pre_filters']['username'][] = 'trim';
 $config['pre_filters']['email'][] = 'strtolower';
 
 $config['globals']['class'] = 'input';
-$config['globals']['open'] = '<div class="formFields">';
+$config['globals']['open'] = '<div class="form-fields">';
 $config['globals']['close'] = '</div>';
 
-$config['defaults']['ignores'] = array('id');
+$config['defaults']['ignores'] = array();
 
 // end formo config

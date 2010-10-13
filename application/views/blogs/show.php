@@ -1,4 +1,4 @@
-<div class="blog-list">
-	<h3><?=$blog->name?></h3>
-	<?=$blog->content?>
+<div class="blog-entry">
+	<h2><?=$blog->name?></h2>
+	<?=$blog->content_formatted()?>
 </div>

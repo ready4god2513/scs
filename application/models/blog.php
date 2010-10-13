@@ -26,5 +26,29 @@ class Blog_Model extends ORM
 	{
 		return $this->find()->synopsis;
 	}
+	
+	
+	/**
+	  * Get the description as markdown
+	  * @Developer brandon
+	  * @Date Oct 13, 2010
+	  */
+	public function content_formatted()
+	{
+		$markdown = new Markdown();
+		return $markdown->transform($this->content);
+	}
+	
+	
+	/**
+	  * Get the description as markdown
+	  * @Developer brandon
+	  * @Date Oct 13, 2010
+	  */
+	public function synopsis_formatted()
+	{
+		$markdown = new Markdown();
+		return $markdown->transform($this->synopsis);
+	}
 
 }

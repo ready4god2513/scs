@@ -32,5 +32,17 @@ class Product_Model extends ORM
 		
 		return parent::__get($key);
 	}
+	
+	
+	/**
+	  * Get the description as markdown
+	  * @Developer brandon
+	  * @Date Oct 13, 2010
+	  */
+	public function description_formatted()
+	{
+		$markdown = new Markdown();
+		return $markdown->transform($this->description);
+	}
 
 }

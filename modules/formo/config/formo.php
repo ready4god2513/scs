@@ -22,18 +22,30 @@ $states = array('_blank_'=>'',
 $config['defaults']['submit']	= array('class'=>'submit', 'value'=>'Submit', 'type'=>'submit');
 $config['defaults']['button']	= array('class'=>'button');
 $config['defaults']['sbutton']	= array('type'=>'button', 'value'=>'Submit');
-$config['defaults']['textarea']	= array('rows'=>8, 'style'=>'width: 300px');
+$config['defaults']['textarea']	= array('rows'=>8, 'style'=>'width: 500px');
 $config['defaults']['file']		= array('class'=>'file', 'style'=>'border:none');
 $config['defaults']['fax']		= array('required'=>FALSE, 'rule'=>'phone');
 $config['defaults']['zip']		= array('rule'=>'numeric', 'size'=>5, 'maxlength'=>5);
 $config['defaults']['state']	= array('type'=>'select', 'values'=>$states);
+
+
+// Set up all of the textareas
+foreach(array('synopsis', 'description', 'short_description', 'content') as $key)
+{
+	$config['defaults'][$key] = array(
+		'type' => 'textarea',
+		'rows' => 20
+	);
+}
+
+unset($key);
 
 $config['label_filters'][] = 'ucwords';
 
 $config['auto_rules']['email'] = array('email', 'Invalid email');
 $config['auto_rules']['phone'] = array('phone', 'Invalid phone');
 
-$config['pre_filters']['username'][] = 'trim';
+$config['pre_filters']['all'] = 'trim';
 $config['pre_filters']['email'][] = 'strtolower';
 
 $config['globals']['class'] = 'input';

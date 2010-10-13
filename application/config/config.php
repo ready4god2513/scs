@@ -128,5 +128,6 @@ $config['modules'] = array
 	// MODPATH.'archive',   // Archive utility
 	 MODPATH.'payment',   // Online payments
 	 MODPATH.'formo', 		// Form Generation
+	 MODPATH.'markdown', 		// Markdown Editor
 	// MODPATH.'unit_test', // Unit testing
 );
