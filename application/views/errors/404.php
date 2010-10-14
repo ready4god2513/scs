@@ -1,1 +1,1 @@
-OOPS!  404!
+<?=View::factory('themes/' . theme::get() . '/errors/404')?>

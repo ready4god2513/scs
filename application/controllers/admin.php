@@ -3,7 +3,6 @@
 abstract class Admin_Controller extends Application_Controller
 {
 	
-	public $template = 'layouts/admin';
 	protected $base_route = '/admin/';
 	protected $excluded_actions = array();
 	
@@ -16,6 +15,8 @@ abstract class Admin_Controller extends Application_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		
+		$this->template = View::factory('layouts/admin');
 		
 		// Set the route for updating and creating files
 		Kohana::config_set('routes.base_crud_route', 'admin/');
