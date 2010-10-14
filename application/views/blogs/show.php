@@ -1,0 +1,1 @@
+<?=View::factory('themes/' . theme::get() . '/blogs/show')->set('blog', $blog)?>

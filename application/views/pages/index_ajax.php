@@ -1,0 +1,1 @@
+<?=View::factory('themes/' . theme::get() . '/pages/index')->set('pages', $pages)?>

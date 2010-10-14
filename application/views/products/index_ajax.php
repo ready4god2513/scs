@@ -1,0 +1,1 @@
+<?=View::factory('themes/' . theme::get() . '/products/index_ajax')->set('products', $products)?>

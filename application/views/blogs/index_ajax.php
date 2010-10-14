@@ -1,0 +1,1 @@
+<?=View::factory('themes/' . theme::get() . '/blogs/index_ajax')->set('blogs', $blogs)?>

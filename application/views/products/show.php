@@ -1,0 +1,1 @@
+<?=View::factory('themes/' . theme::get() . '/products/show')->set('product', $product)?>

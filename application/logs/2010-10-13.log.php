@@ -20,3 +20,9 @@
 2010-10-13 21:32:28 -07:00 --- error: Uncaught Kohana_Exception: The requested view, themes//application, could not be found in file system/core/Kohana.php on line 1162
 2010-10-13 21:32:38 -07:00 --- error: Uncaught Kohana_Exception: The requested view, themes//application, could not be found in file system/core/Kohana.php on line 1162
 2010-10-13 21:32:39 -07:00 --- error: Uncaught Kohana_Exception: The requested view, themes//application, could not be found in file system/core/Kohana.php on line 1162
+2010-10-13 21:50:43 -07:00 --- error: Uncaught Kohana_Exception: The requested view, products/show, could not be found in file system/core/Kohana.php on line 1162
+2010-10-13 21:52:29 -07:00 --- error: Uncaught Kohana_Exception: The requested view, products/show, could not be found in file system/core/Kohana.php on line 1162
+2010-10-13 21:52:30 -07:00 --- error: Uncaught Kohana_Exception: The requested view, products/show, could not be found in file system/core/Kohana.php on line 1162
+2010-10-13 21:52:30 -07:00 --- error: Uncaught Kohana_Exception: The requested view, products/show, could not be found in file system/core/Kohana.php on line 1162
+2010-10-13 21:52:30 -07:00 --- error: Uncaught Kohana_Exception: The requested view, products/show, could not be found in file system/core/Kohana.php on line 1162
+2010-10-13 21:52:31 -07:00 --- error: Uncaught Kohana_Exception: The requested view, products/show, could not be found in file system/core/Kohana.php on line 1162
