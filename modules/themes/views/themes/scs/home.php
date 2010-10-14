@@ -1,7 +1,8 @@
+<?=View::factory('themes/scs/header')?>
 <div id="banner">
-	<?=html::image('public/images/rotation/spilled.jpg')?>
-	<?=html::image('public/images/rotation/pouring.jpg')?>
-	<?=html::image('public/images/rotation/stu.jpg')?>
+	<?=html::image(theme::static_file_path() . '/images/rotation/spilled.jpg')?>
+	<?=html::image(theme::static_file_path() . '/images/rotation/pouring.jpg')?>
+	<?=html::image(theme::static_file_path() . '/images/rotation/stu.jpg')?>
 </div>
 
 <div id="content" class="box">
@@ -21,3 +22,4 @@
 	<?php endforeach; ?>
 	<div class="clear"></div>
 </div>
+<?=View::factory('themes/scs/footer')?>

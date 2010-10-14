@@ -6,12 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="description" content="<?=meta::get_description()?>" />
 <meta name="keywords" content="<?=meta::get_keywords()?>" />
-<?=html::stylesheet('public/css/main')?>
+<?=html::stylesheet(theme::static_file_path() . '/css/main')?>
 <?=html::script('http://use.typekit.com/vcn2nvo.js')?>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<?=html::script('public/js/jquery')?>
-<?=html::script('public/js/cycle')?>
-<?=html::script('public/js/application')?>
+<?=html::script(theme::static_file_path() . '/js/jquery')?>
+<?=html::script(theme::static_file_path() . '/js/cycle')?>
+<?=html::script(theme::static_file_path() . '/js/application')?>
 <?=Event::run('layout.header.output')?>
 </head>
 <body id="<?=Router::$controller?>" class="<?=Router::$method?>">

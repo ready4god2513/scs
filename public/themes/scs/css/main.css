@@ -10,7 +10,7 @@
 
 body
 {
-	background: url(/public/images/bg6.jpg) repeat;
+	background: url(../images/bg6.jpg) repeat;
 	font-family: "calluna-1","calluna-2", sans-serif;
 	color:#28160B;
 }
@@ -147,7 +147,7 @@ div#banner
 {
 	width:700px;
 	height:367px;
-	background: url(/public/images/feat-shadow.png);
+	background: url(../images/feat-shadow.png);
 }
 
 div#banner img
@@ -157,7 +157,7 @@ div#banner img
 
 div#content
 {
-	/* background:#fff url(/public/images/bag.jpg) right center no-repeat; */
+	/* background:#fff url(../images/bag.jpg) right center no-repeat; */
 	margin:10px 5px;
 	padding:10px;
 }

@@ -3,7 +3,17 @@
 class Static_Controller extends Application_Controller
 {
 	
-	public $template = 'layouts/home';
+	
+	/**
+	  * Set the view to use
+	  * @developer Brandon Hansen
+	  * @date Oct 13, 2010
+	  */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->template = View::factory('themes/' . theme::get() . '/home');
+	}
 	
 	
 	/**
@@ -14,8 +24,6 @@ class Static_Controller extends Application_Controller
 	public function home()
 	{
 		meta::set_title('Stu\'s Coffee Shoppe');
-		$this->template
-			->set('content', View::factory('static/home'));
 	}
 
 }

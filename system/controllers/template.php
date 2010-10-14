@@ -29,9 +29,6 @@ abstract class Template_Controller extends Controller {
 	{
 		parent::__construct();
 
-		// Load the template
-		$this->template = new View($this->template);
-
 		if ($this->auto_render == TRUE)
 		{
 			// Render the template immediately after the controller method

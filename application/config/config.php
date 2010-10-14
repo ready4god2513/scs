@@ -129,6 +129,7 @@ $config['modules'] = array
 	 MODPATH.'formo', 		// Form Generation
 	 MODPATH.'markdown', 	// Markdown Editor
 	 MODPATH.'postmark', 	// Send Email
-	 MODPATH.'stats', 	// Send Email
+	 MODPATH.'stats', 		// Set up stats
+	 MODPATH.'themes', 		// Enable theming
 	// MODPATH.'unit_test', // Unit testing
 );
