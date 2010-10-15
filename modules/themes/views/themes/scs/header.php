@@ -27,7 +27,7 @@
 					<li><?=html::anchor('blog', 'Blog')?></li>
 					<li><?=html::anchor('page/contact', 'Contact')?></li>
 					<?=Event::run('layout.navigation.output')?>
-					<li><?=html::anchor('cart', '(' . user::current()->cart->cart_contents_count() . ') ' . inflector::singular('Items', user::current()->cart->cart_contents_count()))?></li>
+					<li><?=html::anchor('cart', '(' . customer::current()->cart->cart_contents_count() . ') ' . inflector::singular('Items', customer::current()->cart->cart_contents_count()))?></li>
 				</ul>
 			</div>
 			<div class="clear"></div>

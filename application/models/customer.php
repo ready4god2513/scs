@@ -1,6 +1,6 @@
 <?php
 
-class Customer_Model extends Auth_Customer_Model
+class Customer_Model extends Auth_User_Model
 {
 	
 	protected $has_one = array('cart');
