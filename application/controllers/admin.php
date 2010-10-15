@@ -24,7 +24,7 @@ abstract class Admin_Controller extends Application_Controller
 		// Require an admin login if we are in production.
 		if(IN_PRODUCTION)
 		{
-			user::require_admin_login();	
+			customer::require_admin_login();	
 		}
 	}
 	

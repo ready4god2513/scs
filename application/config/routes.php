@@ -65,3 +65,12 @@ $config['blog/(.*)'] = 'blogs/show/$1';
   */
 $config['cart'] = 'carts/index';
 $config['cart/(add|update_quantity|remove)'] = 'carts/$1';
+
+
+
+/**
+  * BEGIN ADMIN ROUTING
+  * @developer Brandon Hansen
+  * @date Oct 15, 2010
+  */
+$config['admin'] = 'admin/dashboard/index';

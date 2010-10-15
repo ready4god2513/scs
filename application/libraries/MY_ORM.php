@@ -142,6 +142,17 @@ class ORM extends ORM_Core
 	
 	
 	/**
+	  * Find recent
+	  * @developer Brandon Hansen
+	  * @date Oct 15, 2010
+	  */
+	public function find_recent()
+	{
+		return $this->orderby('created_at', 'DESC')->find_all();
+	}
+	
+	
+	/**
 	  * Create a new instance of the object
 	  * @Developer brandon
 	  * @Date Apr 20, 2010

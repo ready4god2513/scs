@@ -24,7 +24,7 @@ class format
 	  * @Developer brandon
 	  * @Date Apr 22, 2010
 	  */
-	public function city_state_zip(Users_Address_Model $address)
+	public function city_state_zip(Customers_Address_Model $address)
 	{
 		if(!$address->city)
 		{

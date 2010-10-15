@@ -3,7 +3,7 @@
 class Role_Model extends Auth_Role_Model
 {
 	
-	protected $has_and_belongs_to = array('users');
+	protected $has_and_belongs_to = array('customers');
 	
 	
 	/**

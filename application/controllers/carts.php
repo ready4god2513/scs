@@ -25,7 +25,7 @@ class Carts_Controller extends Application_Controller
 	{
 		$product = ORM::factory('product', $this->input->post('product_id'));
 		$quantity = $this->input->post('quantity');
-		user::current()->cart->add_product($product, $quantity);
+		customer::current()->cart->add_product($product, $quantity);
 		
 		url::redirect('cart');
 	}
@@ -40,7 +40,7 @@ class Carts_Controller extends Application_Controller
 	{
 		$product = ORM::factory('product', $this->input->post('product_id'));
 		$quantity = $this->input->post('quantity');
-		user::current()->cart->update_quantity($product, $quantity);
+		customer::current()->cart->update_quantity($product, $quantity);
 		
 		url::redirect('cart');
 	}
@@ -55,7 +55,7 @@ class Carts_Controller extends Application_Controller
 	{
 		$product = ORM::factory('product', $this->input->post('product_id'));
 		$quantity = $this->input->post('quantity');
-		user::current()->cart->remove_product($product);
+		customer::current()->cart->remove_product($product);
 		
 		url::redirect('cart');
 	}

@@ -18,13 +18,13 @@ class Sessions_Controller extends Application_Controller
 	
 	
 	/**
-	  * Don't let the user on the login page if they are already authenticated
+	  * Don't let the customer on the login page if they are already authenticated
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
 	public function new_one()
 	{
-		if(user::logged_in())
+		if(customer::logged_in())
 		{
 			url::redirect(url::site());
 		}
@@ -34,13 +34,13 @@ class Sessions_Controller extends Application_Controller
 	
 	
 	/**
-	  * Log the user in
+	  * Log the customer in
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
 	public function create()
 	{
-		if(Auth::instance()->login($this->input->post('username'), $this->input->post('password')))
+		if(Auth::instance()->login($this->input->post('customername'), $this->input->post('password')))
 		{
 			url::redirect($this->input->post('redirect_override', request::referrer()));
 		}

@@ -11,6 +11,10 @@
 </head>
 <body id="<?=Router::$controller?>" class="<?=Router::$method?>">
 	<div id="header" class="container">
+		<ul id="navigation">
+			<li><?=html::anchor('admin/orders', 'Orders')?></li>
+			<li><?=html::anchor('admin/customers', 'Customers')?></li>
+		</ul>
 	</div>
 	<div id="content" class="container">
 		<?=$content?>
