@@ -11,15 +11,36 @@
 </head>
 <body id="<?=Router::$controller?>" class="<?=Router::$method?>">
 	<div id="header" class="container">
-		<ul id="navigation">
+		<div id="logo" class="left">
+			<h1><?=html::anchor('admin', 'Stu\'s Coffee Shoppe')?></h1>
+		</div>
+		<ul id="sub-navigation" class="right">
+			<li><?=html::anchor('admin/account', 'Account')?></li>
+			<li><?=html::anchor('admin/support', 'Support')?></li>
+			<li><?=html::anchor('customers/logout', 'Logout')?></li>
+		</ul>
+		<ul id="navigation" class="clear">
 			<li><?=html::anchor('admin/orders', 'Orders')?></li>
 			<li><?=html::anchor('admin/customers', 'Customers')?></li>
+			<li><?=html::anchor('admin/products', 'Products')?></li>
+			<li><?=html::anchor('admin/blogs', 'Blogs')?></li>
+			<li><?=html::anchor('admin/pages', 'Pages')?></li>
+			<li><?=html::anchor('admin/themes', 'Themes')?></li>
+			<li><?=html::anchor('admin/preferences', 'Preferences')?></li>
 		</ul>
 	</div>
-	<div id="content" class="container">
-		<?=$content?>
+	<div class="container">
+		<div id="content">
+			<?=$content?>
+		</div>
 	</div>
 	<div id="footer" class="container">
+		<ul>
+			<li><?=html::anchor(Kohana::config('config.app_site') . 'forum', 'Forum')?></li>
+			<li><?=html::anchor(Kohana::config('config.app_site') . 'blog', 'Blog')?></li>
+			<li><?=html::anchor(Kohana::config('config.app_site') . 'page/terms-and-conditions', 'Terms &amp; Conditions')?></li>
+			<li><?=html::anchor(Kohana::config('config.app_site') . 'page/privacy-policy', 'Privacy Policy')?></li>
+		</ul>
 	</div>
 </body>
 </html>
