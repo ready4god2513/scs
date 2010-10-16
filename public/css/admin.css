@@ -54,7 +54,7 @@ body
 	padding:5px;
 }
 
-#content
+#main-content
 {
 	background:#fff;
 	-moz-box-shadow: 0 0 6px 1px #666;
@@ -64,13 +64,40 @@ body
 	margin:20px 0;
 }
 
-#content table
+#main-content div.form-fields
+{
+	background:#f8f8f8;
+	border-bottom:1px solid #ccc;
+	margin:5px 0;
+	padding:10px;
+}
+
+#main-content div.form-fields label
+{
+	display:block;
+	margin:5px 0;
+}
+
+#main-content div.form-fields input[type=text]
+{
+	font-size:1.2em;
+	padding:10px;
+	width:50%;	
+}
+
+#main-content div.form-fields textarea
+{
+	padding:10px;
+	width:90%;	
+}
+
+#main-content table
 {
 	font-size:0.9em;
 	width:100%;
 }
 
-#content table thead th
+#main-content table thead th
 {
 	background:#e8e8e8;
 	border-bottom:2px solid #ccc;
@@ -79,17 +106,17 @@ body
 	text-align:left;
 }
 
-#content table tbody tr:nth-child(1) td
+#main-content table tbody tr:nth-child(1) td
 {
 	padding-top:20px
 }
 
-#content table tbody tr:nth-child(even) td
+#main-content table tbody tr:nth-child(even) td
 {
 	background:#f8f8f8;
 }
 
-#content table tbody td
+#main-content table tbody td
 {
 	padding:15px 10px;
 }

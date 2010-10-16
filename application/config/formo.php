@@ -22,7 +22,7 @@ $states = array('_blank_'=>'',
 $config['defaults']['submit']	= array('class'=>'submit', 'value'=>'Submit', 'type'=>'submit');
 $config['defaults']['button']	= array('class'=>'button');
 $config['defaults']['sbutton']	= array('type'=>'button', 'value'=>'Submit');
-$config['defaults']['textarea']	= array('rows'=>8, 'columns'=>150, 'style'=>'width: 300px');
+$config['defaults']['textarea']	= array('rows'=>8, 'columns'=>150);
 $config['defaults']['file']		= array('class'=>'file', 'style'=>'border:none');
 $config['defaults']['fax']		= array('required'=>FALSE, 'rule'=>'phone');
 $config['defaults']['zip']		= array('rule'=>'numeric', 'size'=>5, 'maxlength'=>5);

@@ -30,7 +30,7 @@
 		</ul>
 	</div>
 	<div class="container">
-		<div id="content">
+		<div id="main-content">
 			<?=$content?>
 		</div>
 	</div>
