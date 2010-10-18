@@ -18,6 +18,8 @@ abstract class Admin_Controller extends Crud_Controller
 		
 		$this->template = View::factory('layouts/admin');
 		
+		meta::set_title(store::name() . ' | Admin | ' . ucwords(Router::$controller));
+		
 		// Set the route for updating and creating files
 		Kohana::config_set('routes.base_crud_route', 'admin/');
 		

@@ -667,6 +667,7 @@ CREATE TABLE `stores` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(150) default NULL,
   `domain` varchar(150) NOT NULL,
+  `active_theme_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
@@ -678,7 +679,7 @@ CREATE TABLE `stores` (
 
 LOCK TABLES `stores` WRITE;
 /*!40000 ALTER TABLE `stores` DISABLE KEYS */;
-INSERT INTO `stores` VALUES (1,'Stu\'s Coffee Shoppe','scsroasting','2010-10-18 17:07:30','2010-10-18 17:07:30');
+INSERT INTO `stores` VALUES (1,'Stu\'s Coffee Shoppe','scsroasting',1,'2010-10-18 17:07:30','2010-10-18 17:07:30');
 /*!40000 ALTER TABLE `stores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -716,7 +717,6 @@ CREATE TABLE `themes` (
   `id` int(11) NOT NULL auto_increment,
   `store_id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
-  `status` enum('disabled','active') NOT NULL default 'disabled',
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`),
@@ -730,7 +730,7 @@ CREATE TABLE `themes` (
 
 LOCK TABLES `themes` WRITE;
 /*!40000 ALTER TABLE `themes` DISABLE KEYS */;
-INSERT INTO `themes` VALUES (1,1,'scs','active','2010-10-14 04:31:13','2010-10-18 17:12:21');
+INSERT INTO `themes` VALUES (1,1,'scs','2010-10-14 04:31:13','2010-10-18 17:12:21');
 /*!40000 ALTER TABLE `themes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -743,4 +743,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-18 18:34:45
+-- Dump completed on 2010-10-18 19:49:47

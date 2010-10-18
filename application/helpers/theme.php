@@ -11,8 +11,7 @@ class theme_Core
 	  */
 	public static function get()
 	{
-		$theme = ORM::factory('theme')->where('status', 'active')->find();
-		return $theme->name;
+		return store::get()->theme->name;
 	}
 	
 	

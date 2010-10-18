@@ -18,8 +18,6 @@ class Dashboard_Controller extends Admin_Controller
 	  */
 	public function index()
 	{
-		meta::set_title('Store Dashboard');
-		
 		$this->template
 			->set('content', View::factory('admin/dashboard/index')
 				->set('orders', ORM::factory('order')->find_recent())

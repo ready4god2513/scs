@@ -17,5 +17,8 @@ class Store_Model extends ORM
 		'themes'
 	);
 	
+	// Set the active theme for the store
+	protected $has_one = array('active_theme_id' => 'theme');
+	
 	
 }
