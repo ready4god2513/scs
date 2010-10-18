@@ -261,6 +261,32 @@ INSERT INTO `customers_roles` VALUES (1,1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `emails`
+--
+
+DROP TABLE IF EXISTS `emails`;
+CREATE TABLE `emails` (
+  `id` int(11) NOT NULL auto_increment,
+  `store_id` int(11) NOT NULL,
+  `order_confirmation` text,
+  `order_notification` text NOT NULL,
+  `shipping_confirmation` text NOT NULL,
+  `shipping_update` text NOT NULL,
+  `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `emails`
+--
+
+LOCK TABLES `emails` WRITE;
+/*!40000 ALTER TABLE `emails` DISABLE KEYS */;
+/*!40000 ALTER TABLE `emails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `missing_pages`
 --
 
@@ -687,4 +713,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-18 17:14:13
+-- Dump completed on 2010-10-18 17:50:59

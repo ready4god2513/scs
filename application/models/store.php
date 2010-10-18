@@ -9,6 +9,7 @@ class Store_Model extends ORM
 		'categories', 
 		'coupons',
 		'customers',
+		'emails',
 		'orders',
 		'pages',
 		'products',
