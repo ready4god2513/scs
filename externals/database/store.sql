@@ -28,7 +28,9 @@ CREATE TABLE `blogs` (
   `synopsis` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `blogs_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -53,7 +55,9 @@ CREATE TABLE `cart_items` (
   `quantity` int(11) NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `cart_id` (`cart_id`),
+  CONSTRAINT `cart_items_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -76,7 +80,10 @@ CREATE TABLE `carts` (
   `customer_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  KEY `customer_ind` (`customer_id`),
+  CONSTRAINT `carts_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -100,7 +107,9 @@ CREATE TABLE `categories` (
   `sort_order` int(11) NOT NULL default '0',
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `categories_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -145,7 +154,9 @@ CREATE TABLE `coupons` (
   `name` varchar(150) default NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `coupons_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -223,7 +234,9 @@ CREATE TABLE `customers` (
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `uniq_customername` (`customername`),
-  UNIQUE KEY `uniq_email` (`email`)
+  UNIQUE KEY `uniq_email` (`email`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `customers_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -274,7 +287,9 @@ CREATE TABLE `emails` (
   `shipping_update` text NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `emails_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -297,7 +312,9 @@ CREATE TABLE `missing_pages` (
   `name` varchar(150) default NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `missing_pages_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -428,7 +445,9 @@ CREATE TABLE `orders` (
   `notes` text NOT NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `orders_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -452,7 +471,9 @@ CREATE TABLE `page_categories` (
   `name` varchar(150) default NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `page_categories_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -480,7 +501,9 @@ CREATE TABLE `pages` (
   `sort_order` int(11) NOT NULL default '0',
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `pages_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -576,7 +599,9 @@ CREATE TABLE `products` (
   `sort_order` int(11) NOT NULL default '0',
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `products_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -668,7 +693,9 @@ CREATE TABLE `tags` (
   `name` varchar(150) default NULL,
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `tags_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -692,7 +719,9 @@ CREATE TABLE `themes` (
   `status` enum('disabled','active') NOT NULL default 'disabled',
   `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `store` (`store_id`),
+  CONSTRAINT `themes_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -714,4 +743,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-18 18:18:33
+-- Dump completed on 2010-10-18 18:34:45
