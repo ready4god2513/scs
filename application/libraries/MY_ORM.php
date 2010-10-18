@@ -93,7 +93,7 @@ class ORM extends ORM_Core
 	  */
 	public function show_path()
 	{
-		return url::site(Kohana::config('routes.base_crud_route') . inflector::singular($this->object_name) . '/show/' . $this);
+		return url::site(Kohana::config('routes.base_crud_route') . inflector::plural($this->object_name) . '/show/' . $this);
 	}
 	
 	

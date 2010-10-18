@@ -33,7 +33,7 @@
 		
 	</table>
 	<div class="right padd-me">
-		<?=form::open('cart/checkout', array('method' => 'GET'))?>
+		<?=form::open('cart/billing', array('method' => 'GET'))?>
 			<?=form::submit('submit', 'Checkout')?>
 		<?=form::close()?>
 	</div>

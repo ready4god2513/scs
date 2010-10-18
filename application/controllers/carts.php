@@ -59,5 +59,39 @@ class Carts_Controller extends Application_Controller
 		
 		url::redirect('cart');
 	}
+	
+	
+	/**
+	  * Add billing information
+	  * @developer Brandon Hansen
+	  * @date Oct 17, 2010
+	  */
+	public function billing()
+	{
+		$this->template
+			->set('content', View::factory('carts/billing'));
+	}
+	
+	
+	/**
+	  * Process the order
+	  * @developer Brandon Hansen
+	  * @date Oct 17, 2010
+	  */
+	public function process()
+	{
+		$order = ORM::factory('order');
+		$cart = customer::current()->cart;
+		
+		if($order->process($cart, $this->input->post('billing'), $this->input->post('shipping')))
+		{
+			$cart->clear_cart();
+			url::redirect('orders/receipt/' . $order);
+		}
+		else
+		{
+			url::redirect('cart/billing');
+		}
+	}
 
 }

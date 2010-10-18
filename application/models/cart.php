@@ -8,6 +8,22 @@ class Cart_Model extends ORM
 	protected $load_with = array('cart_items');
 	
 	
+	/**
+	  * Clear out the cart
+	  * @developer Brandon Hansen
+	  * @date Oct 17, 2010
+	  */
+	public function clear_cart()
+	{
+		foreach($this->cart_items as $item)
+		{
+			$item->delete();
+		}
+		
+		$this->delete();
+	}
+	
+	
 	/*
 	 * Find out how many items are in the customer's cart
 	 * @Developer Brandon Hansen

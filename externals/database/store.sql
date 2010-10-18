@@ -11,7 +11,7 @@
  Target Server Version : 50144
  File Encoding         : utf-8
 
- Date: 10/15/2010 15:51:06 PM
+ Date: 10/17/2010 22:33:32 PM
 */
 
 SET NAMES utf8;
@@ -50,14 +50,7 @@ CREATE TABLE `cart_items` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
-
--- ----------------------------
---  Records of `cart_items`
--- ----------------------------
-BEGIN;
-INSERT INTO `cart_items` VALUES ('1', '1', '1', '10', '2010-10-12 16:41:44', '2010-10-12 16:41:44'), ('11', '0', '4', '2', '2010-10-12 22:26:14', '0000-00-00 00:00:00'), ('12', '0', '1', '1', '2010-10-12 22:26:19', '0000-00-00 00:00:00'), ('13', '0', '2', '1', '2010-10-12 22:26:23', '0000-00-00 00:00:00');
-COMMIT;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `carts`
@@ -69,14 +62,7 @@ CREATE TABLE `carts` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- ----------------------------
---  Records of `carts`
--- ----------------------------
-BEGIN;
-INSERT INTO `carts` VALUES ('1', '1', '2010-10-12 16:40:29', '0000-00-00 00:00:00');
-COMMIT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `categories`
@@ -224,12 +210,41 @@ CREATE TABLE `order_comments` (
 DROP TABLE IF EXISTS `order_details`;
 CREATE TABLE `order_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `price` float NOT NULL,
+  `quantity` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `order_details`
+-- ----------------------------
+BEGIN;
+INSERT INTO `order_details` VALUES ('1', '2', '3', '37.47', '3', '2010-10-17 21:42:48', '2010-10-17 21:42:48'), ('2', '2', '4', '11.99', '1', '2010-10-17 21:42:48', '2010-10-17 21:42:48'), ('3', '4', '1', '179.82', '18', '2010-10-17 22:03:06', '2010-10-17 22:03:06'), ('4', '4', '2', '16.98', '2', '2010-10-17 22:03:06', '2010-10-17 22:03:06');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `order_histories`
+-- ----------------------------
+DROP TABLE IF EXISTS `order_histories`;
+CREATE TABLE `order_histories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `status` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `order_histories`
+-- ----------------------------
+BEGIN;
+INSERT INTO `order_histories` VALUES ('1', '4', 'Started the order', '2010-10-17 22:03:06', '2010-10-17 22:03:06'), ('2', '4', 'Payment Confirmed', '2010-10-17 22:03:06', '2010-10-17 22:03:06');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `orders`
@@ -237,12 +252,19 @@ CREATE TABLE `order_details` (
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` enum('pending','complete','refunded') NOT NULL,
+  `status` enum('new','declined','paid','shipped','complete','refunded') NOT NULL,
   `notes` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `orders`
+-- ----------------------------
+BEGIN;
+INSERT INTO `orders` VALUES ('1', 'new', '', '2010-10-17 21:42:16', '0000-00-00 00:00:00'), ('2', 'paid', '', '2010-10-17 21:42:48', '0000-00-00 00:00:00'), ('4', 'paid', '', '2010-10-17 22:03:06', '0000-00-00 00:00:00');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `page_categories`
@@ -283,7 +305,7 @@ CREATE TABLE `pages` (
 --  Records of `pages`
 -- ----------------------------
 BEGIN;
-INSERT INTO `pages` VALUES ('1', '1', 'about', 'This is a bunch of stuff', '', '0', '2010-10-11 14:43:42', '2010-10-11 14:44:54'), ('2', '1', 'contact', 'This is going to be a contact form', '', '0', '2010-10-11 14:49:39', '2010-10-11 14:49:39');
+INSERT INTO `pages` VALUES ('1', '1', 'About', 'This is a bunch of stuff', '', '0', '2010-10-11 14:43:42', '2010-10-15 16:07:17'), ('2', '1', 'Contact', 'This is going to be a contact form', '', '0', '2010-10-11 14:49:39', '2010-10-15 16:07:21');
 COMMIT;
 
 -- ----------------------------
@@ -344,7 +366,7 @@ CREATE TABLE `products` (
 --  Records of `products`
 -- ----------------------------
 BEGIN;
-INSERT INTO `products` VALUES ('1', 'moka java blend', 'A single sip of this stuff and you will be hooked.', 'rich and bold with a clean finish', 'our boldest offering. not for sissies', '9.99', '0', '2010-10-11 15:23:17', '2010-10-11 15:23:17'), ('2', 'swiss water decaf brazilian', 'Nunc tortor ligula, malesuada in blandit nec, rutrum in nulla. Nullam pharetra mattis justo, vel consequat sem ultrices vel. Integer tempus mauris et eros blandit ac fermentum mauris laoreet. Quisque pretium dolor quis erat fringilla eget scelerisque nulla aliquam. Pellentesque vel pellentesque arcu. Ut scelerisque interdum elit ut molestie. Nullam lobortis lectus sed neque mollis condimentum. Etiam sollicitudin justo at lectus porttitor sollicitudin. Praesent vel nisl non diam tristique rutrum. Donec viverra dictum dolor vel convallis. Duis ullamcorper dui a tellus auctor volutpat. Morbi felis dolor, accumsan vel laoreet eu, hendrerit at lorem.  Ut sollicitudin elementum nisl, in fermentum mi tincidunt eget. Fusce molestie nisl in ligula gravida posuere. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vehicula suscipit leo at fringilla. Cras eget ligula enim, egestas pellentesque enim. Donec ut nibh id massa pellentesque porttitor accumsan non ante. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed semper sem non erat sodales hendrerit. Vivamus bibendum dapibus elit at volutpat. Cras mollis euismod malesuada. Cras a arcu eu dolor tincidunt congue ut et odio.', 'for the coffee lover with plenty of energy to go around.  a great decaf blend.', 'decaf, but not at all weak', '8.49', '1', '2010-10-11 16:52:37', '2010-10-11 16:52:37'), ('3', 'Oro Negro', 'This Christmas we will be offering the already mentioned Oro Negro which is a Spanish-style roast (coffee roasted with sugar). Oro Negro will be the pinnacle of our Christmas offerings but also the more limited.', 'A spanish-style roast that is sure to pique your interest', 'Coffee roasted in sugar.  Need I say more?', '12.49', '-1', '2010-10-12 22:22:05', '2010-10-12 22:22:35'), ('4', 'Turkish Delight', 'For the rest of you non-elitists we have come up with something special.  Close your eyes and think of a lion, a witch and a wardrobe because our next offering is called Turkish Delight. This blend will come pre-ground (for drip brewers) and spiced with cardamom.  The inspiration of this spiced blend came from enjoying a Turkish cup of coffee with some missionaries from Jordan.  Get ready for a memorable cup of coffee which will enchant your senses and also serve as a great gift!  This offering will come packaged in a red foil valve-bag (for freshness) and a special holiday label.', 'Get ready for a memorable cup of coffee which will enchant your senses and also serve as a great gift!  This offering will come packaged in a red foil valve-bag (for freshness) and a special holiday label.', 'A pre-ground blend spiced with cardamom', '11.99', '-1', '2010-10-12 22:24:27', '2010-10-12 22:24:32');
+INSERT INTO `products` VALUES ('1', 'Moka Java Blend', 'A single sip of this stuff and you will be hooked.', 'rich and bold with a clean finish', 'our boldest offering. not for sissies', '9.99', '0', '2010-10-11 15:23:17', '2010-10-15 16:02:46'), ('2', 'Swiss Water Decaf Brazilian', 'Nunc tortor ligula, malesuada in blandit nec, rutrum in nulla. Nullam pharetra mattis justo, vel consequat sem ultrices vel. Integer tempus mauris et eros blandit ac fermentum mauris laoreet. Quisque pretium dolor quis erat fringilla eget scelerisque nulla aliquam. Pellentesque vel pellentesque arcu. Ut scelerisque interdum elit ut molestie. Nullam lobortis lectus sed neque mollis condimentum. Etiam sollicitudin justo at lectus porttitor sollicitudin. Praesent vel nisl non diam tristique rutrum. Donec viverra dictum dolor vel convallis. Duis ullamcorper dui a tellus auctor volutpat. Morbi felis dolor, accumsan vel laoreet eu, hendrerit at lorem.  Ut sollicitudin elementum nisl, in fermentum mi tincidunt eget. Fusce molestie nisl in ligula gravida posuere. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vehicula suscipit leo at fringilla. Cras eget ligula enim, egestas pellentesque enim. Donec ut nibh id massa pellentesque porttitor accumsan non ante. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed semper sem non erat sodales hendrerit. Vivamus bibendum dapibus elit at volutpat. Cras mollis euismod malesuada. Cras a arcu eu dolor tincidunt congue ut et odio.', 'for the coffee lover with plenty of energy to go around.  a great decaf blend.', 'decaf, but not at all weak', '8.49', '1', '2010-10-11 16:52:37', '2010-10-15 16:03:06'), ('3', 'Oro Negro', 'This Christmas we will be offering the already mentioned Oro Negro which is a Spanish-style roast (coffee roasted with sugar). Oro Negro will be the pinnacle of our Christmas offerings but also the more limited.', 'A spanish-style roast that is sure to pique your interest', 'Coffee roasted in sugar.  Need I say more?', '12.49', '-1', '2010-10-12 22:22:05', '2010-10-12 22:22:35'), ('4', 'Turkish Delight', 'For the rest of you non-elitists we have come up with something special.  Close your eyes and think of a lion, a witch and a wardrobe because our next offering is called Turkish Delight. This blend will come pre-ground (for drip brewers) and spiced with cardamom.  The inspiration of this spiced blend came from enjoying a Turkish cup of coffee with some missionaries from Jordan.  Get ready for a memorable cup of coffee which will enchant your senses and also serve as a great gift!  This offering will come packaged in a red foil valve-bag (for freshness) and a special holiday label.', 'Get ready for a memorable cup of coffee which will enchant your senses and also serve as a great gift!  This offering will come packaged in a red foil valve-bag (for freshness) and a special holiday label.', 'A pre-ground blend spiced with cardamom', '11.99', '-1', '2010-10-12 22:24:27', '2010-10-12 22:24:32');
 COMMIT;
 
 -- ----------------------------
