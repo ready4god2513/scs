@@ -3,7 +3,7 @@
 class Page_Model extends ORM
 {
 	
-	protected $belongs_to = array('page_category');
+	protected $belongs_to = array('page_category', 'store');
 	protected $sorting = array('sort_order' => 'ASC');
 	
 	

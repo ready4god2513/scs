@@ -4,7 +4,7 @@ class Order_Model extends ORM
 {
 	
 	protected $has_many = array('order_billing_shippings', 'order_comments', 'order_details', 'order_histories');
-	protected $belongs_to = array('customer');
+	protected $belongs_to = array('customer', 'store');
 	protected $sorting = array('created_at' => 'DESC');
 	
 	

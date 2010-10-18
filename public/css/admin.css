@@ -2,7 +2,7 @@
 
 body
 {
-	background:#E4C651;	
+	background:#AFCFD2;	
 	font-family:Helevetica;
 }
 
@@ -10,9 +10,6 @@ body
 #header
 {
 	background:#212121;
-	-moz-box-shadow: 0 0 6px 1px #666;
-	-webkit-box-shadow: 0 0 6px 1px #666;
-	box-shadow: 0 0 6px 1px #666;
 }
 
 #header a
@@ -57,11 +54,8 @@ body
 #main-content
 {
 	background:#fff;
-	-moz-box-shadow: 0 0 6px 1px #666;
-	-webkit-box-shadow: 0 0 6px 1px #666;
-	box-shadow: 0 0 6px 1px #666;
 	padding:20px;
-	margin:20px 0;
+	margin:0 0 20px 0;
 }
 
 #main-content div.form-fields
@@ -140,6 +134,9 @@ body
 
 .container
 {
+	-moz-box-shadow: 0 0 6px 1px #666;
+	-webkit-box-shadow: 0 0 6px 1px #666;
+	box-shadow: 0 0 6px 1px #666;
 	margin:0 auto;
 	width:1100px;
 }

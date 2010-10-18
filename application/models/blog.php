@@ -3,6 +3,7 @@
 class Blog_Model extends ORM
 {
 	
+	protected $belongs_to = array('store');
 	protected $sorting = array('created_at' => 'DESC');
 	
 	
