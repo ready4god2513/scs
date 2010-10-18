@@ -24,7 +24,7 @@ class ORM extends ORM_Core
 	 * @Developer brandon
 	 * @Date April 22, 2010
 	 */
-	protected $validates_exclusion_of = array('id', 'store_id');
+	protected $validates_exclusion_of = array('id');
 	
 	
 	/**
@@ -52,7 +52,7 @@ class ORM extends ORM_Core
 	public function __construct($id = NULL)
 	{
 		parent::__construct($id);
-		$this->formo_ignores = array_merge($this->formo_ignores, array('id', 'store_id', 'created_at', 'updated_at', 'sort_order'));
+		$this->formo_ignores = array_merge($this->formo_ignores, array('id', 'created_at', 'updated_at', 'sort_order'));
 	}
 	
 	
