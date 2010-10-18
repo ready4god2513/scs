@@ -13,7 +13,7 @@
 	<div class="container">
 		<div id="header">
 			<div id="logo" class="left">
-				<h1><?=html::anchor('admin', 'Stu\'s Coffee Shoppe')?></h1>
+				<h1><?=html::anchor('admin', store::name())?></h1>
 			</div>
 			<ul id="sub-navigation" class="right">
 				<li><?=html::anchor('admin/account', 'Account')?></li>

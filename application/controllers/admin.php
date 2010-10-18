@@ -1,6 +1,6 @@
 <?php
 
-abstract class Admin_Controller extends Application_Controller
+abstract class Admin_Controller extends Crud_Controller
 {
 	
 	protected $base_route = '/admin/';

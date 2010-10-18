@@ -137,7 +137,28 @@ class ORM extends ORM_Core
 	  */
 	public function find_all($page = NULL)
 	{
+		if(array_key_exists('store_id', $this->table_columns))
+		{
+			$this->where('store_id', Kohana::config('store.id'));
+		}
+		
 		return parent::find_all(Kohana::config('pagination.default.items_per_page'), math::page($page));
+	}
+	
+	
+	/**
+	  * Find an object
+	  * @Developer brandon
+	  * @Date Oct 18, 2010
+	  */
+	public function find($id = NULL)
+	{
+		if(array_key_exists('store_id', $this->table_columns))
+		{
+			$this->where('store_id', Kohana::config('store.id'));
+		}
+		
+		return parent::find($id);
 	}
 	
 	
