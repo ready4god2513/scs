@@ -10,7 +10,7 @@ class Order_billing_shipping_Model extends ORM
 		'type',
 		'first_name',
 		'last_name',
-		'street_address',
+		'address',
 		'city',
 		'postal_code',
 		'country'

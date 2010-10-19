@@ -83,7 +83,7 @@ class Carts_Controller extends Application_Controller
 	{
 		$order = ORM::factory('order');
 		$cart = customer::current()->cart;
-		
+
 		if($order->process($cart, $this->input->post('billing'), $this->input->post('shipping')))
 		{
 			$cart->clear_cart();

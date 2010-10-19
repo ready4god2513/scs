@@ -72,7 +72,6 @@ CREATE TABLE `cart_items` (
 
 LOCK TABLES `cart_items` WRITE;
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-INSERT INTO `cart_items` VALUES (2,1,3,1,'2010-10-19 06:34:09','0000-00-00 00:00:00'),(3,1,4,1,'2010-10-19 06:34:16','0000-00-00 00:00:00'),(4,1,1,20,'2010-10-19 06:34:29','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +101,6 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (1,1,0,'2010-10-19 06:33:34','2010-10-19 06:33:34');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -380,7 +378,7 @@ CREATE TABLE `order_billing_shipping` (
   `type` enum('billing','shipping') NOT NULL,
   `first_name` int(75) NOT NULL,
   `last_name` varchar(75) NOT NULL,
-  `street_address` varchar(150) NOT NULL,
+  `address` varchar(150) NOT NULL,
   `city` varchar(100) NOT NULL,
   `state` varchar(100) NOT NULL,
   `postal_code` int(12) NOT NULL,
@@ -445,7 +443,7 @@ CREATE TABLE `order_details` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -454,7 +452,7 @@ CREATE TABLE `order_details` (
 
 LOCK TABLES `order_details` WRITE;
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
-INSERT INTO `order_details` VALUES (1,2,3,37.47,3,'2010-10-18 04:42:48','2010-10-18 04:42:48'),(2,2,4,11.99,1,'2010-10-18 04:42:48','2010-10-18 04:42:48'),(3,4,1,179.82,18,'2010-10-18 05:03:06','2010-10-18 05:03:06'),(4,4,2,16.98,2,'2010-10-18 05:03:06','2010-10-18 05:03:06');
+INSERT INTO `order_details` VALUES (1,2,3,37.47,3,'2010-10-18 04:42:48','2010-10-18 04:42:48'),(2,2,4,11.99,1,'2010-10-18 04:42:48','2010-10-18 04:42:48'),(3,4,1,179.82,18,'2010-10-18 05:03:06','2010-10-18 05:03:06'),(4,4,2,16.98,2,'2010-10-18 05:03:06','2010-10-18 05:03:06'),(5,5,3,12.49,1,'2010-10-19 06:42:30','2010-10-19 06:42:30'),(6,5,4,11.99,1,'2010-10-19 06:42:30','2010-10-19 06:42:30'),(7,5,1,199.8,20,'2010-10-19 06:42:30','2010-10-19 06:42:30');
 /*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -472,7 +470,7 @@ CREATE TABLE `order_histories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -481,7 +479,7 @@ CREATE TABLE `order_histories` (
 
 LOCK TABLES `order_histories` WRITE;
 /*!40000 ALTER TABLE `order_histories` DISABLE KEYS */;
-INSERT INTO `order_histories` VALUES (1,4,'Started the order','2010-10-18 05:03:06','2010-10-18 05:03:06'),(2,4,'Payment Confirmed','2010-10-18 05:03:06','2010-10-18 05:03:06');
+INSERT INTO `order_histories` VALUES (1,4,'Started the order','2010-10-18 05:03:06','2010-10-18 05:03:06'),(2,4,'Payment Confirmed','2010-10-18 05:03:06','2010-10-18 05:03:06'),(3,5,'Started the order','2010-10-19 06:42:30','2010-10-19 06:42:30'),(4,5,'Payment Confirmed','2010-10-19 06:42:30','2010-10-19 06:42:30');
 /*!40000 ALTER TABLE `order_histories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -502,7 +500,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `store` (`store_id`),
   CONSTRAINT `orders_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -511,7 +509,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,'new','','2010-10-18 04:42:16','0000-00-00 00:00:00'),(2,1,'paid','','2010-10-18 04:42:48','0000-00-00 00:00:00'),(4,1,'paid','','2010-10-18 05:03:06','0000-00-00 00:00:00');
+INSERT INTO `orders` VALUES (1,1,'new','','2010-10-18 04:42:16','0000-00-00 00:00:00'),(2,1,'paid','','2010-10-18 04:42:48','0000-00-00 00:00:00'),(4,1,'paid','','2010-10-18 05:03:06','0000-00-00 00:00:00'),(5,1,'paid','','2010-10-19 06:42:30','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -858,4 +856,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-18 23:34:59
+-- Dump completed on 2010-10-18 23:42:59
