@@ -74,7 +74,7 @@ class Formo_habtm extends Formo_orm {
 			$values[$option->id] = $option->{$this->habtm_name[$keyname]};
 			$this->elements[$keyname][] = $option->{$this->habtm_name[$keyname]};
 		}		
-		
+		$this->habtm_table[$keyname] = inflector::plural($this->habtm_table[$keyname]);
 		$this->form->add_group($this->habtm_table[$keyname].'[]', $values)->set($this->habtm_table[$keyname], 'required', FALSE);
 		
 		$this->fill_initial_values($keyname);

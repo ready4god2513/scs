@@ -8,6 +8,7 @@ class Customer_Model extends Auth_User_Model
 	protected $has_and_belongs_to = array('roles');
 	protected $belongs_to = array('store');
 	protected $validates_exclusion_of = array('id');
+	public $formo_ignores = array('password', 'logins', 'last_login');
 	
 	
 	/**

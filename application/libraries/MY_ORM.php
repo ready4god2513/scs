@@ -174,6 +174,22 @@ class ORM extends ORM_Core
 	
 	
 	/**
+	  * Save the store id
+	  * @developer Brandon Hansen
+	  * @date Oct 18, 2010
+	  */
+	public function save()
+	{
+		if(array_key_exists('store_id', $this->table_columns))
+		{
+			$this->store_id = Kohana::config('store.id');
+		}
+		
+		parent::save();
+	}
+	
+	
+	/**
 	  * Create a new instance of the object
 	  * @Developer brandon
 	  * @Date Apr 20, 2010
@@ -299,6 +315,10 @@ class ORM extends ORM_Core
 						$this->$relationship = array();
 					}
 				}
+			}
+			else
+			{
+				$this->$relationship = array();
 			}
 		}
 		

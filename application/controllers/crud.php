@@ -6,6 +6,7 @@ abstract class Crud_Controller extends Template_Controller
 	protected $model_name = NULL;
 	protected $base_route = NULL;
 	protected $excluded_actions = array();
+	protected $show_habtm = true;
 	private $directory;
 	private $plural;
 	
@@ -83,9 +84,22 @@ abstract class Crud_Controller extends Template_Controller
 		
 		$form = Formo::factory()
 			->plugin('orm')
+			->plugin('habtm')
 			->orm($this->model_name)
-			->set('action', $object->create_path())
-			->add('submit');
+			->set('action', $object->create_path());
+			
+		// Add the related objects
+		if($this->show_habtm)
+		{
+			foreach($object->has_and_belongs_to_many as $relationship)
+			{
+				$form->habtm($this->model_name, inflector::singular($relationship));
+			}
+		}
+		
+		
+		// Add the submit button
+		$form->add('submit');
 		
 		$this->template
 			->set('content', View::factory($this->directory . '/new')
@@ -156,9 +170,21 @@ abstract class Crud_Controller extends Template_Controller
 		$item = ORM::factory($this->model_name, (string) $id);
 		$form = Formo::factory()
 			->plugin('orm')
+			->plugin('habtm')
 			->orm($this->model_name, $id)
-			->set('action', $item->update_path())
-			->add('submit');
+			->set('action', $item->update_path());
+			
+		// Add the related objects
+		if($this->show_habtm)
+		{
+			foreach($item->has_and_belongs_to_many as $relationship)
+			{
+				$form->habtm($this->model_name, inflector::singular($relationship));
+			}
+		}
+		
+		// Add the submit button
+		$form->add('submit');
 		
 		if(!$item->loaded)
 		{

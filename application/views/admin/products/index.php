@@ -1,3 +1,5 @@
+<?=html::anchor('admin/products/new', 'New Product')?> | 
+<?=html::anchor('admin/categories', 'Categories')?>
 <table class="sortable_table">
 	<thead>
 		<tr>
