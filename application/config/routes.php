@@ -67,6 +67,14 @@ $config['cart'] = 'carts/index';
 $config['cart/(.*)'] = 'carts/$1';
 
 
+/**
+  * Show the order
+  * @developer Brandon Hansen
+  * @date Oct 18, 2010
+  */
+$config['order/receipt/(.*)'] = 'orders/show/$1';
+
+
 
 /**
   * BEGIN ADMIN ROUTING

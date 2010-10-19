@@ -65,7 +65,7 @@ class Order_Model extends ORM
 		$this->save();
 		
 		// Create a history entry
-		orders::history_entry($this, 'Started the order');
+		orders::history_entry($this, 'Placed Order');
 		
 		// Create billing and shipping
 		$this->save_billing_and_shipping($billing, $shipping);
