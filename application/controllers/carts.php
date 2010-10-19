@@ -13,6 +13,7 @@ class Carts_Controller extends Application_Controller
 	{
 		parent::__construct();
 		meta::set_title('Shopping Cart');
+		customer::current()->load_cart();
 	}
 	
 	

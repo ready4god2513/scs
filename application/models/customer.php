@@ -56,5 +56,19 @@ class Customer_Model extends Auth_User_Model
 		
 		return $this->add(ORM::factory('role', 'login')) && $this->save();
 	}
+	
+	
+	/**
+	  * Load an instance of the cart
+	  * @developer Brandon Hansen
+	  * @date Oct 18, 2010
+	  */
+	public function load_cart()
+	{
+		if(!$this->cart->loaded)
+		{
+			ORM::factory('cart')->create(array('user_id' => $this));
+		}
+	}
 
 }
