@@ -5,14 +5,17 @@ class route_Core
 	
 
 	/**
-	  * Find the route for a given object
-	  * @developer Brandon Hansen
-	  * @date May 16, 2010
+	  * Add routes for categories
+	  * @Developer brandon
+	  * @Date Oct 19, 2010
 	  */
-	public static function find($object_name, $method = 'index')
+	public static function route_categories()
 	{
-		return url::site($object_name . '/' . $method);
+		foreach(ORM::factory('category')->find_all() as $category)
+		{
+			Kohana::config_set('routes.' . $category->show_path(false), 'categories/show/' . $category);
+		}
 	}
-		
+	
 	
 }

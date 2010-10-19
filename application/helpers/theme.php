@@ -22,7 +22,7 @@ class theme_Core
 	  */
 	public static function static_file_path()
 	{
-		return url::site('public/themes/' . self::get());
+		return '/public/themes/' . self::get();
 	}
 	
 	
