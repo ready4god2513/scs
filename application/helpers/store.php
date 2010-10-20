@@ -34,7 +34,15 @@ class store_Core
 	{
 		list($subdomain, $rest) = explode('.', $_SERVER['SERVER_NAME'], 2);
 		$store = ORM::factory('store')->where('domain', $subdomain)->find();
-		Kohana::config_set('store.id', (string) $store);
+		
+		if($store->loaded)
+		{
+			Kohana::config_set('store.id', (string) $store);
+		}
+		else
+		{
+			Missing_Page::missing_shop();
+		}
 	}
 	
 }
