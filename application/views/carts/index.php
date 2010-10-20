@@ -1,5 +1,5 @@
 <h2>Shopping Cart</h2>
-<?php if(!customer::current()->cart->cart_contents_count()): ?>
+<?php if(!cart::get()->cart_contents_count()): ?>
 	<?=View::factory('themes/' . theme::get() . '/carts/cart_empty')?>
 <?php else: ?>
 	<table>
@@ -13,11 +13,11 @@
 		<tfoot>
 			<tr>
 				<td colspan="2">Order Subtotal</td>
-				<td><?=format::dollar_format(customer::current()->cart->subtotal())?></td>
+				<td><?=format::dollar_format(cart::get()->subtotal())?></td>
 			</tr>
 		</tfoot>
 		<tbody>
-			<?php foreach(customer::current()->cart->cart_items as $cart_item): ?>
+			<?php foreach(cart::get()->cart_items as $cart_item): ?>
 				<tr id="cart-item-<?=$cart_item?>">
 					<td><?=html::anchor($cart_item->product->show_path(), $cart_item->product->name)?></td>
 					<td>

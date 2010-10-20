@@ -13,7 +13,7 @@ class Carts_Controller extends Application_Controller
 	{
 		parent::__construct();
 		meta::set_title('Shopping Cart');
-		customer::current()->load_cart();
+		$this->cart = cart::get();
 	}
 	
 	
@@ -26,7 +26,7 @@ class Carts_Controller extends Application_Controller
 	{
 		$product = ORM::factory('product', $this->input->post('product_id'));
 		$quantity = $this->input->post('quantity');
-		customer::current()->cart->add_product($product, $quantity);
+		$this->cart->add_product($product, $quantity);
 		
 		url::redirect('cart');
 	}
@@ -41,7 +41,7 @@ class Carts_Controller extends Application_Controller
 	{
 		$product = ORM::factory('product', $this->input->post('product_id'));
 		$quantity = $this->input->post('quantity');
-		customer::current()->cart->update_quantity($product, $quantity);
+		$this->cart->update_quantity($product, $quantity);
 		
 		url::redirect('cart');
 	}
@@ -56,7 +56,7 @@ class Carts_Controller extends Application_Controller
 	{
 		$product = ORM::factory('product', $this->input->post('product_id'));
 		$quantity = $this->input->post('quantity');
-		customer::current()->cart->remove_product($product);
+		$this->cart->remove_product($product);
 		
 		url::redirect('cart');
 	}
@@ -82,11 +82,12 @@ class Carts_Controller extends Application_Controller
 	public function process()
 	{
 		$order = ORM::factory('order');
-		$cart = customer::current()->cart;
-
-		if($order->process($cart, $this->input->post('billing'), $this->input->post('shipping')))
+		$billing = $this->input->post('billing');
+		$shipping = $this->input->post('shipping');
+		
+		if($order->process($this->cart, $billing, $shipping))
 		{
-			$cart->clear_cart();
+			$this->cart->clear_cart();
 			url::redirect('orders/receipt/' . $order);
 		}
 		else

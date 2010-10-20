@@ -4,18 +4,21 @@
  *
  * Session driver name.
  */
-$config['driver'] = 'cookie';
+$config['driver'] = 'database';
 
 /**
  * Session storage parameter, used by drivers.
  */
-$config['storage'] = '';
+$config['storage'] =  array(
+     'group' => 'default', // or use 'default'
+     'table' => 'sessions' // or use 'sessions'
+ );
 
 /**
  * Session name.
  * It must contain only alphanumeric characters and underscores. At least one letter must be present.
  */
-$config['name'] = 'kohanasession';
+$config['name'] = 'storelkjld13k';
 
 /**
  * Session parameters to validate: user_agent, ip_address, expiration.
@@ -27,7 +30,7 @@ $config['validate'] = array('user_agent');
  * Note: this has no effect on the native session driver.
  * Note: the cookie driver always encrypts session data. Set to TRUE for stronger encryption.
  */
-$config['encryption'] = FALSE;
+$config['encryption'] = IN_PRODUCTION;
 
 /**
  * Session lifetime. Number of seconds that each session will last.
