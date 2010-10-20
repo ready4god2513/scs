@@ -13,7 +13,7 @@ abstract class Application_Controller extends Crud_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->template = View::factory('themes/' . theme::get() . '/application');
+		$this->template = View::factory('themes/' . theme::get() . '/theme');
 	}
 	
 }

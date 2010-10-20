@@ -5,106 +5,12 @@ class form extends form_Core
 	
 	
 	/**
-	  * Allow for ajax forms
-	  * @Developer brandon
-	  * @Date May 10, 2010
-	  */
-	public static function open_ajax($url = NULL, $options = array())
-	{
-		$options = array_merge($options, array('class' => 'ajax_enabled_form'));
-		return form::open($url, $options);
-	}
-	
-	
-	/**
-	 * Display a "required" star next to the form field
-	 * @Developer Brandon Hansen
-	 * @Date April 19, 2010
-	 * @Return (string)
-	 */
-	public static function required()
-	{
-		return ' <span class="requiredField">*</span>';
-	}
-	
-	
-	/**
-	  * Redirect override
-	  * @Developer brandon
-	  * @Date Apr 22, 2010
-	  */
-	public static function redirect_after($url)
-	{
-		return form::hidden('redirect_override', $url);
-	}
-	
-	
-	/**
-	  * Create a tinyMCE textarea
-	  * @Developer brandon
-	  * @Date Apr 20, 2010
-	  * @Param (string) $name
-	  * @Param (string) $value
-	  * @Return (string)
-	  */
-	public static function tinyMCE($name, $value = NULL)
-	{
-		return form::textarea(array('name' => $name, 'value' => $value, 'class' => 'mceEditor', 'style' => 'width:500px; height:300px'));
-	}
-	
-	
-	/**
-	  * Create a many-to-many checkbox
-	  * @Developer brandon
-	  * @Date Apr 21, 2010
-	  * @Param (object) $primary_model
-	  * @Param (array) $secondary_models
-	  * @Param (string) $property
-	  * @Param (string) $display_field_name
-	  */
-	public static function many_to_many($primary_model, $secondary_models, $property, $display_field_name = 'name', $type = 'inline')
-	{
-		$return = '';
-		$return .= form::hidden($property, 'NULL');
-		
-		if($type == 'table')
-		{
-			$return .= '<table class="defaultTable">';
-		}
-		
-		foreach($secondary_models as $secondary_model)
-		{
-			if($type == 'table')
-			{
-				$return .= '<tr><td>';
-			}
-			
-			$return .= form::checkbox($property . '[]', $secondary_model->id, in_array($secondary_model->id, $primary_model->$property->primary_key_array()));
-			$return .= $secondary_model->$display_field_name;
-			
-			if($type == 'table')
-			{
-				$return .= '</td></tr>';
-			}
-		}
-		
-		
-		if($type == 'table')
-		{
-			$return .= '</table>';
-		}
-		
-		return $return;
-	}
-	
-	
-	/**
 	 * Return an array that can be used in the drop down for selecting credit card months
 	 * @Developer Brandon Hansen
 	 * @Date April 19, 2010
 	 * @Return (array)
 	 */
-	public static function month_array() 
+	public static function months() 
 	{
 		$array = array(' - - Select One - - ');
 		for ($i = 1; $i <= 12; $i++) 
@@ -121,7 +27,7 @@ class form extends form_Core
 	 * @Date April 19, 2010
 	 * @Return (array)
 	 */
-	public static function year_array() 
+	public static function years() 
 	{
 		$array = array(' - - Select One - - ');
 		for ($i = date('Y'); $i < (date('Y') + 10); $i++) 
@@ -138,7 +44,7 @@ class form extends form_Core
 	 * @Date April 19, 2010
 	 * @Return (array)
 	 */
-	public static function card_type_array() 
+	public static function card_type() 
 	{
 		return array(
 			'' => ' - - Select One - - ',

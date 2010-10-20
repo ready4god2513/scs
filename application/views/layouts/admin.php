@@ -26,8 +26,12 @@
 				<li><?=html::anchor('admin/products', 'Products')?></li>
 				<li><?=html::anchor('admin/blogs', 'Blogs')?></li>
 				<li><?=html::anchor('admin/pages', 'Pages')?></li>
-				<li><?=html::anchor('admin/themes', 'Themes')?></li>
-				<li><?=html::anchor('admin/preferences', 'Preferences')?></li>
+				<li><?=html::anchor('admin/sections', 'Navigation')?></li>
+				<li><?=html::anchor('#', 'Preferences')?>
+					<ul>
+						<li><?=html::anchor('admin/themes', 'Themes')?></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 		<div id="main-content">

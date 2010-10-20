@@ -13,6 +13,7 @@ class Store_Model extends ORM
 		'orders',
 		'pages',
 		'products',
+		'sections',
 		'tags',
 		'themes'
 	);

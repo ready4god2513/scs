@@ -6,28 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="description" content="<?=meta::get_description()?>" />
 <meta name="keywords" content="<?=meta::get_keywords()?>" />
-<?=html::stylesheet(theme::static_file_path() . '/css/main')?>
-<?=html::script('http://use.typekit.com/vcn2nvo.js')?>
+<?=theme::stylesheet('css/main')?>
+<script type="text/javascript" src="//use.typekit.com/vcn2nvo.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<?=html::script(theme::static_file_path() . '/js/jquery')?>
-<?=html::script(theme::static_file_path() . '/js/cycle')?>
-<?=html::script(theme::static_file_path() . '/js/application')?>
-<?=Event::run('layout.header.output')?>
+<?=theme::script('js/jquery')?>
+<?=theme::script('js/cycle')?>
+<?=theme::script('/js/application')?>
+<?=theme::render_script()?>
 </head>
-<body id="<?=Router::$controller?>" class="<?=Router::$method?>">
+<body id="<?=theme::body_id()?>" class="<?=theme::body_class()?>">
 	<div id="wrapper">
+		<?=theme::render_header()?>
 		<div id="header">
 			<div id="logo" class="left">
 				<h1><?=html::anchor(url::site(), 'Stu\'s Coffee Shoppe')?></h1>
 			</div>
 			<div id="navigation" class="right">
 				<ul>
-					<li><?=html::anchor('products', 'Shop')?></li>
-					<li><?=html::anchor('page/about', 'About')?></li>
-					<li><?=html::anchor('blog', 'Blog')?></li>
-					<li><?=html::anchor('page/contact', 'Contact')?></li>
-					<?=Event::run('layout.navigation.output')?>
-					<li><?=html::anchor('cart', '(' . customer::current()->cart->cart_contents_count() . ') ' . inflector::singular('Items', customer::current()->cart->cart_contents_count()))?></li>
+					<?php foreach(links::get('main') as $link): ?>
+						<li><?=$link->display()?></li>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -38,7 +36,7 @@
 				<h2>Hand Crafted Roasts</h2>
 				<ul>
 					<?php foreach(ORM::factory('product')->find_all() as $product): ?>
-						<li><?=html::anchor($product->show_path(), $product->name)?></li>
+						<li><?=$product->link()?></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
@@ -46,7 +44,7 @@
 			<div id="latest-blog-entry-synopsis" class="box">
 				<h2>Stu's Latest</h2>
 				<div class="padd-me">
-					<?=ORM::factory('blog')->get_latest_entry_synopsis()?><br />
+					<?=blog::latest_entry_synopsis()?><br />
 					<?=html::anchor('blog', 'Read More')?>
 				</div>
 			</div>
@@ -54,8 +52,33 @@
 			<div id="shopping-cart-side-bar" class="box">
 				<?=View::factory('carts/index')?>
 			</div>
-			
-			<?=Event::run('layout.sidebar.output')?>
 		</div>
+		
 		<div id="main" class="right">
-			<?=Event::run('layout.main.top.output')?>
+			<div id="content" class="box">
+				<?=$content?>
+			</div>
+		</div>
+		
+		<div class="clear"></div>	
+		<div id="footer" class="box">
+			
+			<ul class="left">
+				<li>Roasts</li>
+				<?php foreach(products::all() as $product): ?>
+					<li><?=$product->link()?></li>
+				<?php endforeach; ?>
+			</ul>
+			
+			<ul class="left">
+				<li>Resources</li>
+				<?php foreach(links::get('footer') as $link): ?>
+					<li><?=$link->display()?></li>
+				<?php endforeach; ?>
+			</ul>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<?=theme::render_footer()?>
+</body>
+</html>

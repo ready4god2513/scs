@@ -51,5 +51,16 @@ class Blog_Model extends ORM
 		$markdown = new Markdown();
 		return $markdown->transform($this->synopsis);
 	}
+	
+	
+	/**
+	  * Provide a link to the blog entry
+	  * @developer Brandon Hansen
+	  * @date Oct 19, 2010
+	  */
+	public function link()
+	{
+		return html::anchor($this->show_path(), $this->name);
+	}
 
 }

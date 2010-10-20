@@ -29,4 +29,14 @@ class Page_Model extends ORM
 		return $markdown->transform($this->content);
 	}
 	
+	/**
+	  * Provide a link to the page
+	  * @developer Brandon Hansen
+	  * @date Oct 19, 2010
+	  */
+	public function link()
+	{
+		return html::anchor($this->show_path(), $this->name);
+	}
+	
 }

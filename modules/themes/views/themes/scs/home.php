@@ -1,11 +1,10 @@
-<?=View::factory('themes/scs/header')?>
 <div id="banner">
-	<?=html::image(theme::static_file_path() . '/images/rotation/spilled.jpg')?>
-	<?=html::image(theme::static_file_path() . '/images/rotation/pouring.jpg')?>
-	<?=html::image(theme::static_file_path() . '/images/rotation/stu.jpg')?>
+	<?=theme::image('images/rotation/spilled.jpg')?>
+	<?=theme::image('images/rotation/pouring.jpg')?>
+	<?=theme::image('images/rotation/stu.jpg')?>
 </div>
 
-<div id="content" class="box">
+<div id="content-home" class="box-home">
 	<h2><span>Featured Roasts</span></h2>
 	<?php foreach(ORM::factory('product')->find_all() as $product): ?>
 		<div class="shopping-cart-list">
@@ -22,4 +21,3 @@
 	<?php endforeach; ?>
 	<div class="clear"></div>
 </div>
-<?=View::factory('themes/scs/footer')?>

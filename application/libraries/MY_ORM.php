@@ -131,6 +131,22 @@ class ORM extends ORM_Core
 	
 	
 	/**
+	  * Find all with no limit
+	  * @developer Brandon Hansen
+	  * @date Oct 19, 2010
+	  */
+	public function find_all_no_limit()
+	{
+		if(array_key_exists('store_id', $this->table_columns))
+		{
+			$this->where('store_id', Kohana::config('store.id'));
+		}
+		
+		return parent::find_all();
+	}
+	
+	
+	/**
 	  * Find only the max per page by default
 	  * @Developer brandon
 	  * @Date Apr 20, 2010
@@ -186,6 +202,38 @@ class ORM extends ORM_Core
 		}
 		
 		parent::save();
+	}
+	
+	
+	/**
+	  * Delete method overload.  Make sure that users can't delete products not in their store
+	  * @developer Brandon Hansen
+	  * @date Oct 19, 2010
+	  */
+	public function delete($id = NULL)
+	{
+		if(array_key_exists('store_id', $this->table_columns))
+		{
+			$this->where('store_id', Kohana::config('store.id'));
+		}
+		
+		parent::delete($id);
+	}
+	
+	
+	/**
+	  * Delete method overload.  Make sure that users can't delete products not in their store
+	  * @developer Brandon Hansen
+	  * @date Oct 19, 2010
+	  */
+	public function delete_all($ids = NULL)
+	{
+		if(array_key_exists('store_id', $this->table_columns))
+		{
+			$this->where('store_id', Kohana::config('store.id'));
+		}
+		
+		parent::delete_all($ids);
 	}
 	
 	

@@ -5,7 +5,7 @@ class upload extends upload_Core
 	
 	
 	/**
-	  * Upload an image and return the filename.  Makes the assumption that it is in the "public/files/" directory.
+	  * Upload an image and return the filename.
 	  * Will change the post field to the URL of the image after saving.
 	  * @Developer brandon
 	  * @Date Apr 20, 2010

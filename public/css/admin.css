@@ -51,6 +51,11 @@ body
 	padding:5px;
 }
 
+#header ul li ul
+{
+	display:none;
+}
+
 #main-content
 {
 	background:#fff;
