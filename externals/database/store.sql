@@ -837,7 +837,7 @@ CREATE TABLE `stores` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -846,7 +846,7 @@ CREATE TABLE `stores` (
 
 LOCK TABLES `stores` WRITE;
 /*!40000 ALTER TABLE `stores` DISABLE KEYS */;
-INSERT INTO `stores` VALUES (1,'Stu\'s Coffee Shoppe','scsroasting',1,'2010-10-18 17:07:30','2010-10-18 17:07:30');
+INSERT INTO `stores` VALUES (1,'Stu\'s Coffee Shoppe','stu',1,'2010-10-18 17:07:30','2010-10-18 17:07:30'),(2,'Brandon\'s Car','brandon',1,'2010-10-20 05:30:20','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `stores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -894,7 +894,7 @@ CREATE TABLE `themes` (
   PRIMARY KEY (`id`),
   KEY `store` (`store_id`),
   CONSTRAINT `themes_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -903,7 +903,7 @@ CREATE TABLE `themes` (
 
 LOCK TABLES `themes` WRITE;
 /*!40000 ALTER TABLE `themes` DISABLE KEYS */;
-INSERT INTO `themes` VALUES (1,1,'scs','2010-10-14 04:31:13','2010-10-18 17:12:21');
+INSERT INTO `themes` VALUES (1,1,'scs','2010-10-14 04:31:13','2010-10-18 17:12:21'),(2,2,'scs','2010-10-20 05:37:32','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `themes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -916,4 +916,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-19 21:49:27
+-- Dump completed on 2010-10-19 22:42:49

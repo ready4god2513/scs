@@ -19,7 +19,7 @@
 		<?=theme::render_header()?>
 		<div id="header">
 			<div id="logo" class="left">
-				<h1><?=html::anchor(url::site(), 'Stu\'s Coffee Shoppe')?></h1>
+				<h1><?=html::anchor(url::site(), store::name())?></h1>
 			</div>
 			<div id="navigation" class="right">
 				<ul>

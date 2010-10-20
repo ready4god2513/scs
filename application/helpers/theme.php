@@ -26,7 +26,7 @@ class theme_Core
 	
 	
 	/**
-	  * Get a setting from the database
+	  * Get a theme name from the database
 	  * @developer Brandon Hansen
 	  * @date Oct 13, 2010
 	  */
