@@ -32,8 +32,8 @@ class store_Core
 	  */
 	public static function set()
 	{
-		$domain = str_replace('.scs', '', $_SERVER['SERVER_NAME']);
-		$store = ORM::factory('store')->where('domain', $domain)->find();
+		list($subdomain, $rest) = explode('.', $_SERVER['SERVER_NAME'], 2);
+		$store = ORM::factory('store')->where('domain', $subdomain)->find();
 		Kohana::config_set('store.id', (string) $store);
 	}
 	
