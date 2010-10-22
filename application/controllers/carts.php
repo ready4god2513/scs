@@ -88,7 +88,7 @@ class Carts_Controller extends Application_Controller
 		if($order->process($this->cart, $billing, $shipping))
 		{
 			$this->cart->clear_cart();
-			url::redirect('orders/receipt/' . $order);
+			url::redirect('orders/show/' . $order);
 		}
 		else
 		{

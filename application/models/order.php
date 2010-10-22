@@ -83,6 +83,7 @@ class Order_Model extends ORM
 		// Mark the status as paid in the database
 		orders::history_entry($this, 'Payment Confirmed');
 		
+		
 		// Return the order
 		return $this;
 	}
@@ -95,11 +96,11 @@ class Order_Model extends ORM
 	  */
 	private function save_billing_and_shipping($billing, $shipping)
 	{
-		$billing_info['order_id'] = $this;
-		ORM::factory('order_billing_shipping')->create_billing($billing_info);
+		$billing['order_id'] = $this;
+		ORM::factory('order_billing_shipping')->create_billing($billing);
 		
-		$shipping_info['order_id'] = $this;
-		ORM::factory('order_billing_shipping')->create_shipping($shipping_info);
+		$shipping['order_id'] = $this;
+		ORM::factory('order_billing_shipping')->create_shipping($shipping);
 	}
 	
 	

@@ -1,7 +1,7 @@
 <h2>Billing &amp; Payment</h2>
 
 <?=form::open('cart/process')?>
-	<fieldset>
+	<fieldset class="left">
 		<legend>Billing Address</legend>
 		<div class="form-fields">
 			<?=form::label('billing[first_name]', 'First Name')?>
@@ -39,7 +39,7 @@
 		</div>
 	</fieldset>
 	
-	<fieldset>
+	<fieldset class="right">
 		<legend>Shipping Address</legend>
 		<div class="form-fields">
 			<?=form::label('shipping[first_name]', 'First Name')?>
@@ -76,5 +76,6 @@
 			<?=form::input('shipping[country]')?>
 		</div>
 	</fieldset>
+	<div class="clear"></div>
 	<?=form::submit('submit_billing', 'Continue to Order Review')?>
 <?=form::close()?>
