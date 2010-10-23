@@ -36,6 +36,7 @@
 		</div>
 		<div id="main-content">
 			<?=$content?>
+			<div class="clear"></div>
 		</div>
 	</div>
 	<div id="footer">
