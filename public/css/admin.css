@@ -117,6 +117,17 @@ address
 	text-align:right;
 }
 
+#main-content div#change-order-status
+{
+	text-align:right;
+}
+
+#main-content div#change-order-status form
+{
+	display:inline;
+	padding:0 0 0 10px;
+}
+
 #main-content div.form-fields
 {
 	background:#f8f8f8;

@@ -7,25 +7,49 @@ class Order_Model extends ORM
 	protected $belongs_to = array('customer', 'store');
 	protected $sorting = array('created_at' => 'DESC');
 	
-	// List the valid statuses
-	private $valid_statuses = array(
-		'new' => 'New',
-		'declined' => 'Declined',
-		'paid' => 'Paid',
-		'shipped' => 'Shipped',
-		'complete' => 'Complete',
-		'refunded' => 'Refunded'
-	);
-	
 	
 	/**
-	  * Provide an array of the valid statuses
+	  * Should we show the mark as shipped button
 	  * @developer Brandon Hansen
 	  * @date Oct 22, 2010
 	  */
-	public function get_valid_statuses()
+	public function show_mark_paid()
 	{
-		return $this->valid_statuses;
+		return $this->status == 'new' || $this->status == 'declined';
+	}
+	
+	
+	
+	/**
+	  * Should we show the mark as shipped button
+	  * @developer Brandon Hansen
+	  * @date Oct 22, 2010
+	  */
+	public function show_mark_shipped()
+	{
+		return $this->status == 'paid';
+	}
+	
+	
+	/**
+	  * Should we show the mark as refunded button
+	  * @developer Brandon Hansen
+	  * @date Oct 22, 2010
+	  */
+	public function show_mark_refunded()
+	{
+		return $this->status == 'paid' || $this->status == 'shipped' || $this->status == 'complete';
+	}
+	
+	
+	/**
+	  * Should we show the mark as complete button
+	  * @developer Brandon Hansen
+	  * @date Oct 22, 2010
+	  */
+	public function show_mark_complete()
+	{
+		return $this->status == 'paid' || $this->status == 'shipped';
 	}
 	
 	

@@ -207,7 +207,10 @@ abstract class Crud_Controller extends Template_Controller
 	 */
 	public function update($id = NULL)
 	{
-		if($object = ORM::factory($this->model_name, (string) $id)->update($this->input->post()))
+		$object = ORM::factory($this->model_name, (string) $id);
+		$object->update($this->input->post());
+		
+		if($object->saved)
 		{
 			if(request::is_ajax())
 			{
@@ -216,7 +219,6 @@ abstract class Crud_Controller extends Template_Controller
 			else
 			{
 				flash::set_message('The ' . format::friendly_model_name($this->model_name) . ' was updated');
-				
 				if($this->input->post('redirect_override'))
 				{
 					url::redirect($this->input->post('redirect_override'));
