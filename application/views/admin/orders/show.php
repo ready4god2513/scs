@@ -1,6 +1,13 @@
-<h2>Order #<?=$order?></h2>
-<span class="small"><?=date::full_date_time($order->created_at)?></span>
-
+<div class="left">
+	<h2>Order #<?=$order?></h2>
+	<h6>Status: <?=$order->status?></h6>
+	<h6><?=date::full_date_time($order->created_at)?></h6>
+</div>
+<div class="right">
+	<h6>Change Order Status</h6>
+	<?=View::factory('admin/orders/_status')->set('order', $order)?>
+</div>
+<div class="clear"></div>
 <div class="right large-half">
 	<div class="box">
 		<h5>Order Details</h5>

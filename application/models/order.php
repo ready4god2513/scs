@@ -7,6 +7,27 @@ class Order_Model extends ORM
 	protected $belongs_to = array('customer', 'store');
 	protected $sorting = array('created_at' => 'DESC');
 	
+	// List the valid statuses
+	private $valid_statuses = array(
+		'new' => 'New',
+		'declined' => 'Declined',
+		'paid' => 'Paid',
+		'shipped' => 'Shipped',
+		'complete' => 'Complete',
+		'refunded' => 'Refunded'
+	);
+	
+	
+	/**
+	  * Provide an array of the valid statuses
+	  * @developer Brandon Hansen
+	  * @date Oct 22, 2010
+	  */
+	public function get_valid_statuses()
+	{
+		return $this->valid_statuses;
+	}
+	
 	
 	/**
 	  * Find the order amount

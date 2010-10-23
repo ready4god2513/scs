@@ -175,6 +175,16 @@ address
 	text-align:left;
 }
 
+#main-content table tfoot td
+{
+	background:#fafafa;
+	border-top:1px solid #e5e5e5;
+	color:#333;
+	font-weight:bold;
+	padding:10px;
+	text-align:left;
+}
+
 #main-content table tbody tr:nth-child(1) td
 {
 	padding-top:20px
