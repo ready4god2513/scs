@@ -63,7 +63,7 @@ CREATE TABLE `cart_items` (
   PRIMARY KEY (`id`),
   KEY `cart_id` (`cart_id`),
   CONSTRAINT `cart_items_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `cart_items` (
 
 LOCK TABLES `cart_items` WRITE;
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-INSERT INTO `cart_items` VALUES (1,1,2,1,'2010-10-20 03:49:42','0000-00-00 00:00:00');
+INSERT INTO `cart_items` VALUES (1,1,2,1,'2010-10-20 03:49:42','0000-00-00 00:00:00'),(2,1,3,1,'2010-10-20 05:53:59','0000-00-00 00:00:00'),(3,2,4,1,'2010-10-23 02:55:35','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `carts` (
   KEY `store` (`store_id`),
   KEY `customer_ind` (`customer_id`),
   CONSTRAINT `carts_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (1,1,0,'2010-10-20 02:51:55','2010-10-20 02:51:55');
+INSERT INTO `carts` VALUES (1,1,0,'2010-10-20 02:51:55','2010-10-20 02:51:55'),(2,1,0,'2010-10-23 02:55:29','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -407,7 +407,7 @@ CREATE TABLE `order_billing_shipping` (
   `order_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `type` enum('billing','shipping') NOT NULL,
-  `first_name` int(75) NOT NULL,
+  `first_name` varchar(75) NOT NULL,
   `last_name` varchar(75) NOT NULL,
   `address` varchar(150) NOT NULL,
   `city` varchar(100) NOT NULL,
@@ -421,7 +421,7 @@ CREATE TABLE `order_billing_shipping` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -430,6 +430,7 @@ CREATE TABLE `order_billing_shipping` (
 
 LOCK TABLES `order_billing_shipping` WRITE;
 /*!40000 ALTER TABLE `order_billing_shipping` DISABLE KEYS */;
+INSERT INTO `order_billing_shipping` VALUES (1,5,0,'billing','Brandon','Hansen','1390 College View Dr. #5','Redding','CA',96003,'United States',4456,'VISA',12,2012,'2010-10-23 04:01:47','2010-10-23 04:01:47'),(2,5,0,'shipping','Dave','Hansen','55 Essex Ct.','Oakley','CA',94561,'United States',0,'',0,0,'2010-10-23 04:02:36','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `order_billing_shipping` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -665,7 +666,8 @@ DROP TABLE IF EXISTS `product_images`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) DEFAULT NULL,
+  `imgurl` varchar(150) DEFAULT NULL,
+  `thumburl` varchar(150) NOT NULL,
   `sort_order` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -819,6 +821,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+INSERT INTO `sessions` VALUES ('1b84d2cf74c66583138996ab7afb50c7',1287806226,'c2Vzc2lvbl9pZHxzOjMyOiIxYjg0ZDJjZjc0YzY2NTgzMTM4OTk2YWI3YWZiNTBjNyI7dG90YWxfaGl0c3xpOjEzO19rZl9mbGFzaF98YTowOnt9dXNlcl9hZ2VudHxzOjEyNToiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgVTsgSW50ZWwgTWFjIE9TIFggMTBfNl80OyBlbi1VUykgQXBwbGVXZWJLaXQvNTM0LjcgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNy4wLjUxNy40MSBTYWZhcmkvNTM0LjciO2lwX2FkZHJlc3N8czo5OiIxMjcuMC4wLjEiO2xhc3RfYWN0aXZpdHl8aToxMjg3ODA2MjI2O2NhcnRfMXxzOjE6IjIiOw==');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -916,4 +919,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-19 22:42:49
+-- Dump completed on 2010-10-22 21:19:35
