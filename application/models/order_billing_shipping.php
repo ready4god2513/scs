@@ -4,7 +4,7 @@ class Order_billing_shipping_Model extends ORM
 {
 	
 	protected $table_name = 'order_billing_shipping';
-	protected $belongs_to = array('order', 'customer');
+	protected $belongs_to = array('order');
 	protected $validates_presence_of = array(
 		'order_id',
 		'type',

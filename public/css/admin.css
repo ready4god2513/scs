@@ -128,6 +128,13 @@ address
 	padding:0 0 0 10px;
 }
 
+#main-content div#order-comments p
+{
+	background:#ff9;
+	padding:5px;
+	margin:5px 0;
+}
+
 #main-content div.form-fields
 {
 	background:#f8f8f8;

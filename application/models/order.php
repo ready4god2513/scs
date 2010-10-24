@@ -3,7 +3,7 @@
 class Order_Model extends ORM
 {
 	
-	protected $has_many = array('order_billing_shippings', 'order_comments', 'order_details', 'order_histories');
+	protected $has_many = array('order_billing_shippings', 'order_comments', 'order_details', 'order_emails', 'order_histories');
 	protected $belongs_to = array('customer', 'store');
 	protected $sorting = array('created_at' => 'DESC');
 	
@@ -122,11 +122,7 @@ class Order_Model extends ORM
 		// If the credit card goes through, then we will change the status to
 		// "paid".  We will use "paid" because the next step could either be to ship
 		// it out, or if it is a downloadable product, download the product
-		$this->status = 'paid';
-		$this->save();
-		
-		// Mark the status as paid in the database
-		orders::history_entry($this, 'Payment Confirmed');
+		$this->mark_as_paid();
 		
 		
 		// Return the order
@@ -167,5 +163,64 @@ class Order_Model extends ORM
 			));
 		}
 	}
+	
+	
+	/**
+	  * Refund the order
+	  * @developer Brandon Hansen
+	  * @date Oct 23, 2010
+	  */
+	public function refund()
+	{
+		$this->status = 'refunded';
+		$this->save();
+		
+		// Mark the status as paid in the database
+		orders::history_entry($this, 'Order Refunded');
+	}
+	
+	
+	/**
+	  * Mark the order as paid
+	  * @developer Brandon Hansen
+	  * @date Oct 23, 2010
+	  */
+	public function mark_as_paid()
+	{
+		$this->status = 'paid';
+		$this->save();
+		
+		// Mark the status as paid in the database
+		orders::history_entry($this, 'Payment Confirmed');
+	}
+	
+	
+	/**
+	  * Mark the order as shipped
+	  * @developer Brandon Hansen
+	  * @date Oct 23, 2010
+	  */
+	public function mark_as_shipped()
+	{
+		$this->status = 'shipped';
+		$this->save();
+		
+		orders::history_entry($this, 'Order Shipped');
+	}
+	
+	
+	/**
+	  * Mark the order as completed
+	  * @developer Brandon Hansen
+	  * @date Oct 23, 2010
+	  */
+	public function mark_as_completed()
+	{
+		$this->status = 'complete';
+		$this->save();
+		
+		orders::history_entry($this, 'Order Complete');
+	}
+	
 
 }

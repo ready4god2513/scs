@@ -82,3 +82,11 @@ $config['order/receipt/(.*)'] = 'orders/show/$1';
   * @date Oct 15, 2010
   */
 $config['admin'] = 'admin/dashboard/index';
+
+/**
+  * Routing for the account
+  * @developer Brandon Hansen
+  * @date Oct 23, 2010
+  */
+$config['admin/account'] = 'admin/stores/index';
+$config['admin/account/(.*)'] = 'admin/stores/$1';

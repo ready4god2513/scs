@@ -7,7 +7,9 @@
 	<h6>Change Order Status</h6>
 	<?=View::factory('admin/orders/_status')->set('order', $order)?>
 </div>
+
 <div class="clear"></div>
+
 <div class="right large-half">
 	<div class="box">
 		<h5>Order Details</h5>
@@ -58,10 +60,18 @@
 	
 </div>
 
-<div id="order_billing_shipping" class="left small-half">
-	<h6>Billing Address</h6>
-	<?=View::factory('admin/order_billing_shippings/show')->set('address', $order->get_billing_address())?>
-	
-	<h6>Shipping Address</h6>
-	<?=View::factory('admin/order_billing_shippings/show')->set('address', $order->get_shipping_address())?>
+<div class="left small-half">
+	<div id="order_billing_shipping">
+		<h6>Billing Address</h6>
+		<?=View::factory('admin/order_billing_shippings/show')->set('address', $order->get_billing_address())?>
+		
+		<h6>Shipping Address</h6>
+		<?=View::factory('admin/order_billing_shippings/show')->set('address', $order->get_shipping_address())?>
+	</div>
+	<div id="order-comments">
+		<h6>Comments</h6>
+		<?php foreach($order->order_comments as $comment): ?>
+			<p><?=$comment->comment?></p>
+		<?php endforeach; ?>
+	</div>
 </div>

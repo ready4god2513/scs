@@ -93,7 +93,7 @@ CREATE TABLE `carts` (
   KEY `store` (`store_id`),
   KEY `customer_ind` (`customer_id`),
   CONSTRAINT `carts_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (1,1,0,'2010-10-20 02:51:55','2010-10-20 02:51:55'),(2,1,0,'2010-10-23 02:55:29','0000-00-00 00:00:00');
+INSERT INTO `carts` VALUES (1,1,0,'2010-10-20 02:51:55','2010-10-20 02:51:55'),(2,1,0,'2010-10-23 02:55:29','0000-00-00 00:00:00'),(3,1,0,'2010-10-24 05:10:09','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -405,7 +405,6 @@ DROP TABLE IF EXISTS `order_billing_shipping`;
 CREATE TABLE `order_billing_shipping` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
   `type` enum('billing','shipping') NOT NULL,
   `first_name` varchar(75) NOT NULL,
   `last_name` varchar(75) NOT NULL,
@@ -430,7 +429,7 @@ CREATE TABLE `order_billing_shipping` (
 
 LOCK TABLES `order_billing_shipping` WRITE;
 /*!40000 ALTER TABLE `order_billing_shipping` DISABLE KEYS */;
-INSERT INTO `order_billing_shipping` VALUES (1,5,0,'billing','Brandon','Hansen','1390 College View Dr. #5','Redding','CA',96003,'United States',4456,'VISA',12,2012,'2010-10-23 04:01:47','2010-10-23 04:01:47'),(2,5,0,'shipping','Dave','Hansen','55 Essex Ct.','Oakley','CA',94561,'United States',0,'',0,0,'2010-10-23 04:02:36','0000-00-00 00:00:00');
+INSERT INTO `order_billing_shipping` VALUES (1,5,'billing','Brandon','Hansen','1390 College View Dr. #5','Redding','CA',96003,'United States',4456,'VISA',12,2012,'2010-10-23 04:01:47','2010-10-23 04:01:47'),(2,5,'shipping','Dave','Hansen','55 Essex Ct.','Oakley','CA',94561,'United States',0,'',0,0,'2010-10-23 04:02:36','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `order_billing_shipping` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,11 +442,12 @@ DROP TABLE IF EXISTS `order_comments`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) DEFAULT NULL,
+  `order_id` int(11) NOT NULL,
+  `comment` text,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -456,6 +456,7 @@ CREATE TABLE `order_comments` (
 
 LOCK TABLES `order_comments` WRITE;
 /*!40000 ALTER TABLE `order_comments` DISABLE KEYS */;
+INSERT INTO `order_comments` VALUES (1,5,'I need this order shipped to me as soon as possible, please','2010-10-24 04:54:22','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `order_comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -489,6 +490,34 @@ INSERT INTO `order_details` VALUES (1,2,3,37.47,3,'2010-10-18 04:42:48','2010-10
 UNLOCK TABLES;
 
 --
+-- Table structure for table `order_emails`
+--
+
+DROP TABLE IF EXISTS `order_emails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order_emails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `recipient` varchar(100) NOT NULL,
+  `subject` varchar(150) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_emails`
+--
+
+LOCK TABLES `order_emails` WRITE;
+/*!40000 ALTER TABLE `order_emails` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_emails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `order_histories`
 --
 
@@ -502,7 +531,7 @@ CREATE TABLE `order_histories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -511,7 +540,7 @@ CREATE TABLE `order_histories` (
 
 LOCK TABLES `order_histories` WRITE;
 /*!40000 ALTER TABLE `order_histories` DISABLE KEYS */;
-INSERT INTO `order_histories` VALUES (1,4,'Started the order','2010-10-18 05:03:06','2010-10-18 05:03:06'),(2,4,'Payment Confirmed','2010-10-18 05:03:06','2010-10-18 05:03:06'),(3,5,'Started the order','2010-10-19 06:42:30','2010-10-19 06:42:30'),(4,5,'Payment Confirmed','2010-10-19 06:42:30','2010-10-19 06:42:30');
+INSERT INTO `order_histories` VALUES (1,4,'Started the order','2010-10-18 05:03:06','2010-10-18 05:03:06'),(2,4,'Payment Confirmed','2010-10-18 05:03:06','2010-10-18 05:03:06'),(3,5,'Started the order','2010-10-19 06:42:30','2010-10-19 06:42:30'),(4,5,'Payment Confirmed','2010-10-19 06:42:30','2010-10-19 06:42:30'),(5,5,'Order Complete','2010-10-24 05:10:46','2010-10-24 05:10:46'),(6,5,'Order Refunded','2010-10-24 05:10:54','2010-10-24 05:10:54'),(7,4,'Order Complete','2010-10-24 06:10:02','2010-10-24 06:10:02');
 /*!40000 ALTER TABLE `order_histories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -525,6 +554,7 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `store_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `status` enum('new','declined','paid','shipped','complete','refunded') NOT NULL,
   `notes` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -541,7 +571,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,'new','','2010-10-18 04:42:16','0000-00-00 00:00:00'),(2,1,'paid','','2010-10-18 04:42:48','0000-00-00 00:00:00'),(4,1,'paid','','2010-10-18 05:03:06','0000-00-00 00:00:00'),(5,1,'paid','','2010-10-19 06:42:30','0000-00-00 00:00:00');
+INSERT INTO `orders` VALUES (1,1,1,'paid','','2010-10-18 04:42:16','2010-10-23 06:13:09'),(2,1,0,'complete','','2010-10-18 04:42:48','2010-10-23 06:12:12'),(4,1,0,'complete','','2010-10-18 05:03:06','2010-10-23 06:11:55'),(5,1,0,'refunded','','2010-10-19 06:42:30','2010-10-23 06:11:59');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -821,7 +851,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('1b84d2cf74c66583138996ab7afb50c7',1287806226,'c2Vzc2lvbl9pZHxzOjMyOiIxYjg0ZDJjZjc0YzY2NTgzMTM4OTk2YWI3YWZiNTBjNyI7dG90YWxfaGl0c3xpOjEzO19rZl9mbGFzaF98YTowOnt9dXNlcl9hZ2VudHxzOjEyNToiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgVTsgSW50ZWwgTWFjIE9TIFggMTBfNl80OyBlbi1VUykgQXBwbGVXZWJLaXQvNTM0LjcgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNy4wLjUxNy40MSBTYWZhcmkvNTM0LjciO2lwX2FkZHJlc3N8czo5OiIxMjcuMC4wLjEiO2xhc3RfYWN0aXZpdHl8aToxMjg3ODA2MjI2O2NhcnRfMXxzOjE6IjIiOw==');
+INSERT INTO `sessions` VALUES ('94014087b3fca5a7c5ccdffa2f93e16c',1287900423,'c2Vzc2lvbl9pZHxzOjMyOiI5NDAxNDA4N2IzZmNhNWE3YzVjY2RmZmEyZjkzZTE2YyI7dG90YWxfaGl0c3xpOjM7X2tmX2ZsYXNoX3xhOjA6e311c2VyX2FnZW50fHM6MTI1OiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBVOyBJbnRlbCBNYWMgT1MgWCAxMF82XzQ7IGVuLVVTKSBBcHBsZVdlYktpdC81MzQuNyAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83LjAuNTE3LjQxIFNhZmFyaS81MzQuNyI7aXBfYWRkcmVzc3xzOjk6IjEyNy4wLjAuMSI7bGFzdF9hY3Rpdml0eXxpOjEyODc5MDA0MjM7Y2FydF8xfHM6MToiMyI7'),('d5d4d8705c5938c087bf18ecbbf17ff0',1287894059,'c2Vzc2lvbl9pZHxzOjMyOiJkNWQ0ZDg3MDVjNTkzOGMwODdiZjE4ZWNiYmYxN2ZmMCI7dG90YWxfaGl0c3xpOjM7X2tmX2ZsYXNoX3xhOjA6e311c2VyX2FnZW50fHM6MTI1OiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBVOyBJbnRlbCBNYWMgT1MgWCAxMF82XzQ7IGVuLVVTKSBBcHBsZVdlYktpdC81MzQuNyAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83LjAuNTE3LjQxIFNhZmFyaS81MzQuNyI7aXBfYWRkcmVzc3xzOjk6IjEyNy4wLjAuMSI7bGFzdF9hY3Rpdml0eXxpOjEyODc4OTQwNTk7');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -919,4 +949,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-22 21:19:35
+-- Dump completed on 2010-10-23 23:19:18

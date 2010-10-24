@@ -9,7 +9,7 @@
 	<tbody>
 		<?php foreach($customers as $customer): ?>
 			<tr>
-				<td><?=html::anchor($customer->edit_path(), $customer->username)?></td>
+				<td><?=html::anchor($customer->show_path(), $customer->username)?></td>
 				<td><?=$customer->created_at?></td>
 				<td><?=$customer->updated_at?></td>
 			</tr>
