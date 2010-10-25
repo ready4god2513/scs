@@ -177,6 +177,7 @@ class Order_Model extends ORM
 		
 		// Mark the status as paid in the database
 		orders::history_entry($this, 'Order Refunded');
+		ORM::factory('order_email')->send_refund($this);
 	}
 	
 	
@@ -192,6 +193,7 @@ class Order_Model extends ORM
 		
 		// Mark the status as paid in the database
 		orders::history_entry($this, 'Payment Confirmed');
+		ORM::factory('order_email')->send_receipt($this);
 	}
 	
 	
@@ -206,6 +208,7 @@ class Order_Model extends ORM
 		$this->save();
 		
 		orders::history_entry($this, 'Order Shipped');
+		ORM::factory('order_email')->send_shipping($this);
 	}
 	
 	
@@ -220,6 +223,7 @@ class Order_Model extends ORM
 		$this->save();
 		
 		orders::history_entry($this, 'Order Complete');
+		ORM::factory('order_email')->send_order_completed($this);
 	}
 	
 

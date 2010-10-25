@@ -23,7 +23,11 @@ class Email_Model extends ORM
 			'type' => 'textarea',
 			'rows' => 20
 		),
-		'shipping_update' => array(
+		'order_complete' => array(
+			'type' => 'textarea',
+			'rows' => 20
+		),
+		'order_refunded' => array(
 			'type' => 'textarea',
 			'rows' => 20
 		)
