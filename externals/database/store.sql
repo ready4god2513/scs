@@ -16,6 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `audit_trails`
+--
+
+DROP TABLE IF EXISTS `audit_trails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `audit_trails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL,
+  `controller` varchar(100) NOT NULL,
+  `method` varchar(100) NOT NULL,
+  `object_id` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `audit_trails`
+--
+
+LOCK TABLES `audit_trails` WRITE;
+/*!40000 ALTER TABLE `audit_trails` DISABLE KEYS */;
+INSERT INTO `audit_trails` VALUES (1,0,1,'categories','index',0,'2010-10-27 03:38:28','2010-10-27 03:38:28'),(2,0,1,'categories','edit',0,'2010-10-27 03:40:17','2010-10-27 03:40:17'),(3,0,1,'categories','edit',0,'2010-10-27 03:46:15','2010-10-27 03:46:15'),(4,0,1,'categories','edit',0,'2010-10-27 03:59:01','2010-10-27 03:59:02'),(5,0,1,'categories','edit',0,'2010-10-27 03:59:17','2010-10-27 03:59:17'),(6,0,1,'categories','edit',0,'2010-10-27 03:59:40','2010-10-27 03:59:40'),(7,0,1,'products','index',0,'2010-10-27 03:59:45','2010-10-27 03:59:45'),(8,0,1,'products','edit',0,'2010-10-27 03:59:46','2010-10-27 03:59:46'),(9,0,1,'orders','index',0,'2010-10-27 03:59:53','2010-10-27 03:59:53'),(10,0,1,'orders','show',0,'2010-10-27 03:59:54','2010-10-27 03:59:54'),(11,0,1,'products','index',0,'2010-10-27 03:59:56','2010-10-27 03:59:56'),(12,0,1,'blogs','index',0,'2010-10-27 03:59:57','2010-10-27 03:59:57'),(13,0,1,'blogs','edit',0,'2010-10-27 03:59:58','2010-10-27 03:59:58'),(14,0,1,'blogs','index',0,'2010-10-27 04:00:00','2010-10-27 04:00:00'),(15,0,1,'pages','index',0,'2010-10-27 04:00:01','2010-10-27 04:00:01'),(16,0,1,'pages','edit',0,'2010-10-27 04:00:02','2010-10-27 04:00:02'),(17,0,1,'pages','edit',0,'2010-10-27 04:00:23','2010-10-27 04:00:23'),(18,0,1,'pages','index',0,'2010-10-27 04:00:33','2010-10-27 04:00:33'),(19,0,1,'pages','edit',0,'2010-10-27 04:00:35','2010-10-27 04:00:35'),(20,0,1,'orders','index',0,'2010-10-27 04:00:38','2010-10-27 04:00:38');
+/*!40000 ALTER TABLE `audit_trails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `blogs`
 --
 
@@ -63,7 +93,7 @@ CREATE TABLE `cart_items` (
   PRIMARY KEY (`id`),
   KEY `cart_id` (`cart_id`),
   CONSTRAINT `cart_items_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +102,7 @@ CREATE TABLE `cart_items` (
 
 LOCK TABLES `cart_items` WRITE;
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-INSERT INTO `cart_items` VALUES (1,1,2,1,'2010-10-20 03:49:42','0000-00-00 00:00:00'),(2,1,3,1,'2010-10-20 05:53:59','0000-00-00 00:00:00'),(3,2,4,1,'2010-10-23 02:55:35','0000-00-00 00:00:00');
+INSERT INTO `cart_items` VALUES (1,1,2,1,'2010-10-20 03:49:42','0000-00-00 00:00:00'),(2,1,3,1,'2010-10-20 05:53:59','0000-00-00 00:00:00'),(3,2,4,1,'2010-10-23 02:55:35','0000-00-00 00:00:00'),(4,9,3,1,'2010-10-27 03:14:38','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +123,7 @@ CREATE TABLE `carts` (
   KEY `store` (`store_id`),
   KEY `customer_ind` (`customer_id`),
   CONSTRAINT `carts_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +132,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (1,1,0,'2010-10-20 02:51:55','2010-10-20 02:51:55'),(2,1,0,'2010-10-23 02:55:29','0000-00-00 00:00:00'),(3,1,0,'2010-10-24 05:10:09','0000-00-00 00:00:00');
+INSERT INTO `carts` VALUES (1,1,0,'2010-10-20 02:51:55','2010-10-20 02:51:55'),(2,1,0,'2010-10-23 02:55:29','0000-00-00 00:00:00'),(3,1,0,'2010-10-24 05:10:09','0000-00-00 00:00:00'),(4,1,0,'2010-10-24 06:45:46','0000-00-00 00:00:00'),(5,1,0,'2010-10-24 21:04:29','0000-00-00 00:00:00'),(6,1,0,'2010-10-25 02:46:56','0000-00-00 00:00:00'),(7,1,0,'2010-10-25 04:47:00','0000-00-00 00:00:00'),(8,1,0,'2010-10-26 05:10:32','0000-00-00 00:00:00'),(9,1,0,'2010-10-27 03:03:25','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,8 +146,11 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `store_id` int(11) NOT NULL,
-  `name` varchar(150) DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL DEFAULT '',
+  `slug` varchar(150) NOT NULL,
   `sort_order` int(11) NOT NULL DEFAULT '0',
+  `status` enum('published','hidden') NOT NULL DEFAULT 'published',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -132,7 +165,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (4,1,'Dark Roasts',0,'2010-10-19 05:56:31','2010-10-19 17:22:12'),(5,1,'Light Roast',0,'2010-10-19 06:08:19','2010-10-19 06:08:19');
+INSERT INTO `categories` VALUES (4,1,0,'Dark Roasts','dark-roasts',0,'published','2010-10-19 05:56:31','2010-10-27 03:29:38'),(5,1,0,'Light Roast','',0,'published','2010-10-19 06:08:19','2010-10-19 06:08:19');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +191,6 @@ CREATE TABLE `categories_products` (
 
 LOCK TABLES `categories_products` WRITE;
 /*!40000 ALTER TABLE `categories_products` DISABLE KEYS */;
-INSERT INTO `categories_products` VALUES (0,4,3,'2010-10-19 17:27:48','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `categories_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,13 +352,14 @@ CREATE TABLE `emails` (
   `order_confirmation` text,
   `order_notification` text NOT NULL,
   `shipping_confirmation` text NOT NULL,
-  `shipping_update` text NOT NULL,
+  `order_complete` text NOT NULL,
+  `order_refunded` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `store` (`store_id`),
   CONSTRAINT `emails_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -335,6 +368,7 @@ CREATE TABLE `emails` (
 
 LOCK TABLES `emails` WRITE;
 /*!40000 ALTER TABLE `emails` DISABLE KEYS */;
+INSERT INTO `emails` VALUES (1,1,'This is the order confirmation email.  ','I am letting you know that you have made a sale.','We have shipped your stuff.','Your order is complete.  Let us know if you have any questions.','We have refunded your order.  Sorry that everything didn\'t work out perfect for you.','2010-10-24 23:41:54','2010-10-24 23:41:54');
 /*!40000 ALTER TABLE `emails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,7 +565,7 @@ CREATE TABLE `order_histories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -540,7 +574,7 @@ CREATE TABLE `order_histories` (
 
 LOCK TABLES `order_histories` WRITE;
 /*!40000 ALTER TABLE `order_histories` DISABLE KEYS */;
-INSERT INTO `order_histories` VALUES (1,4,'Started the order','2010-10-18 05:03:06','2010-10-18 05:03:06'),(2,4,'Payment Confirmed','2010-10-18 05:03:06','2010-10-18 05:03:06'),(3,5,'Started the order','2010-10-19 06:42:30','2010-10-19 06:42:30'),(4,5,'Payment Confirmed','2010-10-19 06:42:30','2010-10-19 06:42:30'),(5,5,'Order Complete','2010-10-24 05:10:46','2010-10-24 05:10:46'),(6,5,'Order Refunded','2010-10-24 05:10:54','2010-10-24 05:10:54'),(7,4,'Order Complete','2010-10-24 06:10:02','2010-10-24 06:10:02');
+INSERT INTO `order_histories` VALUES (1,4,'Started the order','2010-10-18 05:03:06','2010-10-18 05:03:06'),(2,4,'Payment Confirmed','2010-10-18 05:03:06','2010-10-18 05:03:06'),(3,5,'Started the order','2010-10-19 06:42:30','2010-10-19 06:42:30'),(4,5,'Payment Confirmed','2010-10-19 06:42:30','2010-10-19 06:42:30'),(5,5,'Order Complete','2010-10-24 05:10:46','2010-10-24 05:10:46'),(6,5,'Order Refunded','2010-10-24 05:10:54','2010-10-24 05:10:54'),(7,4,'Order Complete','2010-10-24 06:10:02','2010-10-24 06:10:02'),(8,1,'Order Shipped','2010-10-24 06:36:56','2010-10-24 06:36:56'),(9,1,'Sent Shipping Status to Customer','2010-10-24 06:36:56','2010-10-24 06:36:56'),(10,1,'Order Complete','2010-10-24 06:37:01','2010-10-24 06:37:01'),(11,1,'Order Complete','2010-10-24 06:37:13','2010-10-24 06:37:13'),(12,1,'Sent Order Complete Email to Customer','2010-10-24 06:37:13','2010-10-24 06:37:13'),(13,2,'Order Refunded','2010-10-24 06:43:59','2010-10-24 06:43:59'),(14,2,'Sent Refund Notice to Customer','2010-10-24 06:43:59','2010-10-24 06:43:59');
 /*!40000 ALTER TABLE `order_histories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -571,7 +605,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,1,'paid','','2010-10-18 04:42:16','2010-10-23 06:13:09'),(2,1,0,'complete','','2010-10-18 04:42:48','2010-10-23 06:12:12'),(4,1,0,'complete','','2010-10-18 05:03:06','2010-10-23 06:11:55'),(5,1,0,'refunded','','2010-10-19 06:42:30','2010-10-23 06:11:59');
+INSERT INTO `orders` VALUES (1,1,1,'complete','','2010-10-18 04:42:16','2010-10-23 06:13:09'),(2,1,0,'refunded','','2010-10-18 04:42:48','2010-10-23 06:12:12'),(4,1,0,'complete','','2010-10-18 05:03:06','2010-10-23 06:11:55'),(5,1,0,'refunded','','2010-10-19 06:42:30','2010-10-23 06:11:59');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -851,7 +885,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('94014087b3fca5a7c5ccdffa2f93e16c',1287900423,'c2Vzc2lvbl9pZHxzOjMyOiI5NDAxNDA4N2IzZmNhNWE3YzVjY2RmZmEyZjkzZTE2YyI7dG90YWxfaGl0c3xpOjM7X2tmX2ZsYXNoX3xhOjA6e311c2VyX2FnZW50fHM6MTI1OiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBVOyBJbnRlbCBNYWMgT1MgWCAxMF82XzQ7IGVuLVVTKSBBcHBsZVdlYktpdC81MzQuNyAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83LjAuNTE3LjQxIFNhZmFyaS81MzQuNyI7aXBfYWRkcmVzc3xzOjk6IjEyNy4wLjAuMSI7bGFzdF9hY3Rpdml0eXxpOjEyODc5MDA0MjM7Y2FydF8xfHM6MToiMyI7'),('d5d4d8705c5938c087bf18ecbbf17ff0',1287894059,'c2Vzc2lvbl9pZHxzOjMyOiJkNWQ0ZDg3MDVjNTkzOGMwODdiZjE4ZWNiYmYxN2ZmMCI7dG90YWxfaGl0c3xpOjM7X2tmX2ZsYXNoX3xhOjA6e311c2VyX2FnZW50fHM6MTI1OiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBVOyBJbnRlbCBNYWMgT1MgWCAxMF82XzQ7IGVuLVVTKSBBcHBsZVdlYktpdC81MzQuNyAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83LjAuNTE3LjQxIFNhZmFyaS81MzQuNyI7aXBfYWRkcmVzc3xzOjk6IjEyNy4wLjAuMSI7bGFzdF9hY3Rpdml0eXxpOjEyODc4OTQwNTk7');
+INSERT INTO `sessions` VALUES ('9c4ead17b22a159111ff8ec2cfce1497',1288152038,'c2Vzc2lvbl9pZHxzOjMyOiI5YzRlYWQxN2IyMmExNTkxMTFmZjhlYzJjZmNlMTQ5NyI7dG90YWxfaGl0c3xpOjUyO19rZl9mbGFzaF98YTowOnt9dXNlcl9hZ2VudHxzOjEyNToiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgVTsgSW50ZWwgTWFjIE9TIFggMTBfNl80OyBlbi1VUykgQXBwbGVXZWJLaXQvNTM0LjcgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNy4wLjUxNy40MSBTYWZhcmkvNTM0LjciO2lwX2FkZHJlc3N8czo5OiIxMjcuMC4wLjEiO2xhc3RfYWN0aXZpdHl8aToxMjg4MTUyMDM4O2NhcnRfMXxzOjE6IjkiOw==');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -949,4 +983,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-23 23:19:18
+-- Dump completed on 2010-10-26 21:01:03

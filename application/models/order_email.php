@@ -13,6 +13,7 @@ class Order_email_Model extends ORM
 	  */
 	public function send_receipt(Order_Model $order)
 	{
+		$order->store->email->send_order_confirmation($order);
 		orders::history_entry($order, 'Sent Receipt to Customer');
 	}
 	

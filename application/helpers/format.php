@@ -116,7 +116,7 @@ class format
 	public static function pretty_url($string)
 	{
 		$string = trim($string);
-		$result = preg_replace('/[^a-zA-Z0-9\s]/', '', strtolower($string));
+		$result = preg_replace('/[^a-zA-Z0-9-_\s]/', '', strtolower($string));
 		return str_replace(' ', '-', $result);
 	}
 	

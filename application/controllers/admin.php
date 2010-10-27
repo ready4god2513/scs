@@ -28,6 +28,14 @@ abstract class Admin_Controller extends Crud_Controller
 		{
 			customer::require_admin_login();	
 		}
+		
+		ORM::factory('audit_trail')->create(array(
+			'user_id' => customer::current(),
+			'store_id' => store::get(),
+			'controller' => Router::$controller,
+			'method' => Router::$method,
+			'object_id' => $this->input->post('id')
+		));
 	}
 	
 }

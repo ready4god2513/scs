@@ -9,7 +9,6 @@ class Store_Model extends ORM
 		'categories', 
 		'coupons',
 		'customers',
-		'emails',
 		'orders',
 		'pages',
 		'products',
@@ -19,7 +18,8 @@ class Store_Model extends ORM
 	);
 	
 	// Set the active theme for the store
-	protected $has_one = array('active_theme_id' => 'theme');
+	protected $has_one = array('active_theme_id' => 'theme', 'email');
+	
 	
 	
 	/**

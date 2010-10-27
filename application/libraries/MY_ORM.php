@@ -201,6 +201,12 @@ class ORM extends ORM_Core
 			$this->store_id = Kohana::config('store.id');
 		}
 		
+		if(array_key_exists('updated_at', $this->table_columns))
+		{
+			// Update the "updated_at" column
+			$this->updated_at = date('Y-m-d H:i:s');
+		}
+		
 		parent::save();
 	}
 	
@@ -314,9 +320,6 @@ class ORM extends ORM_Core
 				$this->$column = $params[$column];
 			}
 		}
-		
-		// Update the "updated_at" column
-		$this->updated_at = date('Y-m-d H:i:s');
 		
 		// Save, so that we have an ID, and can do has-and-belongs-to-many associations
 		$this->save();

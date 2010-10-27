@@ -5,6 +5,11 @@ class Page_Model extends ORM
 	
 	protected $belongs_to = array('page_category', 'store');
 	protected $sorting = array('sort_order' => 'ASC');
+	public $formo_defaults = array(
+		'page_category_id' => array(
+			'label' => 'Category'
+		)
+	);
 	
 	
 	/**
