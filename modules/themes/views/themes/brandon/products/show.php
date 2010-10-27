@@ -11,7 +11,7 @@
 		<div class="choose-quantity">
 			<?=form::label('quantity', 'Quantity')?>
 			<?=form::input(array('name' => 'quantity', 'value' => 1, 'class' => 'cart-item-quantity-input'))?>
-			<span class="price"><?=$product->price?> lb</span>
+			<span class="price"><?=$product->base_price()?> lb</span>
 		</div>
 		<div class="add-to-cart-button">
 			<?=form::submit('submit', 'Add to Cart')?>

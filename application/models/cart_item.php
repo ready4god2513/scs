@@ -30,7 +30,7 @@ class Cart_item_Model extends ORM
 	  */
 	public function product_subtotal()
 	{
-		return (float) round($this->quantity * $this->product->price, 2);
+		return (float) round($this->quantity * $this->price_each, 2);
 	}
 	
 	

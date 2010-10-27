@@ -14,7 +14,9 @@ class Store_Model extends ORM
 		'products',
 		'sections',
 		'tags',
-		'themes'
+		'themes',
+		'variants',
+		'vendors'
 	);
 	
 	// Set the active theme for the store

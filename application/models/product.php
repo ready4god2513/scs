@@ -4,9 +4,20 @@ class Product_Model extends ORM
 {
 	
 	protected $sorting = array('sort_order' => 'ASC');
-	protected $has_many = array('cart_items', 'product_attributes', 'product_files', 'product_images', 'order_details');
-	protected $has_and_belongs_to_many = array('categories');
-	protected $belongs_to = array('store');
+	protected $has_many = array('cart_items', 'attributes', 'files', 'images', 'tags', 'order_details');
+	protected $has_and_belongs_to_many = array('categories', 'variants');
+	protected $belongs_to = array('store', 'vendor');
+	
+	// Formo settings
+	public $formo_defaults = array(
+		'vendor_id' => array(
+			'blank' => true,
+			'label' => 'Vendor'
+		),
+		'variants' => array(
+			'label' => 'Options'
+		)
+	);
 	
 	/**
 	  * Show path route
@@ -16,22 +27,6 @@ class Product_Model extends ORM
 	public function show_path()
 	{
 		return url::site(Kohana::config('routes.base_crud_route') . inflector::singular($this->object_name) . '/' . format::pretty_url($this->name));
-	}
-	
-	
-	/**
-	  * Make sure that the price gets formatted correctly
-	  * @Developer brandon
-	  * @Date Oct 12, 2010
-	  */
-	public function __get($key = NULL)
-	{
-		if($key == 'price')
-		{
-			return number_format(parent::__get($key), 2);
-		}
-		
-		return parent::__get($key);
 	}
 	
 	
@@ -55,6 +50,17 @@ class Product_Model extends ORM
 	public function link()
 	{
 		return html::anchor($this->show_path(), $this->name);
+	}
+	
+	
+	/**
+	  * Get the base price
+	  * @developer Brandon Hansen
+	  * @date Oct 26, 2010
+	  */
+	public function base_price()
+	{
+		return rand(1, 9187.80);
 	}
 
 }

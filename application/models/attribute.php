@@ -1,6 +1,6 @@
 <?php
 
-class Product_attribute_Model extends ORM
+class Attribute_Model extends ORM
 {
 	
 	protected $belongs_to = array('product');

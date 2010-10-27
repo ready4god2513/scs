@@ -196,14 +196,21 @@ class ORM extends ORM_Core
 	  */
 	public function save()
 	{
+		// Set the store id
 		if(array_key_exists('store_id', $this->table_columns))
 		{
 			$this->store_id = Kohana::config('store.id');
 		}
 		
+		// Set the created at on new entries
+		if(array_key_exists('created_at', $this->table_columns) && !$this->loaded)
+		{
+			$this->created_at = date('Y-m-d H:i:s');
+		}
+		
+		// Update the "updated_at" column
 		if(array_key_exists('updated_at', $this->table_columns))
 		{
-			// Update the "updated_at" column
 			$this->updated_at = date('Y-m-d H:i:s');
 		}
 		

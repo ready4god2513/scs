@@ -1,5 +1,7 @@
-<?=html::anchor('admin/categories/new', 'New Category')?> | 
-<?=html::anchor('admin/products', 'Products')?>
+<div class="buttons">
+	<?=html::anchor('admin/categories/new', 'New Category')?>
+	<?=html::anchor('admin/products', 'Products')?>
+</div>
 <table class="sortable_table">
 	<thead>
 		<tr>

@@ -5,16 +5,7 @@ class Category_Model extends ORM
 	
 	protected $sorting = array('sort_order' => 'ASC');
 	protected $has_and_belongs_to_many = array('products');
-	protected $belongs_to = array('store', 'category');
-	protected $has_many = array('categories');
-	
-	// Add a blank option for categories
-	public $formo_defaults = array(
-		'category_id' => array(
-			'blank' => true,
-			'label' => 'Category'
-		)
-	);
+	protected $belongs_to = array('store');
 	
 	
 	/**
@@ -34,6 +25,22 @@ class Category_Model extends ORM
 		{
 			return $path;
 		}
+	}
+	
+	
+	/**
+	  * Whenever setting the slug, make sure that it conforms to requirements
+	  * @developer Brandon Hansen
+	  * @date Oct 26, 2010
+	  */
+	public function __set($key, $value)
+	{
+		if($key == 'slug')
+		{
+			$value = format::pretty_url($value);
+		}
+		
+		parent::__set($key, $value);
 	}
 
 }

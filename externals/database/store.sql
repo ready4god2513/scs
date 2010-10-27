@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `attributes`
+--
+
+DROP TABLE IF EXISTS `attributes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `attributes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `attributes`
+--
+
+LOCK TABLES `attributes` WRITE;
+/*!40000 ALTER TABLE `attributes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `attributes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `audit_trails`
 --
 
@@ -32,7 +57,7 @@ CREATE TABLE `audit_trails` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +66,7 @@ CREATE TABLE `audit_trails` (
 
 LOCK TABLES `audit_trails` WRITE;
 /*!40000 ALTER TABLE `audit_trails` DISABLE KEYS */;
-INSERT INTO `audit_trails` VALUES (1,0,1,'categories','index',0,'2010-10-27 03:38:28','2010-10-27 03:38:28'),(2,0,1,'categories','edit',0,'2010-10-27 03:40:17','2010-10-27 03:40:17'),(3,0,1,'categories','edit',0,'2010-10-27 03:46:15','2010-10-27 03:46:15'),(4,0,1,'categories','edit',0,'2010-10-27 03:59:01','2010-10-27 03:59:02'),(5,0,1,'categories','edit',0,'2010-10-27 03:59:17','2010-10-27 03:59:17'),(6,0,1,'categories','edit',0,'2010-10-27 03:59:40','2010-10-27 03:59:40'),(7,0,1,'products','index',0,'2010-10-27 03:59:45','2010-10-27 03:59:45'),(8,0,1,'products','edit',0,'2010-10-27 03:59:46','2010-10-27 03:59:46'),(9,0,1,'orders','index',0,'2010-10-27 03:59:53','2010-10-27 03:59:53'),(10,0,1,'orders','show',0,'2010-10-27 03:59:54','2010-10-27 03:59:54'),(11,0,1,'products','index',0,'2010-10-27 03:59:56','2010-10-27 03:59:56'),(12,0,1,'blogs','index',0,'2010-10-27 03:59:57','2010-10-27 03:59:57'),(13,0,1,'blogs','edit',0,'2010-10-27 03:59:58','2010-10-27 03:59:58'),(14,0,1,'blogs','index',0,'2010-10-27 04:00:00','2010-10-27 04:00:00'),(15,0,1,'pages','index',0,'2010-10-27 04:00:01','2010-10-27 04:00:01'),(16,0,1,'pages','edit',0,'2010-10-27 04:00:02','2010-10-27 04:00:02'),(17,0,1,'pages','edit',0,'2010-10-27 04:00:23','2010-10-27 04:00:23'),(18,0,1,'pages','index',0,'2010-10-27 04:00:33','2010-10-27 04:00:33'),(19,0,1,'pages','edit',0,'2010-10-27 04:00:35','2010-10-27 04:00:35'),(20,0,1,'orders','index',0,'2010-10-27 04:00:38','2010-10-27 04:00:38');
+INSERT INTO `audit_trails` VALUES (1,0,1,'categories','index',0,'2010-10-27 03:38:28','2010-10-27 03:38:28'),(2,0,1,'categories','edit',0,'2010-10-27 03:40:17','2010-10-27 03:40:17'),(3,0,1,'categories','edit',0,'2010-10-27 03:46:15','2010-10-27 03:46:15'),(4,0,1,'categories','edit',0,'2010-10-27 03:59:01','2010-10-27 03:59:02'),(5,0,1,'categories','edit',0,'2010-10-27 03:59:17','2010-10-27 03:59:17'),(6,0,1,'categories','edit',0,'2010-10-27 03:59:40','2010-10-27 03:59:40'),(7,0,1,'products','index',0,'2010-10-27 03:59:45','2010-10-27 03:59:45'),(8,0,1,'products','edit',0,'2010-10-27 03:59:46','2010-10-27 03:59:46'),(9,0,1,'orders','index',0,'2010-10-27 03:59:53','2010-10-27 03:59:53'),(10,0,1,'orders','show',0,'2010-10-27 03:59:54','2010-10-27 03:59:54'),(11,0,1,'products','index',0,'2010-10-27 03:59:56','2010-10-27 03:59:56'),(12,0,1,'blogs','index',0,'2010-10-27 03:59:57','2010-10-27 03:59:57'),(13,0,1,'blogs','edit',0,'2010-10-27 03:59:58','2010-10-27 03:59:58'),(14,0,1,'blogs','index',0,'2010-10-27 04:00:00','2010-10-27 04:00:00'),(15,0,1,'pages','index',0,'2010-10-27 04:00:01','2010-10-27 04:00:01'),(16,0,1,'pages','edit',0,'2010-10-27 04:00:02','2010-10-27 04:00:02'),(17,0,1,'pages','edit',0,'2010-10-27 04:00:23','2010-10-27 04:00:23'),(18,0,1,'pages','index',0,'2010-10-27 04:00:33','2010-10-27 04:00:33'),(19,0,1,'pages','edit',0,'2010-10-27 04:00:35','2010-10-27 04:00:35'),(20,0,1,'orders','index',0,'2010-10-27 04:00:38','2010-10-27 04:00:38'),(21,0,1,'products','index',0,'2010-10-27 04:04:12','2010-10-27 04:04:12'),(22,0,1,'products','edit',0,'2010-10-27 04:04:13','2010-10-27 04:04:13'),(23,0,1,'products','edit',0,'2010-10-27 04:36:42','2010-10-27 04:36:42'),(24,0,1,'orders','index',0,'2010-10-27 04:36:49','2010-10-27 04:36:49'),(25,0,1,'customers','index',0,'2010-10-27 04:36:50','2010-10-27 04:36:50'),(26,0,1,'orders','index',0,'2010-10-27 04:36:51','2010-10-27 04:36:51'),(27,0,1,'orders','index',0,'2010-10-27 04:43:12','2010-10-27 04:43:12'),(28,0,1,'products','index',0,'2010-10-27 04:43:13','2010-10-27 04:43:13'),(29,0,1,'products','edit',0,'2010-10-27 04:43:14','2010-10-27 04:43:14'),(30,0,1,'products','edit',0,'2010-10-27 04:44:29','2010-10-27 04:44:29'),(31,0,1,'customers','index',0,'2010-10-27 04:44:31','2010-10-27 04:44:31'),(32,0,1,'orders','index',0,'2010-10-27 04:44:32','2010-10-27 04:44:32'),(33,0,1,'orders','show',0,'2010-10-27 04:44:33','2010-10-27 04:44:33'),(34,0,1,'customers','index',0,'2010-10-27 04:44:36','2010-10-27 04:44:36'),(35,0,1,'products','index',0,'2010-10-27 04:44:37','2010-10-27 04:44:37'),(36,0,1,'blogs','index',0,'2010-10-27 04:44:38','2010-10-27 04:44:38'),(37,0,1,'blogs','edit',0,'2010-10-27 04:44:39','2010-10-27 04:44:39'),(38,0,1,'pages','index',0,'2010-10-27 04:44:40','2010-10-27 04:44:40'),(39,0,1,'pages','index',0,'2010-10-27 04:51:13','2010-10-27 04:51:13'),(40,0,1,'pages','edit',0,'2010-10-27 04:51:14','2010-10-27 04:51:14'),(41,0,1,'pages','index',0,'2010-10-27 04:51:16','2010-10-27 04:51:16'),(42,0,1,'blogs','index',0,'2010-10-27 04:51:19','2010-10-27 04:51:19'),(43,0,1,'blogs','edit',0,'2010-10-27 04:51:19','2010-10-27 04:51:19'),(44,0,1,'customers','index',0,'2010-10-27 04:51:21','2010-10-27 04:51:21'),(45,0,1,'orders','index',0,'2010-10-27 04:51:22','2010-10-27 04:51:22'),(46,0,1,'products','index',0,'2010-10-27 04:51:23','2010-10-27 04:51:23'),(47,0,1,'products','edit',0,'2010-10-27 04:51:24','2010-10-27 04:51:24'),(48,0,1,'products','edit',0,'2010-10-27 04:52:14','2010-10-27 04:52:14'),(49,0,1,'products','edit',0,'2010-10-27 05:00:24','2010-10-27 05:00:24'),(50,0,1,'products','edit',0,'2010-10-27 05:00:53','2010-10-27 05:00:53'),(51,0,1,'products','edit',0,'2010-10-27 05:01:21','2010-10-27 05:01:21'),(52,0,1,'products','edit',0,'2010-10-27 05:06:17','2010-10-27 05:06:17'),(53,0,1,'products','edit',0,'2010-10-27 05:06:18','2010-10-27 05:06:18'),(54,0,1,'products','edit',0,'2010-10-27 05:18:38','2010-10-27 05:18:38'),(55,0,1,'products','update',0,'2010-10-27 05:18:47','2010-10-27 05:18:47'),(56,0,1,'products','index',0,'2010-10-27 05:18:47','2010-10-27 05:18:47'),(57,0,1,'products','edit',0,'2010-10-27 05:18:48','2010-10-27 05:18:48'),(58,0,1,'pages','index',0,'2010-10-27 05:19:16','2010-10-27 05:19:16'),(59,0,1,'pages','index',0,'2010-10-27 05:19:19','2010-10-27 05:19:19'),(60,0,1,'blogs','index',0,'2010-10-27 05:19:20','2010-10-27 05:19:20'),(61,0,1,'products','index',0,'2010-10-27 05:19:22','2010-10-27 05:19:22'),(62,0,1,'categories','index',0,'2010-10-27 05:19:24','2010-10-27 05:19:24'),(63,0,1,'categories','edit',0,'2010-10-27 05:19:25','2010-10-27 05:19:25'),(64,0,1,'categories','index',0,'2010-10-27 05:19:39','2010-10-27 05:19:39'),(65,0,1,'categories','new_one',0,'2010-10-27 05:19:40','2010-10-27 05:19:40'),(66,0,1,'categories','create',0,'2010-10-27 05:21:50','2010-10-27 05:21:50'),(67,0,1,'categories','new_one',0,'2010-10-27 05:21:50','2010-10-27 05:21:50'),(68,0,1,'products','index',0,'2010-10-27 05:21:53','2010-10-27 05:21:53'),(69,0,1,'categories','index',0,'2010-10-27 05:21:55','2010-10-27 05:21:55'),(70,0,1,'categories','edit',0,'2010-10-27 05:21:57','2010-10-27 05:21:57'),(71,0,1,'categories','index',0,'2010-10-27 05:21:59','2010-10-27 05:21:59'),(72,0,1,'categories','index',0,'2010-10-27 05:22:41','2010-10-27 05:22:41'),(73,0,1,'products','index',0,'2010-10-27 05:22:43','2010-10-27 05:22:43'),(74,0,1,'products','edit',0,'2010-10-27 05:22:44','2010-10-27 05:22:44'),(75,0,1,'products','edit',0,'2010-10-27 05:23:47','2010-10-27 05:23:47'),(76,0,1,'products','index',0,'2010-10-27 05:23:49','2010-10-27 05:23:49'),(77,0,1,'categories','index',0,'2010-10-27 05:23:50','2010-10-27 05:23:50'),(78,0,1,'categories','index',0,'2010-10-27 05:24:11','2010-10-27 05:24:11'),(79,0,1,'categories','index',0,'2010-10-27 05:24:13','2010-10-27 05:24:13'),(80,0,1,'products','index',0,'2010-10-27 05:24:14','2010-10-27 05:24:14'),(81,0,1,'categories','index',0,'2010-10-27 05:24:14','2010-10-27 05:24:14'),(82,0,1,'categories','index',0,'2010-10-27 05:24:53','2010-10-27 05:24:53'),(83,0,1,'categories','index',0,'2010-10-27 05:24:58','2010-10-27 05:24:58'),(84,0,1,'categories','new_one',0,'2010-10-27 05:25:01','2010-10-27 05:25:01');
 /*!40000 ALTER TABLE `audit_trails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,6 +113,7 @@ CREATE TABLE `cart_items` (
   `cart_id` int(150) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `price_each` float NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -102,7 +128,7 @@ CREATE TABLE `cart_items` (
 
 LOCK TABLES `cart_items` WRITE;
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-INSERT INTO `cart_items` VALUES (1,1,2,1,'2010-10-20 03:49:42','0000-00-00 00:00:00'),(2,1,3,1,'2010-10-20 05:53:59','0000-00-00 00:00:00'),(3,2,4,1,'2010-10-23 02:55:35','0000-00-00 00:00:00'),(4,9,3,1,'2010-10-27 03:14:38','0000-00-00 00:00:00');
+INSERT INTO `cart_items` VALUES (1,1,2,1,0,'2010-10-20 03:49:42','0000-00-00 00:00:00'),(2,1,3,1,0,'2010-10-20 05:53:59','0000-00-00 00:00:00'),(3,2,4,1,0,'2010-10-23 02:55:35','0000-00-00 00:00:00'),(4,9,3,1,0,'2010-10-27 03:14:38','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +172,6 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `store_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL DEFAULT '',
   `slug` varchar(150) NOT NULL,
   `sort_order` int(11) NOT NULL DEFAULT '0',
@@ -156,7 +181,7 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`id`),
   KEY `store` (`store_id`),
   CONSTRAINT `categories_store` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +190,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (4,1,0,'Dark Roasts','dark-roasts',0,'published','2010-10-19 05:56:31','2010-10-27 03:29:38'),(5,1,0,'Light Roast','',0,'published','2010-10-19 06:08:19','2010-10-19 06:08:19');
+INSERT INTO `categories` VALUES (4,1,'Dark Roasts','dark-roasts',0,'published','2010-10-19 05:56:31','2010-10-27 03:29:38'),(5,1,'Light Roast','',0,'published','2010-10-19 06:08:19','2010-10-19 06:08:19'),(6,1,'High Caffeine','high-caffeine',0,'published','2010-10-27 05:21:50','2010-10-27 05:21:50');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,6 +216,7 @@ CREATE TABLE `categories_products` (
 
 LOCK TABLES `categories_products` WRITE;
 /*!40000 ALTER TABLE `categories_products` DISABLE KEYS */;
+INSERT INTO `categories_products` VALUES (0,4,3,'2010-10-27 05:18:47','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `categories_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,6 +396,58 @@ LOCK TABLES `emails` WRITE;
 /*!40000 ALTER TABLE `emails` DISABLE KEYS */;
 INSERT INTO `emails` VALUES (1,1,'This is the order confirmation email.  ','I am letting you know that you have made a sale.','We have shipped your stuff.','Your order is complete.  Let us know if you have any questions.','We have refunded your order.  Sorry that everything didn\'t work out perfect for you.','2010-10-24 23:41:54','2010-10-24 23:41:54');
 /*!40000 ALTER TABLE `emails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `files`
+--
+
+DROP TABLE IF EXISTS `files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `files`
+--
+
+LOCK TABLES `files` WRITE;
+/*!40000 ALTER TABLE `files` DISABLE KEYS */;
+/*!40000 ALTER TABLE `files` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `imgurl` varchar(150) DEFAULT NULL,
+  `thumburl` varchar(150) NOT NULL,
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -672,83 +750,6 @@ INSERT INTO `pages` VALUES (1,1,1,'About','This is a bunch of stuff','',0,'2010-
 UNLOCK TABLES;
 
 --
--- Table structure for table `product_attributes`
---
-
-DROP TABLE IF EXISTS `product_attributes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product_attributes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `product_attributes`
---
-
-LOCK TABLES `product_attributes` WRITE;
-/*!40000 ALTER TABLE `product_attributes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_attributes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `product_files`
---
-
-DROP TABLE IF EXISTS `product_files`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product_files` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `product_files`
---
-
-LOCK TABLES `product_files` WRITE;
-/*!40000 ALTER TABLE `product_files` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_files` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `product_images`
---
-
-DROP TABLE IF EXISTS `product_images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product_images` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `imgurl` varchar(150) DEFAULT NULL,
-  `thumburl` varchar(150) NOT NULL,
-  `sort_order` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `product_images`
---
-
-LOCK TABLES `product_images` WRITE;
-/*!40000 ALTER TABLE `product_images` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_images` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `products`
 --
 
@@ -758,11 +759,9 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `store_id` int(11) NOT NULL,
-  `name` varchar(150) DEFAULT NULL,
+  `vendor_id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL DEFAULT '',
   `description` text NOT NULL,
-  `short_description` varchar(500) NOT NULL,
-  `marketing_description` varchar(250) NOT NULL,
-  `price` float NOT NULL,
   `sort_order` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -778,8 +777,43 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,1,'Moka Java Blend','A single sip of this stuff and you will be hooked.','rich and bold with a clean finish','our boldest offering. not for sissies',9.99,0,'2010-10-11 22:23:17','2010-10-18 17:12:35'),(2,1,'Swiss Water Decaf Brazilian','Nunc tortor ligula, malesuada in blandit nec, rutrum in nulla. Nullam pharetra mattis justo, vel consequat sem ultrices vel. Integer tempus mauris et eros blandit ac fermentum mauris laoreet. Quisque pretium dolor quis erat fringilla eget scelerisque nulla aliquam. Pellentesque vel pellentesque arcu. Ut scelerisque interdum elit ut molestie. Nullam lobortis lectus sed neque mollis condimentum. Etiam sollicitudin justo at lectus porttitor sollicitudin. Praesent vel nisl non diam tristique rutrum. Donec viverra dictum dolor vel convallis. Duis ullamcorper dui a tellus auctor volutpat. Morbi felis dolor, accumsan vel laoreet eu, hendrerit at lorem.  Ut sollicitudin elementum nisl, in fermentum mi tincidunt eget. Fusce molestie nisl in ligula gravida posuere. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vehicula suscipit leo at fringilla. Cras eget ligula enim, egestas pellentesque enim. Donec ut nibh id massa pellentesque porttitor accumsan non ante. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed semper sem non erat sodales hendrerit. Vivamus bibendum dapibus elit at volutpat. Cras mollis euismod malesuada. Cras a arcu eu dolor tincidunt congue ut et odio.','for the coffee lover with plenty of energy to go around.  a great decaf blend.','decaf, but not at all weak',8.49,1,'2010-10-11 23:52:37','2010-10-18 17:12:37'),(3,1,'Oro Negro','This Christmas we will be offering the already mentioned Oro Negro which is a Spanish-style roast (coffee roasted with sugar). Oro Negro will be the pinnacle of our Christmas offerings but also the more limited.','A spanish-style roast that is sure to pique your interest','Coffee roasted in sugar.  Need I say more?',12.49,-1,'2010-10-13 05:22:05','2010-10-19 17:27:48'),(4,1,'Turkish Delight','For the rest of you non-elitists we have come up with something special.  Close your eyes and think of a lion, a witch and a wardrobe because our next offering is called Turkish Delight. This blend will come pre-ground (for drip brewers) and spiced with cardamom.  The inspiration of this spiced blend came from enjoying a Turkish cup of coffee with some missionaries from Jordan.  Get ready for a memorable cup of coffee which will enchant your senses and also serve as a great gift!  This offering will come packaged in a red foil valve-bag (for freshness) and a special holiday label.','Get ready for a memorable cup of coffee which will enchant your senses and also serve as a great gift!  This offering will come packaged in a red foil valve-bag (for freshness) and a special holiday label.','A pre-ground blend spiced with cardamom',11.99,-1,'2010-10-13 05:24:27','2010-10-19 05:59:20');
+INSERT INTO `products` VALUES (1,1,0,'Moka Java Blend','A single sip of this stuff and you will be hooked.',0,'2010-10-11 22:23:17','2010-10-18 17:12:35'),(2,1,0,'Swiss Water Decaf Brazilian','Nunc tortor ligula, malesuada in blandit nec, rutrum in nulla. Nullam pharetra mattis justo, vel consequat sem ultrices vel. Integer tempus mauris et eros blandit ac fermentum mauris laoreet. Quisque pretium dolor quis erat fringilla eget scelerisque nulla aliquam. Pellentesque vel pellentesque arcu. Ut scelerisque interdum elit ut molestie. Nullam lobortis lectus sed neque mollis condimentum. Etiam sollicitudin justo at lectus porttitor sollicitudin. Praesent vel nisl non diam tristique rutrum. Donec viverra dictum dolor vel convallis. Duis ullamcorper dui a tellus auctor volutpat. Morbi felis dolor, accumsan vel laoreet eu, hendrerit at lorem.  Ut sollicitudin elementum nisl, in fermentum mi tincidunt eget. Fusce molestie nisl in ligula gravida posuere. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vehicula suscipit leo at fringilla. Cras eget ligula enim, egestas pellentesque enim. Donec ut nibh id massa pellentesque porttitor accumsan non ante. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed semper sem non erat sodales hendrerit. Vivamus bibendum dapibus elit at volutpat. Cras mollis euismod malesuada. Cras a arcu eu dolor tincidunt congue ut et odio.',1,'2010-10-11 23:52:37','2010-10-18 17:12:37'),(3,1,1,'Oro Negro','This Christmas we will be offering the already mentioned Oro Negro which is a Spanish-style roast (coffee roasted with sugar). Oro Negro will be the pinnacle of our Christmas offerings but also the more limited.',-1,'2010-10-13 05:22:05','2010-10-27 05:18:47'),(4,1,0,'Turkish Delight','For the rest of you non-elitists we have come up with something special.  Close your eyes and think of a lion, a witch and a wardrobe because our next offering is called Turkish Delight. This blend will come pre-ground (for drip brewers) and spiced with cardamom.  The inspiration of this spiced blend came from enjoying a Turkish cup of coffee with some missionaries from Jordan.  Get ready for a memorable cup of coffee which will enchant your senses and also serve as a great gift!  This offering will come packaged in a red foil valve-bag (for freshness) and a special holiday label.',-1,'2010-10-13 05:24:27','2010-10-19 05:59:20');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products_variants`
+--
+
+DROP TABLE IF EXISTS `products_variants`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products_variants` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `variant_id` int(11) NOT NULL,
+  `sku` varchar(50) NOT NULL,
+  `price` float NOT NULL,
+  `compare_price` float NOT NULL,
+  `weight` float NOT NULL,
+  `taxable` tinyint(4) NOT NULL DEFAULT '1',
+  `physical` tinyint(4) NOT NULL DEFAULT '1',
+  `track_stock` tinyint(4) NOT NULL DEFAULT '1',
+  `stock` int(11) NOT NULL DEFAULT '0',
+  `allow_out_of_stock_purchases` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products_variants`
+--
+
+LOCK TABLES `products_variants` WRITE;
+/*!40000 ALTER TABLE `products_variants` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products_variants` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -885,7 +919,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('9c4ead17b22a159111ff8ec2cfce1497',1288152038,'c2Vzc2lvbl9pZHxzOjMyOiI5YzRlYWQxN2IyMmExNTkxMTFmZjhlYzJjZmNlMTQ5NyI7dG90YWxfaGl0c3xpOjUyO19rZl9mbGFzaF98YTowOnt9dXNlcl9hZ2VudHxzOjEyNToiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgVTsgSW50ZWwgTWFjIE9TIFggMTBfNl80OyBlbi1VUykgQXBwbGVXZWJLaXQvNTM0LjcgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNy4wLjUxNy40MSBTYWZhcmkvNTM0LjciO2lwX2FkZHJlc3N8czo5OiIxMjcuMC4wLjEiO2xhc3RfYWN0aXZpdHl8aToxMjg4MTUyMDM4O2NhcnRfMXxzOjE6IjkiOw==');
+INSERT INTO `sessions` VALUES ('4616d9e68ffcebaec96e51fe5d93e362',1288157101,'c2Vzc2lvbl9pZHxzOjMyOiI0NjE2ZDllNjhmZmNlYmFlYzk2ZTUxZmU1ZDkzZTM2MiI7dG90YWxfaGl0c3xpOjExOTtfa2ZfZmxhc2hffGE6MDp7fXVzZXJfYWdlbnR8czoxMjU6Ik1vemlsbGEvNS4wIChNYWNpbnRvc2g7IFU7IEludGVsIE1hYyBPUyBYIDEwXzZfNDsgZW4tVVMpIEFwcGxlV2ViS2l0LzUzNC43IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzcuMC41MTcuNDEgU2FmYXJpLzUzNC43IjtpcF9hZGRyZXNzfHM6OToiMTI3LjAuMC4xIjtsYXN0X2FjdGl2aXR5fGk6MTI4ODE1NzEwMDtjYXJ0XzF8czoxOiI5Ijs=');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -927,6 +961,7 @@ DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `store_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `name` varchar(150) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -973,6 +1008,58 @@ LOCK TABLES `themes` WRITE;
 INSERT INTO `themes` VALUES (1,1,'scs','2010-10-14 04:31:13','2010-10-18 17:12:21'),(2,2,'scs','2010-10-20 05:37:32','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `themes` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `variants`
+--
+
+DROP TABLE IF EXISTS `variants`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variants` (
+  `id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `variants`
+--
+
+LOCK TABLES `variants` WRITE;
+/*!40000 ALTER TABLE `variants` DISABLE KEYS */;
+/*!40000 ALTER TABLE `variants` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vendors`
+--
+
+DROP TABLE IF EXISTS `vendors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vendors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `store_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vendors`
+--
+
+LOCK TABLES `vendors` WRITE;
+/*!40000 ALTER TABLE `vendors` DISABLE KEYS */;
+INSERT INTO `vendors` VALUES (1,1,'South African Coffee','2010-10-27 05:18:37','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `vendors` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -983,4 +1070,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-26 21:01:03
+-- Dump completed on 2010-10-26 22:25:27

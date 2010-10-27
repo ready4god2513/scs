@@ -31,7 +31,7 @@ class Products_Controller extends Application_Controller
 		meta::set_title(ucwords($product->name));
 		
 		// Set the description
-		meta::set_description($product->marketing_description);
+		meta::set_description($product->description);
 		
 		// Show the page
 		parent::show($product);

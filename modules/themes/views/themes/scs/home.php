@@ -9,13 +9,13 @@
 	<?php foreach(ORM::factory('product')->find_all() as $product): ?>
 		<div class="shopping-cart-list">
 			<h3 class="coffee-type">
-				<?=html::anchor($product->show_path(), $product->name)?> <span class="price"><?=$product->price?>lb</span>
+				<?=html::anchor($product->show_path(), $product->name)?> <span class="price"><?=$product->base_price()?>lb</span>
 			</h3>
 			<p>
-				<?=$product->short_description?>
+				<?=$product->description?>
 			</p>
 			<p class="notes">
-				**<?=$product->marketing_description?>**
+				**<?=$product->description?>**
 			</p>
 		</div>
 	<?php endforeach; ?>

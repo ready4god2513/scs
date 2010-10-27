@@ -24,6 +24,7 @@
 				<li><?=html::anchor('admin/orders', 'Orders')?></li>
 				<li><?=html::anchor('admin/customers', 'Customers')?></li>
 				<li><?=html::anchor('admin/products', 'Products')?></li>
+				<li><?=html::anchor('admin/categories', 'Categories')?></li>
 				<li><?=html::anchor('admin/blogs', 'Blogs')?></li>
 				<li><?=html::anchor('admin/pages', 'Pages')?></li>
 				<li><?=html::anchor('admin/sections', 'Navigation')?></li>

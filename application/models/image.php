@@ -1,6 +1,6 @@
 <?php
 
-class Product_image_Model extends ORM
+class Image_Model extends ORM
 {
 	
 	protected $belongs_to = array('product');
