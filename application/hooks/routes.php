@@ -1,3 +1,3 @@
 <?php
 
-Event::add('system.ready',array('route','route_categories'));
+Event::add('system.ready',array('route','route_products_and_categories'));

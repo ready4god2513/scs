@@ -22,10 +22,10 @@ class Products_Controller extends Application_Controller
 	  * @Developer brandon
 	  * @Date Oct 11, 2010
 	  */
-	public function show($name = NULL)
+	public function show($id = NULL)
 	{
 		// Find the product that we are trying to access
-		$product = ORM::factory('product')->where('name', format::dash_to_space($name))->find();
+		$product = ORM::factory('product', $id);
 		
 		// Set the title
 		meta::set_title(ucwords($product->name));

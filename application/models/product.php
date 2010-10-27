@@ -7,6 +7,7 @@ class Product_Model extends ORM
 	protected $has_many = array('cart_items', 'attributes', 'files', 'images', 'tags', 'order_details');
 	protected $has_and_belongs_to_many = array('categories', 'variants');
 	protected $belongs_to = array('store', 'vendor');
+	protected $validates_presence_of = array('name', 'slug');
 	
 	// Formo settings
 	public $formo_defaults = array(
@@ -19,14 +20,39 @@ class Product_Model extends ORM
 		)
 	);
 	
+	
+	/**
+	  * Whenever setting the slug, make sure that it conforms to requirements
+	  * @developer Brandon Hansen
+	  * @date Oct 26, 2010
+	  */
+	public function __set($key, $value)
+	{
+		if($key == 'slug')
+		{
+			$value = format::pretty_url($value);
+		}
+		
+		parent::__set($key, $value);
+	}
+	
 	/**
 	  * Show path route
 	  * @Developer brandon
 	  * @Date Oct 11, 2010
 	  */
-	public function show_path()
+	public function show_path($abs = true)
 	{
-		return url::site(Kohana::config('routes.base_crud_route') . inflector::singular($this->object_name) . '/' . format::pretty_url($this->name));
+		$path = $this->object_name . '/' . format::pretty_url($this->slug);
+		
+		if($abs)
+		{
+			return url::site($path);
+		}	
+		else
+		{
+			return $path;
+		}
 	}
 	
 	

@@ -6,6 +6,7 @@ class Category_Model extends ORM
 	protected $sorting = array('sort_order' => 'ASC');
 	protected $has_and_belongs_to_many = array('products');
 	protected $belongs_to = array('store');
+	protected $validates_presence_of = array('name', 'slug');
 	
 	
 	/**
@@ -15,7 +16,7 @@ class Category_Model extends ORM
 	  */
 	public function show_path($abs = true)
 	{
-		$path = format::pretty_url($this->slug);
+		$path = $this->object_name . '/' . format::pretty_url($this->slug);
 		
 		if($abs)
 		{
