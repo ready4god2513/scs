@@ -36,6 +36,7 @@ class Product_Model extends ORM
 		parent::__set($key, $value);
 	}
 	
+	
 	/**
 	  * Show path route
 	  * @Developer brandon
