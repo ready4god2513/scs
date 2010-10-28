@@ -1,6 +1,3 @@
-<div class="left large-half">
-	<?=$form?>
-</div>
-<div class="right small-half">
-
-</div>
+<?=form::open('admin/products/create/')?>
+	<?=View::factory('admin/products/_form')->set('product', $product)?>
+<?=form::close()?>

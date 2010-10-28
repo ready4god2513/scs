@@ -75,7 +75,7 @@ class ORM_Iterator_Core implements Iterator, ArrayAccess, Countable {
 	 * @param   string  value column
 	 * @return  array
 	 */
-	public function select_list($key = NULL, $val = NULL)
+	public function select_list($key = NULL, $val = NULL, $blank = true)
 	{
 		if ($key === NULL)
 		{
@@ -90,6 +90,12 @@ class ORM_Iterator_Core implements Iterator, ArrayAccess, Countable {
 		}
 
 		$array = array();
+		
+		if($blank)
+		{
+			$array[] = null;
+		}
+		
 		foreach ($this->result->result_array() as $row)
 		{
 			$array[$row->$key] = $row->$val;

@@ -14,7 +14,6 @@ abstract class Crud_Controller extends Template_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		
 		if(in_array(Router::$method, $this->excluded_actions))
 		{
 			Event::run('system.404');

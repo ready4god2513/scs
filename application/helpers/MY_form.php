@@ -36,6 +36,47 @@ class form extends form_Core
 		}
 		return $array;
 	}
+	
+	
+	/**
+	  * Add a many to many select list
+	  * @developer Brandon Hansen
+	  * @date Oct 27, 2010
+	  */
+	public static function many_to_many($primary_model, $secondary_models, $property, $display_field_name = 'name', $type = 'inline')
+	{
+		$return = '';
+		$return .= form::hidden($property, 'NULL');
+		
+		if($type == 'table')
+		{
+			$return .= '<table >';
+		}
+		
+		foreach($secondary_models as $secondary_model)
+		{
+			if($type == 'table')
+			{
+				$return .= '<tr><td>';
+			}
+			
+			$return .= form::checkbox($property . '[]', $secondary_model->id, in_array($secondary_model->id, $primary_model->$property->primary_key_array()));
+			$return .= $secondary_model->$display_field_name;
+			
+			if($type == 'table')
+			{
+				$return .= '</td></tr>';
+			}
+		}
+		
+		
+		if($type == 'table')
+		{
+			$return .= '</table>';
+		}
+		
+		return $return;
+	}
 
 	
 	/**

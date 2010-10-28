@@ -5,9 +5,17 @@ class Category_Model extends ORM
 	
 	protected $sorting = array('sort_order' => 'ASC');
 	protected $has_and_belongs_to_many = array('products');
-	protected $belongs_to = array('store');
+	protected $belongs_to = array('store', 'category');
 	protected $validates_presence_of = array('name', 'slug');
+	protected $has_many = array('categories');
 	
+	// Formo settings
+	public $formo_defaults = array(
+		'category_id' => array(
+			'blank' => true,
+			'label' => 'Category'
+		)
+	);
 	
 	/**
 	  * Show path route

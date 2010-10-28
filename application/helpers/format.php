@@ -107,6 +107,17 @@ class format
 	
 	
 	/**
+	  * Weights
+	  * @developer Brandon Hansen
+	  * @date Oct 27, 2010
+	  */
+	public static function weight($weight)
+	{
+		return number_format($weight, 2, '.', '');
+	}
+	
+	
+	/**
 	 * Replace spaces with dashes
 	 * @Developer Brandon Hansen & Andrew Lyric
 	 * @Date March 04, 2010
