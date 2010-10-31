@@ -1,6 +1,6 @@
 <?php
 
-class Variants_Controller extends Application_Controller
+class Variants_Controller extends Admin_Controller
 {
 
 }

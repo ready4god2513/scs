@@ -1,1 +1,1 @@
-<?=$form?>
+<?=View::factory('admin/variants/_nested_form')->set('variant', $variant)?>

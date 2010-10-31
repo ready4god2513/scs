@@ -7,6 +7,7 @@
 <meta name="description" content="<?=meta::get_description()?>" />
 <meta name="keywords" content="<?=meta::get_keywords()?>" />
 <?=html::stylesheet('public/css/admin')?>
+<?=html::script('public/js/jquery')?>
 <?=html::script('public/js/admin')?>
 </head>
 <body id="<?=Router::$controller?>" class="<?=Router::$method?>">

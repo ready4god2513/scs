@@ -15,12 +15,8 @@
 	</div>
 	
 	<div id="admin-product-variants">
-		<h5>Variants</h5>
-		<?php $index = 0; ?>
-		<?php foreach($product->products_variants as $variant): ?>
-			<?php $index++ ?>
-			<?=View::factory('admin/products_variants/_nested_form')->set('variant', $variant)->set('index', $index)?>
-		<?php endforeach; ?>
+		<h5>Inventory</h5>
+		<?=View::factory('admin/variants/index')->set('product', $product)?>
 	</div>
 	
 	<div class="form-fields">
@@ -40,8 +36,8 @@
 	</div>
 	
 	<div class="form-fields">
-		<?=form::label('variants', 'Options')?>
-		<?=form::many_to_many($product, ORM::factory('variant')->find_all(), 'variants')?>
+		<?=form::label('options', 'Options')?>
+		<?=form::many_to_many($product, ORM::factory('option')->find_all(), 'options')?>
 	</div>
 	
 	<div class="form-fields">

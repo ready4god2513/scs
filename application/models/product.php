@@ -4,8 +4,8 @@ class Product_Model extends ORM
 {
 	
 	protected $sorting = array('sort_order' => 'ASC');
-	protected $has_many = array('cart_items', 'files', 'images', 'tags', 'order_details', 'products_variants');
-	protected $has_and_belongs_to_many = array('categories', 'variants');
+	protected $has_many = array('cart_items', 'files', 'images', 'tags', 'order_details', 'variants');
+	protected $has_and_belongs_to_many = array('categories', 'options');
 	protected $belongs_to = array('store', 'vendor');
 	protected $validates_presence_of = array('name', 'slug');
 	
