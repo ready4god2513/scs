@@ -26,19 +26,10 @@
 		<?php endforeach; ?>
 	</tbody>
 </table>
-<?=html::anchor('admin/variants/new/', 'New Inventory Item')?>
+<?=html::anchor('admin/variants/new_one/' . $product, 'New Inventory Item')?>
 
 <?php foreach($product->variants as $variant): ?>
 	<div id="variant-<?=$variant?>" class="variant-editing hide">
-		<?=View::factory('admin/variants/_nested_form')->set('variant', $variant)?>
+		<?=View::factory('admin/variants/edit')->set('variant', $variant)?>
 	</div>
 <?php endforeach; ?>
-
-<script type="text/javascript">
-	$(function(){
-		$('.edit-variant').click(function(){
-			$('#variant-' + $(this).attr('id')).slideToggle();
-			return false;
-		});
-	});
-</script>
