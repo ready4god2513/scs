@@ -5,14 +5,37 @@ class Variants_Controller extends Admin_Controller
 	
 	
 	/**
-	  * On the new page, we need to make sure to pass in the product
+	  * In order to create the form, we actually need to create the variant
 	  * @developer Brandon Hansen
 	  * @date Oct 30, 2010
 	  */
-	public function new_one($product_id)
+	public function new_one($product = NULL)
 	{
-		parent::new_one();
-		$this->template->content->set('product', ORM::factory('product', $product_id));
+		$product = ORM::factory('product', $product);
+		
+		// Only continue if the product was found
+		if(!$product->loaded)
+		{
+			return false;
+		}
+		
+		$variant = ORM::factory('variant');
+		$variant->create_blank($product);
+		
+		if(request::is_ajax())
+		{
+			View::factory('admin/variants/_nested_form')
+				->set('variant', $variant)
+				->render(true);
+		}
+		else
+		{
+			$this->template
+			->set('content', View::factory('admin/variants/_nested_form')
+				->set('variant', $variant)
+				->render(true));
+		}
+		
 	}
 
 }

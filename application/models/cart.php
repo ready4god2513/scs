@@ -66,9 +66,9 @@ class Cart_Model extends ORM
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
-	public function add_product(Product_Model $product, $quantity = 1)
+	public function add_product(Product_Model $product, $variant, $quantity = 1)
 	{
-		return $this->update_quantity($product, $quantity, true);
+		return $this->update_quantity($product, $variant, $quantity, true);
 	}
 	
 	
@@ -77,9 +77,9 @@ class Cart_Model extends ORM
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
-	public function remove_product(Product_Model $product)
+	public function remove_product(Cart_Item_Model $item)
 	{
-		ORM::factory('cart_item')->delete_all_by_product_and_cart($product, $this);
+		$item->delete_all_by_product_and_cart();
 	}
 	
 	
@@ -88,11 +88,12 @@ class Cart_Model extends ORM
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
-	public function update_quantity(Product_Model $product, $quantity = 1, $add = false)
+	public function update_quantity(Product_Model $product, Variant_Model $variant, $quantity = 1, $add = false)
 	{
 		$cart_item = ORM::factory('cart_item')
 			->where('product_id', $product)
 			->where('cart_id', $this)
+			->where('variant_id', $variant)
 			->find();
 			
 		// If we are adding, combine the two orders
@@ -103,12 +104,13 @@ class Cart_Model extends ORM
 		
 		if($quantity < 1)
 		{
-			return $this->remove_product($product);
+			return $this->remove_product($cart_item);
 		}
 			
 		$cart_item->cart_id = $this;
 		$cart_item->product_id = $product;
 		$cart_item->quantity = $quantity;
+		$cart_item->variant_id = $variant;
 		$cart_item->save();
 	}
 

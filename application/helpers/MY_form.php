@@ -5,6 +5,24 @@ class form extends form_Core
 	
 	
 	/**
+	  * Provide a dropdown for variants
+	  * @developer Brandon Hansen
+	  * @date Nov 2, 2010
+	  */
+	public static function variant_dropdown(Product_Model $product)
+	{
+		$options = array();
+		
+		foreach($product->variants as $variant)
+		{
+			$options[(string)$variant] = $variant->name . ' - ' . format::dollar_format($variant->price);
+		}
+		
+		return self::dropdown(array('name' => 'variant_id', 'id' => 'select-variant'), $options);
+	}
+	
+	
+	/**
 	 * Return an array that can be used in the drop down for selecting credit card months
 	 * @Developer Brandon Hansen
 	 * @Date April 19, 2010

@@ -76,7 +76,46 @@ class Product_Model extends ORM
 	  */
 	public function base_price()
 	{
-		return rand(1, 9187.80);
+		return ORM::factory('variant')->where('product_id', $this)->orderby('price', 'ASC')->find()->price;
+	}
+	
+	
+	/**
+	  * Find the number of sales for a product
+	  * @developer Brandon Hansen
+	  * @date Nov 1, 2010
+	  */
+	public function number_of_sales()
+	{
+		return rand(0, 10);
+	}
+	
+	
+	/**
+	  * Check to see if the product is available for sale
+	  * @developer Brandon Hansen
+	  * @date Nov 1, 2010
+	  */
+	public function available_for_sale()
+	{
+		return true;
+	}
+	
+	
+	/**
+	  * Default Thumb
+	  * @developer Brandon Hansen
+	  * @date Nov 1, 2010
+	  */
+	public function default_thumb()
+	{
+		foreach($this->images as $image)
+		{
+			return $image->thumburl;
+		}
+		
+		// If there aren't any images, return the store default
+		return 'http://profile.ak.fbcdn.net/hprofile-ak-snc4/hs625.ash1/27537_118140211561021_6937_q.jpg';
 	}
 
 }

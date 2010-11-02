@@ -177,6 +177,26 @@ address
 	width:250px;
 }
 
+#main-content p.note
+{
+	font-size:0.9em;
+	color:#999;	
+	padding:2px 0;
+}
+
+#main-content p.highlight
+{
+	font-size:1em;
+	color:#000;
+	font-weight:bold;
+	padding:10px 0;	
+}
+
+#main-content p.out-of-stock
+{
+	color:#900;
+}
+
 #main-content span.small
 {
 	font-size:0.9em;
@@ -221,6 +241,15 @@ table th
 #main-content table tbody td
 {
 	padding:15px 10px;
+	vertical-align:top;
+}
+
+#main-content table ul.product-variants-table-list li
+{
+	display:inline; 
+	float:left; 
+	padding:0 20px;
+	text-align:center;
 }
 
 #footer

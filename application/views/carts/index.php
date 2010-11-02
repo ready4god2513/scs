@@ -19,10 +19,10 @@
 		<tbody>
 			<?php foreach(cart::get()->cart_items as $cart_item): ?>
 				<tr id="cart-item-<?=$cart_item?>">
-					<td><?=html::anchor($cart_item->product->show_path(), $cart_item->product->name)?></td>
+					<td><?=html::anchor($cart_item->product->show_path(), $cart_item->name)?></td>
 					<td>
 						<?=form::open('cart/update_quantity')?>
-							<?=form::hidden('product_id', $cart_item->product)?>
+							<?=form::hidden('id', $cart_item)?>
 							<?=form::input(array('name' => 'quantity', 'value' => $cart_item->quantity, 'class' => 'cart-item-quantity-input', 'id' => 'quantity-' . $cart_item))?>
 						<?=form::close()?>
 					</td>

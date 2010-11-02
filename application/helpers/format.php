@@ -13,9 +13,19 @@ class format
 	public static function dollar_format($amount = 0.00) 
 	{
 		if(is_numeric($amount)){
-			return'$' . number_format($amount, 2);
+			return'$' . self::number($amount, 2);
 		}
 		return '$0.00';
+	}
+	
+	/**
+	  * Format a number
+	  * @developer Brandon Hansen
+	  * @date Nov 2, 2010
+	  */
+	public static function number($num = 0)
+	{
+		return number_format($num, 2, '.', '');
 	}
 	
 	
@@ -102,7 +112,7 @@ class format
 	 */
 	public static function dollar_round($amount)
 	{
-		return number_format($amount, 2, '.', '');
+		return self::number($amount, 2, '.', '');
 	}
 	
 	
@@ -113,7 +123,7 @@ class format
 	  */
 	public static function weight($weight)
 	{
-		return number_format($weight, 2, '.', '');
+		return self::number($weight, 2, '.', '');
 	}
 	
 	

@@ -24,7 +24,7 @@
 			<tbody>
 				<?php foreach($order->order_details as $item): ?>
 				<tr>
-					<td><?=html::anchor($item->product->edit_path(), $item->product->name)?></td>
+					<td><?=html::anchor($item->product->edit_path(), $item->product->name . ' (' . $item->variant->name . ')')?></td>
 					<td><?=$item->quantity?></td>
 					<td><?=format::dollar_format($item->price)?></td>
 				</tr>
@@ -73,5 +73,6 @@
 		<?php foreach($order->order_comments as $comment): ?>
 			<p><?=$comment->comment?></p>
 		<?php endforeach; ?>
+		<?=View::factory('admin/order_comments/new')->set('order', $order)?>
 	</div>
 </div>

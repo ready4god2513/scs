@@ -3,7 +3,7 @@
 class Cart_item_Model extends ORM
 {
 	
-	protected $belongs_to = array('cart', 'product');
+	protected $belongs_to = array('cart', 'product', 'variant');
 	
 	
 	/**
@@ -24,13 +24,40 @@ class Cart_item_Model extends ORM
 	
 	
 	/**
+	  * Get the product name
+	  * @developer Brandon Hansen
+	  * @date Nov 1, 2010
+	  */
+	public function __get($key)
+	{
+		if($key == 'name')
+		{
+			return $this->product_name();
+		}
+		
+		return parent::__get($key);
+	}
+	
+	
+	/**
+	  * Get the product name
+	  * @developer Brandon Hansen
+	  * @date Nov 1, 2010
+	  */
+	public function product_name()
+	{
+		return $this->product->name . ' (' . $this->variant->name . ')';
+	}
+	
+	
+	/**
 	  * Calculate a product subtotal
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
 	public function product_subtotal()
 	{
-		return (float) round($this->quantity * $this->price_each, 2);
+		return format::number($this->quantity * $this->variant->price);
 	}
 	
 	
@@ -53,12 +80,9 @@ class Cart_item_Model extends ORM
 	  * @Developer brandon
 	  * @Date Oct 12, 2010
 	  */
-	public function delete_all_by_product_and_cart(Product_Model $product, Cart_Model $cart)
+	public function delete_all_by_product_and_cart()
 	{
-		return $this
-			->where('product_id', $product)
-			->where('cart_id', $cart)
-			->delete_all();
+		$this->delete();
 	}
 
 }

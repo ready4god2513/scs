@@ -25,8 +25,10 @@ class Carts_Controller extends Application_Controller
 	public function add()
 	{
 		$product = ORM::factory('product', $this->input->post('product_id'));
-		$quantity = $this->input->post('quantity');
-		$this->cart->add_product($product, $quantity);
+		$quantity = $this->input->post('quantity', 1);
+		$variant = ORM::factory('variant', $this->input->post('variant_id'));
+		
+		$this->cart->add_product($product, $variant, $quantity);
 		
 		url::redirect('cart');
 	}
@@ -39,9 +41,9 @@ class Carts_Controller extends Application_Controller
 	  */
 	public function update_quantity()
 	{
-		$product = ORM::factory('product', $this->input->post('product_id'));
+		$item = ORM::factory('cart_item', $this->input->post('id'));
 		$quantity = $this->input->post('quantity');
-		$this->cart->update_quantity($product, $quantity);
+		$this->cart->update_quantity($item->product, $item->variant, $quantity);
 		
 		url::redirect('cart');
 	}
@@ -54,9 +56,8 @@ class Carts_Controller extends Application_Controller
 	  */
 	public function remove()
 	{
-		$product = ORM::factory('product', $this->input->post('product_id'));
-		$quantity = $this->input->post('quantity');
-		$this->cart->remove_product($product);
+		$item = ORM::factory('cart_item', $this->input->post('id'));
+		$this->cart->remove_product($item);
 		
 		url::redirect('cart');
 	}

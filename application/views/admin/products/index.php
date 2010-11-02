@@ -5,17 +5,35 @@
 <table class="sortable_table">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Date Created</th>
-			<th>Last Modified</th>
+			<th></th>
+			<th>Product</th>
+			<th>Inventory</th>
+			<th>Number Sold</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach($products as $product): ?>
-			<tr>
-				<td><?=html::anchor($product->edit_path(), $product->name)?></td>
-				<td><?=$product->created_at?></td>
-				<td><?=$product->updated_at?></td>
+			<tr <?php if(!$product->available_for_sale()) : ?>class="sold-out"<?php endif;?>>
+				<td><?=html::image($product->default_thumb())?></td>
+				<td>
+					<p><?=html::anchor($product->edit_path(), $product->name)?></p>
+					<?php foreach($product->categories as $category): ?>
+						<p class="note"><?=$category->name?></p>
+					<?php endforeach; ?>
+				</td>
+				<td>
+					<ul class="product-variants-table-list">
+						<?php foreach($product->variants as $variant): ?>
+							<li>
+								<?php foreach($variant->options_variant as $option): ?>
+									<p class="note"><?=$option->value?></p>
+								<?php endforeach; ?>
+								<p class="highlight <?php if($variant->in_stock_count() == 0):?>out-of-stock<?php endif; ?>"><?=$variant->in_stock_count()?></p>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</td>
+				<td><?=$product->number_of_sales()?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>

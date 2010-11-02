@@ -9,9 +9,7 @@
 	<?=form::open('cart/add')?>
 		<?=form::hidden('product_id', $product)?>
 		<div class="choose-quantity">
-			<?=form::label('quantity', 'Quantity')?>
-			<?=form::input(array('name' => 'quantity', 'value' => 1, 'class' => 'cart-item-quantity-input'))?>
-			<span class="price"><?=$product->base_price()?> lb</span>
+			<?=form::variant_dropdown($product)?>
 		</div>
 		<div class="add-to-cart-button">
 			<?=form::submit('submit', 'Add to Cart')?>
